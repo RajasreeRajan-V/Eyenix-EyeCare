@@ -3,16 +3,20 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Stocker - Stock Market Website Template</title>
+    <title>Eyenix Eye Care - Stock Market Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
@@ -82,35 +86,54 @@
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
-                <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
-                <img src="{{ asset('img/logo.png')}}" alt="Logo">
+            <a href="" class="navbar-brand d-flex align-items-center gap-2 p-0">
+                <img src="{{ asset('img/logo.png')}}" alt="Logo" class="brand-logo">
+
+                <a href="#" class="navbar-brand fancy-brand d-flex align-items-center gap-3 p-3">
+
+                    <!-- Logo Icon -->
+                    <div class="logo-icon d-flex align-items-center justify-content-center">
+                        <i class="fas fa-glasses"></i>
+                    </div>
+
+                    <!-- Brand Text -->
+                    <div class="brand-text">
+                        <h1 class="brand-title m-0">Eyenix <span>Eye Care</span></h1>
+                        <p class="brand-tagline m-0">Vision • Style • Comfort</p>
+                    </div>
+
+                    <!-- Decorative Lines for Animation -->
+                    <span class="top-key"></span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="blog.html" class="nav-item nav-link">Blogs</a>
+                    <a href="{{ route('dashboard') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                    <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
+                    <a href="#" class="nav-item nav-link">Blogs</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
                             <span class="dropdown-toggle">Pages</span>
                         </a>
                         <div class="dropdown-menu m-0">
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="team.html" class="dropdown-item">Our team</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="offer.html" class="dropdown-item">Our offer</a>
-                            <a href="FAQ.html" class="dropdown-item">FAQs</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                            <a href="#" class="dropdown-item">Our Features</a>
+                            <a href="#" class="dropdown-item">Our team</a>
+                            <a href="#" class="dropdown-item">Testimonial</a>
+                            <a href="#" class="dropdown-item">Our offer</a>
+                            <a href="#" class="dropdown-item">FAQs</a>
+                            <a href="#" class="dropdown-item">404 Page</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact Us</a>
                 </div>
-                {{-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a> --}}
             </div>
         </nav>
 
@@ -124,457 +147,614 @@
                             <div class="col-lg-0 col-xl-5"></div>
                             <div class="col-xl-7 animated fadeInLeft">
                                 <div class="text-sm-center text-md-end">
-                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To Our Optical Care
+                                    <br><br><br><br><br><br><br><br><br>
+                                    <h4 class="text-primary text-uppercase fw-bold mb-4">
+                                        Welcome to Eyenix Eye Care
                                     </h4>
-                                    <h1 class="display-4 text-uppercase text-white mb-4">Experience Clear Vision With
-                                        Quality Eyewear</h1>
+
+                                    <h1 class="display-4 text-uppercase text-white mb-4">
+                                        Find Frames That Fit Your Style Perfectly
+                                    </h1>
+
                                     <p class="mb-5 fs-5">
-                                        Discover premium eyeglasses, power lenses, and stylish frames designed for
-                                        comfort, clarity, and confidence.
-                                        Your vision deserves the best.
+                                        Upgrade your look with high-quality lenses and trendsetting frames designed for
+                                        everyday durability and exceptional visual comfort. See better, live better.
                                     </p>
 
                                     <div
                                         class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
-                                                class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn
-                                            More</a>
+                                        <a class="fancy" href="#">
+                                            <span class="top-key"></span>
+                                            <span class="text">DISCOVER NOW</span>
+                                            <span class="bottom-key-1"></span>
+                                            <span class="bottom-key-2"></span>
+                                        </a>
                                     </div>
-                                    <div
-                                        class="d-flex align-items-center justify-content-center justify-content-md-end">
-                                        <h2 class="text-white me-2">Follow Us:</h2>
-                                        <div class="d-flex justify-content-end ms-2">
-                                            <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
-             <div class="header-carousel-item">
+
+
+            <div class="header-carousel-item">
                 <img src="{{ asset('img/banner2.jpg')}}" class="img-fluid w-100" alt="Image">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row g-5">
                             <div class="col-12 animated fadeInUp">
-                                <div class="text-center">
-                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To Stocker</h4>
-                                    <h1 class="display-4 text-uppercase text-white mb-4">Invest your money with higher
-                                        return</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy...
+                                <div class="text-end text-md-end text-lg-end hero-text-right">
+                                    <br><br><br><br><br><br><br><br><br>
+
+                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Your Vision, Our Priority</h4>
+
+                                    <h1 class="display-4 text-uppercase text-white mb-4">
+                                        Stylish Frames Crafted for Everyday Comfort
+                                    </h1>
+
+                                    <p class="mb-5 fs-5">
+                                        Explore a wide range of modern, lightweight, and durable spectacles designed to
+                                        match
+                                        your personality and enhance your visual clarity with precision lenses.
                                     </p>
-                                    <div class="d-flex justify-content-center flex-shrink-0 mb-4">
-                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
-                                                class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn
-                                            More</a>
+
+                                    <div class="d-flex justify-content-end flex-shrink-0 mb-4">
+                                        <a class="fancy" href="#">
+                                            <span class="top-key"></span>
+                                            <span class="text">EXPLORE NOW</span>
+                                            <span class="bottom-key-1"></span>
+                                            <span class="bottom-key-2"></span>
+                                        </a>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <h2 class="text-white me-2">Follow Us:</h2>
-                                        <div class="d-flex justify-content-end ms-2">
-                                            <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-             <div class="header-carousel-item">
+
+            <div class="header-carousel-item">
                 <img src="{{ asset('img/banner11.jpg')}}" class="img-fluid w-100" alt="Image">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row g-5">
                             <div class="col-12 animated fadeInUp">
-                                <div class="text-center">
-                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To Stocker</h4>
-                                    <h1 class="display-4 text-uppercase text-white mb-4">Invest your money with higher
-                                        return</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy...
+                                <div class="text-end text-md-end text-lg-end hero-text-right">
+                                    <br><br><br><br><br><br><br><br><br>
+
+                                    <h4 class="text-primary text-uppercase fw-bold mb-4"> Modern Eye Care, Trusted
+                                        Expertise</h4>
+
+                                    <h1 class="display-4 text-uppercase text-white mb-4">
+                                        Find the Perfect Spectacles for Your Vision
+                                    </h1>
+
+                                    <p class="mb-5 fs-5">
+                                        Discover a premium collection of stylish frames, high-quality lenses, and
+                                        advanced eye care solutions. Comfort, clarity, and elegance—all in one place.
                                     </p>
-                                    <div class="d-flex justify-content-center flex-shrink-0 mb-4">
-                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
-                                                class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                        <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn
-                                            More</a>
+
+                                    <div class="d-flex justify-content-end flex-shrink-0 mb-4">
+                                        <a class="fancy" href="#">
+                                            <span class="top-key"></span>
+                                            <span class="text">EXPLORE MORE</span>
+                                            <span class="bottom-key-1"></span>
+                                            <span class="bottom-key-2"></span>
+                                        </a>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <h2 class="text-white me-2">Follow Us:</h2>
-                                        <div class="d-flex justify-content-end ms-2">
-                                            <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- Carousel End -->
     </div>
     <!-- Navbar & Hero End -->
 
+    <div class="container-fluid about py-5 position-relative">
+        <div class="about-top-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path d="M0,50 C360,150 1080,0 1440,100 L1440,0 L0,0 Z" fill="var(--red)"></path>
+            </svg>
+        </div>
 
-    <!-- Abvout Start -->
-    <div class="container-fluid about py-5">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
-                <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div>
-                        <h4 class="text-primary">About Us</h4>
-                        <h1 class="display-5 mb-4">Meet our company unless miss the opportunity</h1>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum velit temporibus
-                            repudiandae ipsa, eaque perspiciatis cumque incidunt tenetur sequi reiciendis.
-                        </p>
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Business Consuluting</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Year Of Expertise</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="#" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover
-                                    Now</a>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex">
-                                    <i class="fas fa-phone-alt fa-2x text-primary me-4"></i>
-                                    <div>
-                                        <h4>Call Us</h4>
-                                        <p class="mb-0 fs-5" style="letter-spacing: 1px;">+01234567890</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
-                    <div class="bg-primary rounded position-relative overflow-hidden">
-                        <img src="{{ asset('img/about-2.png')}}" class="img-fluid rounded w-100" alt="">
+                <!-- TEXT COLUMN -->
+                <div class="col-xl-6 fadeInLeft wow" data-wow-delay="0.2s">
+                    <h4 class="text-primary">About Us</h4>
+                    <h1 class="display-5 mb-4">Better Sight, Happier You. That's Our Promise.
+                    </h1>
+                    <p>Welcome to Eyenix Eye Care - a place built with care, honesty, and a genuine desire to help
+                        people see better.</p>
+                    <p class="mb-4">Located at San, Jos River View Complex, near Bank of Baroda, Tanthode, Iritty, we
+                        proudly serve our local community with complete and reliable vision care. We believe that good
+                        eyesight can change the way you experience the world, and we’re here to make that experience
+                        clearer, brighter, and more comfortable.</p>
+                    <p class="mb-4">At Eyenix Eye Care, we don’t just check your eyes - we listen, we understand, and we
+                        guide you. Whether you’re coming in for a routine eye test, choosing your first pair of glasses,
+                        or exploring stylish frames and sunglasses, our team is here to help you feel confident and
+                        cared for.</p>
+                    <p class="mb-4">With modern computerized testing, quality eyewear options, and a warm, friendly
+                        environment, we aim to make every visit smooth and stress-free. Our customers often tell us they
+                        feel at home here - and that is exactly what we want.</p>
 
-                        <div class="" style="position: absolute; top: -15px; right: -15px;">
-                            <img src="{{ asset('img/about-3.png')}}" class="img-fluid"
-                                style="width: 150px; height: 150px; opacity: 0.7;" alt="">
-                        </div>
-                        <div class="" style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
-                            <img src="{{ asset('img/about-4.png')}}" class="img-fluid"
-                                style="width: 100px; height: 150px; opacity: 0.9;" alt="">
-                        </div>
-                        <div class="rounded-bottom">
-                            <img src="{{ asset('img/about-5.jpg')}}" class="img-fluid rounded-bottom w-100" alt="">
+                </div>
+
+                <!-- IMAGE COLUMN -->
+                <div class="col-xl-6 col-lg-6 col-md-12 about-left-wrapper position-relative" data-wow-delay="200ms">
+                    <div class="about-spec-frame">
+                        <div class="spin-wrapper">
+                            <img src="{{ asset('img/blu-redSpec.png') }}" alt="Spectacle Image">
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
+        <!-- Bent Sigmoid Curve at Bottom -->
+        <div class="about-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none" style="display:block; width:100%; height:150px;">
+                <path d="M0,100 C360,0 1080,150 1440,50 L1440,150 L0,150 Z" fill="var(--red)"></path>
+            </svg>
+        </div>
     </div>
+
+
     <!-- About End -->
-
-    <!-- Services Start -->
-    <div class="container-fluid service pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Services</h4>
-                <h1 class="display-5 mb-4">We Services provided best offer</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-1.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-2.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-3.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Managements</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-4.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Supply Optimization</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-5.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Hr Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-6.jpg')}}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Marketing Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Services End -->
-
     <!-- Features Start -->
     <div class="container-fluid feature pb-5">
         <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Features</h4>
-                <h1 class="display-5 mb-4">Connecting businesses, ideas, and people for greater impact.</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
+            <div class="text-center mx-auto pb-5 wow " data-wow-delay="0.2s" style="max-width: 800px;">
+                <br>
+                <h4 class="text-abcd section-title-small">Our Services</h4>
+                <h1 class="display-5 mb-4 section-title-main">See the Difference: Comprehensive Services for Your Best
+                    Vision.</h1>
+                <p class="mb-0 section-title-text">
+                    At Eyenix Eye Care, we offer a complete range of modern vision solutions, from precise digital eye
+                    exams to the latest in eyewear fashion. We connect you with the right technology and products to
+                    ensure clarity, comfort, and style.
                 </p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="feature-item p-4">
+                        <div class="right-border"></div>
+                        <div class="left-border"></div>
                         <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-chart-line fa-4x text-primary"></i>
+                            <i class="fas fa-eye-dropper fa-4x text-abcd"></i>
                         </div>
-                        <h4>Global Management</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
+                        <h4>Complete Eye Care Solutions</h4>
+                        <p class="mb-4">
+                            Experience precise vision assessment and personalized eye care with Eyenix Eye Care.
+                            From computerized eye testing to stylish eyewear, prescription glasses, power sunglasses,
+                            and contact lenses, we provide everything you need for clear, comfortable, and confident
+                            vision.
                         </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                            <a class="fancy1" href="#">
+                                <span class="top-key"></span>
+                                <span class="text"> Learn More</span>
+                                <span class="bottom-key-1"></span>
+                                <span class="bottom-key-2"></span>
+                            </a>
+                        </div>
+
                     </div>
+
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="feature-item p-4">
+                        <div class="right-border"></div>
+                        <div class="left-border"></div>
+
                         <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-university fa-4x text-primary"></i>
+                            <i class="fas fa-eye fa-4x text-abcd"></i>
                         </div>
-                        <h4>Corporate Banking</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
+
+                        <h4>Computerized Eye Testing</h4>
+
+                        <p class="mb-4">
+                            Get accurate and reliable vision results with our advanced computerized eye testing.
+                            Eyenix Eye Care ensures precise diagnosis to help you achieve the clearest vision possible.
                         </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                            <a class="fancy1" href="#">
+                                <span class="top-key"></span>
+                                <span class="text"> Learn More</span>
+                                <span class="bottom-key-1"></span>
+                                <span class="bottom-key-2"></span>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="feature-item p-4">
+                        <div class="right-border"></div>
+                        <div class="left-border"></div>
+
                         <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            <i class="fas fa-glasses fa-4x text-abcd"></i>
                         </div>
-                        <h4>Asset Management</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
+
+                        <h4>Branded Frames & Sunglasses</h4>
+
+                        <p class="mb-4">
+                            Explore a wide range of premium branded frames and stylish sunglasses.
+                            Eyenix Eye Care brings you the latest trends with superior comfort, durability,
+                            and visual clarity to match your personality and lifestyle.
                         </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                            <a class="fancy1" href="#">
+                                <span class="top-key"></span>
+                                <span class="text"> Learn More</span>
+                                <span class="bottom-key-1"></span>
+                                <span class="bottom-key-2"></span>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
                     <div class="feature-item p-4">
+                        <div class="right-border"></div>
+                        <div class="left-border"></div>
+
                         <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-hand-holding-usd fa-4x text-primary"></i>
+                            <i class="fas fa-eye-dropper fa-4x text-abcd"></i>
                         </div>
-                        <h4>Investment Bank</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
+
+                        <h4>Prescription Glasses</h4>
+
+                        <p class="mb-4">
+                            Discover perfectly crafted prescription glasses designed for clarity, comfort,
+                            and everyday wear. Eyenix Eye Care ensures accurate power lenses and stylish frames
+                            to suit every personality and vision need.
                         </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
+                            <a class="fancy1" href="#">
+                                <span class="top-key"></span>
+                                <span class="text"> Learn More</span>
+                                <span class="bottom-key-1"></span>
+                                <span class="bottom-key-2"></span>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
     <!-- Features End -->
 
-
     <!-- Offer Start -->
-    <div class="container-fluid offer-section pb-5">
+    <div class="container-fluid offer-section pb-0">
+        <div class="offer-top-curve">
+            <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+                <path d="M0,120 C360,200 1080,40 1440,120 L1440,0 L0,0 Z" fill="var(--back)"></path>
+            </svg>
+        </div>
+
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Offer</h4>
-                <h1 class="display-5 mb-4">Benefits We offer</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
-                </p>
+                <h1 class="display-5 mb-4"> <i>Wear Your Shape </i></h1>
+                <h4 class="text-dcba">Discover frames that perfectly match your face shape, enhancing your natural
+                    features.</h4>
+                <p class="section-desc"></p>
+
             </div>
             <div class="row g-5 align-items-center">
                 <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div class="nav nav-pills bg-light rounded p-5">
-                        <a class="accordion-link p-4 active mb-4" data-bs-toggle="pill" href="#collapseOne">
-                            <h5 class="mb-0">Lending money for investment of your new projects</h5>
-                        </a>
-                        <a class="accordion-link p-4 mb-4" data-bs-toggle="pill" href="#collapseTwo">
-                            <h5 class="mb-0">Lending money for investment of your new projects</h5>
-                        </a>
-                        <a class="accordion-link p-4 mb-4" data-bs-toggle="pill" href="#collapseThree">
-                            <h5 class="mb-0">Mobile payment is more flexible and easy for all investors</h5>
-                        </a>
-                        <a class="accordion-link p-4 mb-0" data-bs-toggle="pill" href="#collapseFour">
-                            <h5 class="mb-0">all transaction is kept free for the member of pro traders</h5>
-                        </a>
+                    <div class="shape-row">
+
+                        <div class="shape-item">
+                            <img src="{{ asset('img/Shape/Aviator.png') }}" class="img-fluid">
+                            <h5 class="text-dcba">AVIATOR</h5>
+                        </div>
+
+                        <div class="shape-item">
+                            <img src="{{ asset('img/Shape/Clubmaster.png') }}" class="img-fluid">
+                            <h5 class="text-dcba">BROWLINE</h5>
+                        </div>
+
+                        <div class="shape-item">
+                            <img src="{{ asset('img/Shape/oval.png') }}" class="img-fluid">
+                            <h5 class="text-dcba">OVAL</h5>
+                        </div>
+                        <div class="shape-item">
+                            <img src="{{ asset('img/Shape/rectangle.png') }}" class="img-fluid">
+                            <h5 class="text-dcba">RECTANGLE</h5>
+                        </div>
+
                     </div>
                 </div>
-                <div class="col-xl-7 wow fadeInRight" data-wow-delay="0.4s">
-                    <div class="tab-content">
-                        <div id="collapseOne" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="col-md-7">
-                                    <img src="{{ asset('img/offer-1.jpg')}}" class="img-fluid w-100 rounded" alt="">
+
+                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.4s">
+                    <div class="shape-row">
+                        {{-- <div id="collapseOne" class="tab-pane fade show p-0 active"> --}}
+                            {{-- <div class="shape-row"> --}}
+                                <div class="shape-item">
+
                                 </div>
-                                <div class="col-md-5">
-                                    <h1 class="display-5 mb-4">The stock market provides a venue...</h1>
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-                                        amet sequi molestiae tenetur eum mollitia, blanditiis, magnam illo magni error
-                                        dolore unde perspiciatis tempore et totam corrupti dignissimos aut praesentium?
-                                    </p>
-                                    <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+                                <div class="shape-item">
+                                    <img src="{{ asset('img/Shape/Cat-Eye.png') }}" class="img-fluid">
+                                    <h5 class="text-dcba">CATEYE</h5>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="collapseTwo" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-md-7">
-                                    <img src="{{ asset('img/offer-2.jpg')}}" class="img-fluid w-100 rounded" alt="">
+                                <div class="shape-item">
+                                    <img src="{{ asset('img/Shape/Wayfarer.png') }}" class="img-fluid">
+                                    <h5 class="text-dcba">WAYFARER</h5>
                                 </div>
-                                <div class="col-md-5">
-                                    <h1 class="display-5 mb-4">The stock market provides a venue...</h1>
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-                                        amet sequi molestiae tenetur eum mollitia, blanditiis, magnam illo magni error
-                                        dolore unde perspiciatis tempore et totam corrupti dignissimos aut praesentium?
-                                    </p>
-                                    <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+
+
+                                <div class="shape-item">
+                                    <img src="{{ asset('img/Shape/round.png') }}" class="img-fluid">
+                                    <h5 class="text-dcba">ROUND</h5>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="collapseThree" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-md-7">
-                                    <img src="{{ asset('img/offer-3.jpg')}}" class="img-fluid w-100 rounded" alt="">
+                                <div class="shape-item">
+                                    <img src="{{ asset('img/Shape/Geometric.png') }}" class="img-fluid">
+                                    <h5 class="text-dcba">GEOMETRIC</h5>
                                 </div>
-                                <div class="col-md-5">
-                                    <h1 class="display-5 mb-4">The stock market provides a venue...</h1>
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-                                        amet sequi molestiae tenetur eum mollitia, blanditiis, magnam illo magni error
-                                        dolore unde perspiciatis tempore et totam corrupti dignissimos aut praesentium?
-                                    </p>
-                                    <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapseFour" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-md-7">
-                                    <img src="{{ asset('img/offer-4.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                                </div>
-                                <div class="col-md-5">
-                                    <h1 class="display-5 mb-4">The stock market provides a venue...</h1>
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-                                        amet sequi molestiae tenetur eum mollitia, blanditiis, magnam illo magni error
-                                        dolore unde perspiciatis tempore et totam corrupti dignissimos aut praesentium?
-                                    </p>
-                                    <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
+
+                                {{--
+                            </div> --}}
+                            {{-- </div> --}}
                     </div>
                 </div>
             </div>
         </div>
+        <div class="offer-curve">
+            <svg viewBox="0 0 1440 240" preserveAspectRatio="none" class="offer-bottom-svg">
+                <path d="M0,140 C360,40 1080,240 1440,120 L1440,240 L0,240 Z" fill="var(--back)"></path>
+            </svg>
+        </div>
     </div>
+
     <!-- Offer End -->
+
+    <!-- Brands Start -->
+    <div class="container-fluid service pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="section-label">Our Brands</h4>
+                <h1 class="section-title">Premium Eyewear Brands We Offer</h1>
+                <p class="section-desc">
+                    Eyenix Eye Care brings you a curated selection of top-quality eyewear brands.
+                    From stylish frames to advanced lenses, we ensure comfort, durability, and unmatched style.
+                </p>
+            </div>
+
+            <!-- ==== SLIDER FOR ITEMS 4–6 ==== -->
+            <div class="brand-nav">
+                <button class="brand-prev"><i class="fa fa-chevron-left"></i></button>
+                <button class="brand-next"><i class="fa fa-chevron-right"></i></button>
+            </div>
+            <div class="brand-slider owl-carousel mt-4">
+
+                <div class="item">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{{ asset('img/brand-2.png') }}" class="img-fluid rounded-top w-100" alt="">
+                        </div>
+                        <div class="brand-hover-name">Vogue Eyewear</div>
+
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{{ asset('img/brand-1.png') }}" class="img-fluid rounded-top w-100" alt="">
+                        </div>
+                        <div class="brand-hover-name">Ray-Ban
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{{ asset('img/brand-3.png') }}" class="img-fluid rounded-top w-100" alt="">
+                        </div>
+                        <div class="brand-hover-name">Titan Eye+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{{ asset('img/brand-4.png') }}" class="img-fluid rounded-top w-100" alt="">
+                        </div>
+                        <div class="brand-hover-name">Fastrack
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{{ asset('img/brand-5.png') }}" class="img-fluid rounded-top w-100" alt="">
+                        </div>
+                        <div class="brand-hover-name">Oakley
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{{ asset('img/brand-6.png') }}" class="img-fluid rounded-top w-100" alt="">
+                        </div>
+                        <div class="brand-hover-name">Carrera
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Brands End -->
+
+    <!-- Collection Start -->
+    <div class="container-fluid collection-section py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-dcba">Our Collection</h4>
+                <h1 class="display-5 mb-4">Explore Our Products</h1>
+                <p class="mb-0 text-dcba">Discover the latest products from our collection. Each item is carefully curated to meet
+                    your style and quality needs.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="col-12 text-center mb-4">
+                <div class="collection-filters">
+                    <button class="btn active" data-filter="*">All</button>
+                    <button class="btn" data-filter=".glasses">Glasses</button>
+                    <button class="btn" data-filter=".sunglasses">Sunglasses</button>
+                    <button class="btn" data-filter=".contact-lenses">Contact Lenses</button>
+                </div>
+            </div>
+
+            <div class="swiper collection-slider">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="card-product">
+                            <img src="{{ asset('img/product-1.jpg') }}" alt="Product 1">
+                            <h5 class="product-title">Product Name 1</h5>
+                            <p class="product-price">$49.99</p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card-product">
+                            <img src="{{ asset('img/product-2.jpg') }}" alt="Product 2">
+                            <h5 class="product-title">Product Name 2</h5>
+                            <p class="product-price">$59.99</p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card-product">
+                            <img src="{{ asset('img/product-3.jpg') }}" alt="Product 3">
+                            <h5 class="product-title">Product Name 3</h5>
+                            <p class="product-price">$39.99</p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="card-product">
+                            <img src="{{ asset('img/product-4.jpg') }}" alt="Product 4">
+                            <h5 class="product-title">Product Name 4</h5>
+                            <p class="product-price">$29.99</p>
+                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <br><br>
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Collection End -->
+
+    <!-- Our Story-->
+    <div class="our-story-section">
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+
+                    <!-- LEFT CONTENT -->
+                    <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                        <h1 class="display-5 mb-4 ourstory-title">Where style meets purpose.</h1>
+
+                        <p class="mb-4 ourstory-text">
+                            What began as a simple vision—to make eyewear that feels as good as it looks—
+                            has grown into a commitment to quality, comfort, and everyday confidence.
+                        </p>
+
+                        <a href="">
+                            <h4 class="text-dbca ourstory-link">OUR STORY</h4>
+                        </a>
+                    </div>
+
+                    <!-- RIGHT COLLAGE -->
+                    <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="about-collage">
+                            <div class="collage-item">
+                                <img src="{{ asset('img/style1.png') }}" class="img-fluid">
+                            </div>
+                            <div class="collage-item">
+                                <img src="{{ asset('img/style2.png') }}" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+
+                    <!-- RIGHT COLLAGE -->
+                    <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="about-collage">
+                            <div class="collage-item">
+                                <img src="{{ asset('img/style3.png') }}" class="img-fluid">
+                            </div>
+                            <div class="collage-item">
+                                <img src="{{ asset('img/style4.png') }}" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- LEFT CONTENT -->
+                    <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                        <h1 class="display-5 mb-4 ourstory-title">Inspired by real people.</h1>
+
+                        <p class="mb-4 text-dbca ourstory-text">
+                            Born from the idea that eyewear should support your lifestyle, not complicate it. We create
+                            frames that blend craftsmanship with comfort, made to stand by you through every moment.
+                        </p>
+
+                        <a href="">
+                            <h4 class="text-dbca ourstory-link">OUR STORY</h4>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Our Story -->
 
     <!-- Blog Start -->
     <div class="container-fluid blog pb-5">
@@ -1039,7 +1219,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="footer-item">
                         <a href="index.html" class="p-0">
-                            <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Stocker</h4>
+                            <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Eyenix Eye Care</h4>
                             <!-- <img src="{{ asset('img/logo.png')}}" alt="Logo"> -->
                         </a>
                         <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit
@@ -1155,7 +1335,7 @@
     <script src="{{ asset('lib/counterup/counterup.min.js')}}"></script>
     <script src="{{ asset('lib/lightbox/js/lightbox.min.js')}}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js')}}"></script>
