@@ -173,7 +173,7 @@
     <h2>Eyenix Eye Care</h2>
     <span>Clear Vision. Trusted Care.</span>
 
-    <form action="" method="POST">
+    <form action="{{ route('admin.do.login') }}" method="POST">
       @csrf
       <div class="input-group">
         <label for="email">Email Address</label>
