@@ -120,10 +120,10 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="{{ route('admin.contactus.index') }}">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" name="search"
+                        placeholder="Search contacts..." value="{{ request('search') }}" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -131,6 +131,7 @@
                     </div>
                 </div>
             </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -178,46 +179,7 @@
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     HOME
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.contactus.index') }}" class="nav-link">
-                               <i class="nav-icon fas fa-address-book"></i>
-                                <p>
-                                    CONTACT US
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.brand.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE BRANDS
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.shape.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE SHAPES
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.frame.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE FRAMES
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.ProductColor.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE PRODUCT COLOURS
+
                                 </p>
                             </a>
                         </li>
@@ -754,71 +716,164 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
-                <div class="owl-carousel owl-theme">
+  <section class="content mt-5">
+    <div class="container-fluid">
+        <div class="row">
 
-                    <!-- SLIDE 1 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner2.jpg') }}" class="carousel-img">
-
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Welcome to Eyenix Eye Care
-                            </h4>
-
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find Frames That Fit Your Style Perfectly
-                            </h1>
-
-                            <p class="fs-5 text-light">
-                                Upgrade your look with high-quality lenses and trendsetting frames designed for
-                                everyday durability and exceptional visual comfort. See better, live better.
-                            </p>
-                        </div>
+            <!-- ADD BRAND FORM -->
+            <div class="col-md-4">
+                <div class="card card-primary shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Brand</h3>
                     </div>
 
-                    <!-- SLIDE 2 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner11.jpg') }}" class="carousel-img">
+                    <form action="{{ route('admin.brand.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Your Vision, Our Priority
-                            </h4>
+                            <div class="form-group">
+                                <label>Brand Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter brand name" required>
+                            </div>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Stylish Frames Crafted for Everyday Comfort
-                            </h1>
+                            <div class="form-group">
+                                <label>Brand Logo</label>
+                                <input type="file" name="logo" class="form-control-file">
+                            </div>
 
-                            <p class="fs-5 text-light">
-                                Explore a wide range of modern, lightweight, and durable spectacles designed to
-                                match your personality and enhance your visual clarity with precision lenses.
-                            </p>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+
                         </div>
-                    </div>
 
-                    <!-- SLIDE 3 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner3.jpg') }}" class="carousel-img">
-
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Modern Eye Care, Trusted Expertise
-                            </h4>
-
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find the Perfect Spectacles for Your Vision
-                            </h1>
-
-                            <p class="fs-5 text-light">
-                                Discover a premium collection of stylish frames, high-quality lenses, and
-                                advanced eye care solutions. Comfort, clarity, and elegance—all in one place.
-                            </p>
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add Brand
+                            </button>
                         </div>
-                    </div>
-
+                    </form>
                 </div>
-            </section>
+            </div>
+
+            <!-- BRAND TABLE -->
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-secondary">
+                        <h3 class="card-title text-white">Brand List</h3>
+                    </div>
+
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-bordered table-hover text-center">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Logo</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {{-- @forelse($brands as $index => $brand)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>
+                                            @if($brand->logo)
+                                                <img src="{{ asset('uploads/brands/'.$brand->logo) }}"
+                                                     width="50" class="img-fluid rounded">
+                                            @else
+                                                <span class="text-muted">N/A</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $brand->name }}</td>
+                                        <td>
+                                            <span class="badge {{ $brand->status ? 'badge-success' : 'badge-danger' }}">
+                                                {{ $brand->status ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.brand.edit', $brand->id) }}"
+                                               class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+
+                                            <form action="{{ route('admin.brand.destroy', $brand->id) }}"
+                                                  method="POST"
+                                                  class="d-inline"
+                                                  onsubmit="return confirm('Delete this brand?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-muted">No brands found</td>
+                                    </tr>
+                                @endforelse --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+            <!-- Reply Modal -->
+            <div class="modal fade" id="replyModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <form action="{{ route('admin.contact.reply') }}" method="POST">
+                        @csrf
+
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title">Reply to Contact Message</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label">To</label>
+                                    <input type="email" name="email" id="replyEmail" class="form-control" readonly>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Subject</label>
+                                    <input type="text" name="subject" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Message</label>
+                                    <textarea name="message" rows="5" class="form-control" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-paper-plane"></i> Send Reply
+                                </button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <!-- /.content -->
         </div>
@@ -860,17 +915,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script>
-        $(function () {
-            $('.owl-carousel').owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                nav: true,
-                dots: true
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.reply-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    document.getElementById('replyEmail').value = this.dataset.email;
+                });
             });
         });
     </script>
 
+
 </body>
+
 </html>

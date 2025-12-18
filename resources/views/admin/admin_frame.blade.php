@@ -32,6 +32,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome 6 Free -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-papmA+oXAi7jhv1skZrQf5jZ+cT5x2r+13b7JxX8+uNQnW9YwWJt3UKpJzKQhPqVx2k9wK+XxQv0zZc6H8V5Hw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         .owl-carousel .item {
             position: relative;
@@ -120,10 +128,10 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="{{ route('admin.contactus.index') }}">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" name="search"
+                        placeholder="Search contacts..." value="{{ request('search') }}" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -131,6 +139,7 @@
                     </div>
                 </div>
             </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -178,46 +187,7 @@
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     HOME
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.contactus.index') }}" class="nav-link">
-                               <i class="nav-icon fas fa-address-book"></i>
-                                <p>
-                                    CONTACT US
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.brand.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE BRANDS
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.shape.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE SHAPES
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.frame.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE FRAMES
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.ProductColor.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE PRODUCT COLOURS
+
                                 </p>
                             </a>
                         </li>
@@ -754,73 +724,394 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <section class="content">
-                <div class="owl-carousel owl-theme">
+            <!-- Main content -->
+            <section class="content mt-4">
+                <div class="container-fluid">
+                    <div class="row">
 
-                    <!-- SLIDE 1 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner2.jpg') }}" class="carousel-img">
+                        <!-- LEFT COLUMN : FRAME FORM -->
+                        <div class="col-md-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Add Frame</h5>
+                                </div>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Welcome to Eyenix Eye Care
-                            </h4>
+                                <div class="card-body">
+                                    <form action="{{ route('admin.frame.store') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find Frames That Fit Your Style Perfectly
-                            </h1>
+                                        <!-- Frame Name -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Frame Name</label>
+                                            <input type="text" name="name" class="form-control"
+                                                placeholder="Enter frame name" required>
+                                        </div>
 
-                            <p class="fs-5 text-light">
-                                Upgrade your look with high-quality lenses and trendsetting frames designed for
-                                everyday durability and exceptional visual comfort. See better, live better.
-                            </p>
+                                        <!-- Frame Image -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Frame Image</label>
+                                            <input type="file" name="image" class="form-control" required>
+                                        </div>
+
+                                        <!-- Frame Type -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Frame Type</label>
+
+                                            <div class="d-flex gap-2">
+                                                <select name="frame_type_id" id="frameTypeSelect" class="form-control"
+                                                    required>
+                                                    <option value="">Select Frame Type</option>
+                                                    @foreach($frameTypes as $type)
+                                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                <button type="button" class="btn btn-outline-primary"
+                                                    onclick="showNewInput('newFrameTypeInput')">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+
+                                            <input type="text" name="new_frame_type" id="newFrameTypeInput"
+                                                class="form-control d-none mt-2" placeholder="Enter new frame type">
+                                        </div>
+
+                                        <!-- Frame Material -->
+                                        <div class="mb-3">
+                                            <label class="form-label">Material</label>
+
+                                            <div class="d-flex gap-2">
+                                                <select name="material_id" id="materialSelect" class="form-control"
+                                                    required>
+                                                    <option value="">Select Material</option>
+                                                    @foreach($materials as $material)
+                                                        <option value="{{ $material->id }}">{{ $material->name }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                <button type="button" class="btn btn-outline-primary"
+                                                    onclick="showNewInput('newMaterialInput')">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+
+                                            <input type="text" name="new_material" id="newMaterialInput"
+                                                class="form-control d-none mt-2" placeholder="Enter new material">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            Save Frame
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- SLIDE 2 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner11.jpg') }}" class="carousel-img">
+                        <!-- RIGHT COLUMN : FRAME TABLE -->
+                        <div class="col-md-8">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="mb-0">Frame List</h5>
+                                </div>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Your Vision, Our Priority
-                            </h4>
+                                <div class="card-body table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>No:</th>
+                                                <th>Image</th>
+                                                <th>Frame Name</th>
+                                                <th>Material</th>
+                                                <th>Material Action</th>
+                                                <th>Frame Type</th>
+                                                <th>Frame Type Action</th>
+                                                <th>Frame Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($frames as $frame)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Stylish Frames Crafted for Everyday Comfort
-                            </h1>
+                                                    <td>
+                                                        <img src="{{ asset('storage/' . $frame->image) }}" width="150"
+                                                            class="img-thumbnail">
+                                                    </td>
 
-                            <p class="fs-5 text-light">
-                                Explore a wide range of modern, lightweight, and durable spectacles designed to
-                                match your personality and enhance your visual clarity with precision lenses.
-                            </p>
+                                                    <td>{{ $frame->name }}</td>
+
+                                                    <!-- Material -->
+                                                    <td>{{ $frame->material->name ?? '-' }}</td>
+                                                    <td>
+                                                        @if($frame->material)
+                                                            <!-- Edit Material Button -->
+                                                            <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                                                data-bs-target="#editMaterialModal{{ $frame->material->id }}">
+                                                                <i class="fas fa-edit"></i>
+                                                            </button>
+
+                                                            <!-- Material Edit Modal -->
+                                                            <div class="modal fade"
+                                                                id="editMaterialModal{{ $frame->material->id }}" tabindex="-1"
+                                                                aria-labelledby="editMaterialModalLabel{{ $frame->material->id }}"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-sm">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="editMaterialModalLabel{{ $frame->material->id }}">
+                                                                                Edit Material
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <form
+                                                                            action="{{ route('admin.material.update', $frame->material->id) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <div class="modal-body">
+                                                                                <div class="mb-3">
+                                                                                    <label
+                                                                                        for="materialName{{ $frame->material->id }}"
+                                                                                        class="form-label">
+                                                                                        Material Name
+                                                                                    </label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        id="materialName{{ $frame->material->id }}"
+                                                                                        name="name"
+                                                                                        value="{{ $frame->material->name }}"
+                                                                                        required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary btn-sm"
+                                                                                    data-bs-dismiss="modal">Close</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary btn-sm">Save
+                                                                                    Changes</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Delete Material -->
+                                                            {{-- <form
+                                                                action="{{ route('admin.material.destroy', $frame->material->id) }}"
+                                                                method="POST" class="d-inline"
+                                                                onsubmit="return confirm('Delete this material?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-sm btn-danger">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </form> --}}
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    </td>
+
+                                                    <!-- Frame Type -->
+                                                    <td>{{ $frame->frameType->name ?? '-' }}</td>
+                                                    <td>
+                                                        @if($frame->frameType)
+                                                            <!-- Edit Frame Type Button -->
+                                                            <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                                                data-bs-target="#editFrameTypeModal{{ $frame->frameType->id }}">
+                                                                <i class="fas fa-edit"></i>
+                                                            </button>
+
+                                                            <!-- Frame Type Edit Modal -->
+                                                            <div class="modal fade"
+                                                                id="editFrameTypeModal{{ $frame->frameType->id }}" tabindex="-1"
+                                                                aria-labelledby="editFrameTypeModalLabel{{ $frame->frameType->id }}"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-sm">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="editFrameTypeModalLabel{{ $frame->frameType->id }}">
+                                                                                Edit Frame Type
+                                                                            </h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <form
+                                                                            action="{{ route('admin.frame-type.update', $frame->frameType->id) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <div class="modal-body">
+                                                                                <div class="mb-3">
+                                                                                    <label
+                                                                                        for="frameTypeName{{ $frame->frameType->id }}"
+                                                                                        class="form-label">
+                                                                                        Frame Type Name
+                                                                                    </label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        id="frameTypeName{{ $frame->frameType->id }}"
+                                                                                        name="name"
+                                                                                        value="{{ $frame->frameType->name }}"
+                                                                                        required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary btn-sm"
+                                                                                    data-bs-dismiss="modal">Close</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary btn-sm">Save
+                                                                                    Changes</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Delete Frame Type -->
+                                                            {{-- <form
+                                                                action="{{ route('admin.frame-type.destroy', $frame->frameType->id) }}"
+                                                                method="POST" class="d-inline"
+                                                                onsubmit="return confirm('Delete this frame type?')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-sm btn-danger">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </button>
+                                                            </form> --}}
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    </td>
+
+                                                    <td>
+                                                        <!-- Edit Frame Button -->
+                                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                                                            data-bs-target="#editFrameModal{{ $frame->id }}">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+
+                                                        <!-- Frame Edit Modal -->
+                                                        <div class="modal fade" id="editFrameModal{{ $frame->id }}"
+                                                            tabindex="-1"
+                                                            aria-labelledby="editFrameModalLabel{{ $frame->id }}"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-sm">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="editFrameModalLabel{{ $frame->id }}">
+                                                                            Edit Frame
+                                                                        </h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form
+                                                                        action="{{ route('admin.frame.update', $frame->id) }}"
+                                                                        method="POST" enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <div class="modal-body">
+                                                                            <div class="mb-3">
+                                                                                <label for="frameName{{ $frame->id }}"
+                                                                                    class="form-label">Frame Name</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="frameName{{ $frame->id }}"
+                                                                                    name="name" value="{{ $frame->name }}"
+                                                                                    required>
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="frameMaterial{{ $frame->id }}"
+                                                                                    class="form-label">Material</label>
+                                                                                <select class="form-control"
+                                                                                    id="frameMaterial{{ $frame->id }}"
+                                                                                    name="material_id">
+                                                                                    <option value="">Select Material
+                                                                                    </option>
+                                                                                    @foreach($materials as $material)
+                                                                                        <option value="{{ $material->id }}" {{ $frame->material_id == $material->id ? 'selected' : '' }}>
+                                                                                            {{ $material->name }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="frameType{{ $frame->id }}"
+                                                                                    class="form-label">Frame Type</label>
+                                                                                <select class="form-control"
+                                                                                    id="frameType{{ $frame->id }}"
+                                                                                    name="frame_type_id">
+                                                                                    <option value="">Select Frame Type
+                                                                                    </option>
+                                                                                    @foreach($frameTypes as $type)
+                                                                                        <option value="{{ $type->id }}" {{ $frame->frame_type_id == $type->id ? 'selected' : '' }}>
+                                                                                            {{ $type->name }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="mb-3">
+                                                                                <label for="frameImage{{ $frame->id }}"
+                                                                                    class="form-label">Frame Image</label>
+                                                                                <input type="file" class="form-control"
+                                                                                    id="frameImage{{ $frame->id }}"
+                                                                                    name="image">
+                                                                                @if($frame->image)
+                                                                                    <img src="{{ asset('storage/' . $frame->image) }}"
+                                                                                        width="100" class="mt-2 img-thumbnail">
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary btn-sm"
+                                                                                data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary btn-sm">Save
+                                                                                Changes</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Delete Frame -->
+                                                        <form action="{{ route('admin.frame.destroy', $frame->id) }}"
+                                                            method="POST" class="d-inline"
+                                                            onsubmit="return confirm('Delete this frame?')">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-sm btn-danger">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-
-                    <!-- SLIDE 3 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner3.jpg') }}" class="carousel-img">
-
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Modern Eye Care, Trusted Expertise
-                            </h4>
-
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find the Perfect Spectacles for Your Vision
-                            </h1>
-
-                            <p class="fs-5 text-light">
-                                Discover a premium collection of stylish frames, high-quality lenses, and
-                                advanced eye care solutions. Comfort, clarity, and elegance—all in one place.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             </section>
 
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer" style="background-color: #000;">
@@ -860,17 +1151,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script>
-        $(function () {
-            $('.owl-carousel').owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                nav: true,
-                dots: true
+        function showNewInput(id) {
+            document.getElementById(id).classList.remove('d-none');
+        }
+    </script>
+
+
+    <script>
+        function toggleNew(selectId, inputId) {
+            const select = document.getElementById(selectId);
+            const input = document.getElementById(inputId);
+
+            select.addEventListener('change', function () {
+                if (this.value === 'new') {
+                    input.classList.remove('d-none');
+                } else {
+                    input.classList.add('d-none');
+                    input.value = '';
+                }
             });
-        });
+        }
+
+        toggleNew('frameTypeSelect', 'newFrameTypeInput');
+        toggleNew('materialSelect', 'newMaterialInput');
     </script>
 
 </body>
+
 </html>

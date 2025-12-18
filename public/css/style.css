@@ -26,7 +26,7 @@
 :root {
     /* 99c2ff */
     /* FFD369 */
-    --red: #FFD369;
+    --red: #99c2ff;
     --gold: #4da6ff;
     --back: #000;
 }
@@ -319,7 +319,113 @@
 }
 
 /* ------------------------------------------------------------------------------------------- */
+/* --------------------------BUTTON-EXPLORE----------------------------------------------------- */
+/* From Uiverse.io by cssbuttons-io */
+.fancy2 {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+}
 
+.fancy2::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    background: var(--back);
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy2 .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--back);
+}
+
+.fancy2 .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: var(--red);
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy2 .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: var(--red);
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy2 .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: var(--red);
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy2:hover {
+    color: var(--red);
+    background: black;
+}
+
+.fancy2:hover::before {
+    width: 0.9375rem;
+    background: var(--red);
+}
+
+.fancy2:hover .text {
+    color: var(--red);
+    padding-left: 1.5em;
+}
+
+.fancy2:hover .top-key {
+    left: -2px;
+    width: 0px;
+}
+
+.fancy2:hover .bottom-key-1,
+.fancy2:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+}
+/* -------------------------------------------------------------------------------- */
 /*** Topbar Start ***/
 .topbar .dropdown-toggle::after {
     border: none;
@@ -2319,4 +2425,120 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     background: var(--back);
     color: var(--red) !important;
     border-color: var(--back);
+}
+
+/* Contact section glassy background */
+.contact {
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.05)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Optional background image behind glass */
+.contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('/assets/img/glass-bg.jpg') center / cover no-repeat;
+    opacity: 0.25;
+    z-index: -1;
+}
+
+/* Glass cards */
+.contact .bg-light {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* Form inputs glass effect */
+.contact .form-control {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+/* Map glass frame */
+.contact iframe {
+    border-radius: 18px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+/* CONTACT SECTION BACKGROUND */
+/* .contact {
+    position: relative;
+    background: url("/img/blurred_rain_spectacle.png") center center / cover no-repeat;
+} */
+
+/* Dark overlay for readability */
+.contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* adjust darkness */
+    z-index: 0;
+}
+
+/* Keep content above overlay */
+.contact > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* FORM & MAP HIGHLIGHT & SIZE ADJUST */
+.contact .col-xl-6 > .bg-light,
+.contact .col-xl-6 > .rounded {
+    position: relative;
+    padding: 20px; /* slightly smaller padding */
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.12); /* lighter glass */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    max-height: 550px; /* reduce box height */
+}
+
+/* Map iframe fix & size reduction */
+.contact iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px; /* smaller map */
+    border-radius: 16px;
+}
+
+
+/* Each contact item */
+.contact .contact-add-item {
+    min-width: 220px; /* adjust width per item */
+    flex: 0 0 auto;   /* keep them from shrinking */
+    margin-right: 20px;
+}
+/* Contact info row as flex */
+.contact-info-row {
+    display: flex;
+    flex-wrap: wrap; /* wrap on smaller screens */
+    gap: 15px;       /* reduced gap between items */
+    justify-content: space-between; /* spread evenly */
+}
+
+/* Each contact item */
+.contact-info-row .contact-add-item {
+    flex: 1 1 200px;  /* grow/shrink, min width 200px */
+    max-width: 23%;   /* 4 items in one row */
+    min-width: 180px;
+}
+.contact-info-row .contact-add-item h4,
+.contact-info-row .contact-add-item p {
+    word-break: break-word;    
+    overflow-wrap: anywhere;  
+    color: #fff;
 }

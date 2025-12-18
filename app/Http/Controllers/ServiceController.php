@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContcatUs;
-use App\Http\Requests\StoreContcatUsRequest;
-use App\Http\Requests\UpdateContcatUsRequest;
+use App\Models\Service;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 
-class ContcatUsController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('customer.contact');
+        //
     }
 
     /**
@@ -27,7 +27,7 @@ class ContcatUsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContcatUsRequest $request)
+    public function store(StoreServiceRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ContcatUsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ContcatUs $contcatUs)
+    public function show(Service $service)
     {
         //
     }
@@ -43,7 +43,7 @@ class ContcatUsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ContcatUs $contcatUs)
+    public function edit(Service $service)
     {
         //
     }
@@ -51,7 +51,7 @@ class ContcatUsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContcatUsRequest $request, ContcatUs $contcatUs)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
         //
     }
@@ -59,7 +59,7 @@ class ContcatUsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ContcatUs $contcatUs)
+    public function destroy(Service $service)
     {
         //
     }
