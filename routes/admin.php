@@ -12,6 +12,7 @@ Route::name('admin.')->group(function () {
      Route::middleware(['auth:admin'])->group(function () {
 
       Route::get("/dashboard", [DashboardController::class,'dashboard'])->name('dashboard');
+      
       Route::resource('contactus', ContactusController::class);
 
       Route::post('/contact/reply', [ContactusController::class, 'reply'])->name('contact.reply');

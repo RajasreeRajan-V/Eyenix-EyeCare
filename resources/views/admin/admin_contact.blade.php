@@ -716,119 +716,74 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-  <section class="content mt-5">
-    <div class="container-fluid">
-        <div class="row">
-
-            <!-- ADD BRAND FORM -->
-            <div class="col-md-4">
-                <div class="card card-primary shadow-sm">
-                    <div class="card-header">
-                        <h3 class="card-title">Add Brand</h3>
-                    </div>
-
-                    <form action="{{ route('admin.brand.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-
-                            <div class="form-group">
-                                <label>Brand Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter brand name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Brand Logo</label>
-                                <input type="file" name="logo" class="form-control-file">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select name="status" class="form-control">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
-                            </div>
-
+            <section class="content mt-5">
+                <div class="container-fluid">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">Contact Us Messages</h4>
                         </div>
 
-                        <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-plus"></i> Add Brand
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- BRAND TABLE -->
-            <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-secondary">
-                        <h3 class="card-title text-white">Brand List</h3>
-                    </div>
-
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-bordered table-hover text-center">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Logo</th>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {{-- @forelse($brands as $index => $brand)
+                        <div class="card-body table-responsive">
+                            <table class="table table-bordered table-hover align-middle">
+                                <thead class="table-light">
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>
-                                            @if($brand->logo)
-                                                <img src="{{ asset('uploads/brands/'.$brand->logo) }}"
-                                                     width="50" class="img-fluid rounded">
-                                            @else
-                                                <span class="text-muted">N/A</span>
-                                            @endif
-                                        </td>
-                                        <td>{{ $brand->name }}</td>
-                                        <td>
-                                            <span class="badge {{ $brand->status ? 'badge-success' : 'badge-danger' }}">
-                                                {{ $brand->status ? 'Active' : 'Inactive' }}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.brand.edit', $brand->id) }}"
-                                               class="btn btn-sm btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
 
-                                            <form action="{{ route('admin.brand.destroy', $brand->id) }}"
-                                                  method="POST"
-                                                  class="d-inline"
-                                                  onsubmit="return confirm('Delete this brand?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-sm btn-danger">
-                                                    <i class="fas fa-trash"></i>
+                                <tbody>
+                                    @forelse($contacts as $index => $contact)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $contact->name }}</td>
+                                            <td>{{ $contact->email }}</td>
+                                            <td>{{ $contact->phone }}</td>
+                                            <td>{{$contact->message }}</td>
+                                            <td>{{ $contact->created_at->format('d M Y') }}</td>
+
+                                            <!-- ACTION COLUMN -->
+                                            <td>
+                                               
+                                                <button type="button" class="btn btn-sm btn-info reply-btn"
+                                                    data-toggle="modal" data-target="#replyModal"
+                                                    data-email="{{ $contact->email }}">
+                                                    <i class="fas fa-reply"></i>
                                                 </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-muted">No brands found</td>
-                                    </tr>
-                                @endforelse --}}
-                            </tbody>
-                        </table>
+
+
+                                                    <!-- Delete -->
+                                                    <form action="{{ route('admin.contactus.destroy', $contact->id) }}"
+                                                        method="POST" class="d-inline"
+                                                        onsubmit="return confirm('Are you sure you want to delete this message?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center text-muted">
+                                                No contact messages found
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-        </div>
-    </div>
-</section>
 
             <!-- Reply Modal -->
             <div class="modal fade" id="replyModal" tabindex="-1" aria-hidden="true">

@@ -62,3 +62,30 @@
         margin: 6px 0;
     }
 }
+@media (max-width: 991px) {
+
+    /* Remove underline on mobile */
+    .eyenix-navbar .nav-link::after {
+        display: none;
+    }
+
+    /* Mobile nav links full width */
+    .eyenix-navbar .nav-link {
+        padding: 10px 15px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    /* Active + hover state (mobile) */
+    .eyenix-navbar .nav-link.active,
+    .eyenix-navbar .nav-link:hover {
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+    }
+
+    /* Left indicator bar */
+    .eyenix-navbar .nav-link.active {
+        border-left: 4px solid #38bdf8;
+        padding-left: 11px;
+    }
+}

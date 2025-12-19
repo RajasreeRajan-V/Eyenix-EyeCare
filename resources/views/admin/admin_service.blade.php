@@ -46,17 +46,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#createServiceModal">
-                            Create Services
+                            <i class="fas fa-plus-circle me-1"></i> Create Services
                         </a>
                     </li>
-
-
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="modal fade" id="createServiceModal" tabindex="-1">
+    <div class="modal fade glassy-modal" id="createServiceModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
 
@@ -149,7 +147,7 @@
     </div>
     <!-- EDIT MODAL -->
     @foreach($services as $service)
-        <div class="modal fade" id="editServiceModal{{ $service->id }}" tabindex="-1">
+        <div class="modal fade glassy-modal" id="editServiceModal{{ $service->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
 

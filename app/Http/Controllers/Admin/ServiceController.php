@@ -54,8 +54,7 @@ class ServiceController
      * Update the specified resource in storage.
      */
     public function update(UpdateServiceRequest $request, Service $service)
-    {
-          
+    {   
         $service = Service::findOrFail($service->id);
         $service->update($request->validated());
         return redirect()->route('admin.service.index')->with('success', 'Service updated successfully.');
@@ -66,6 +65,7 @@ class ServiceController
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return redirect()->route('admin.service.index')->with('success', 'Service deleted successfully.');
     }
 }
