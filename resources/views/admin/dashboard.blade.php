@@ -221,6 +221,14 @@
                                 </p>
                             </a>
                         </li>
+                          <li class="nav-item">
+                            <a href="{{ route('admin.service.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    MANAGE Services
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link">
 

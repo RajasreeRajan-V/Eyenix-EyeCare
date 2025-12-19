@@ -1,0 +1,64 @@
+
+/* ===== EYENIX STICKY EXPANDING NAVBAR ===== */
+.eyenix-navbar {
+    background: rgba(15, 23, 42, 0.95);
+    padding: 10px 0;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    z-index: 999;
+}
+
+/* Expanded Navbar on Scroll */
+.eyenix-navbar.scrolled {
+    padding: 20px 0;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Brand Animation */
+.eyenix-navbar .navbar-brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: all 0.4s ease;
+}
+
+.eyenix-navbar.scrolled .navbar-brand {
+    font-size: 1.6rem;
+}
+
+/* Nav links */
+.eyenix-navbar .nav-link {
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.eyenix-navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #38bdf8;
+    transition: width 0.3s ease;
+}
+
+/* SHORT POINTER */
+.eyenix-navbar .nav-link:hover::after,
+.eyenix-navbar .nav-link.active::after {
+    width: 100%;   
+}
+
+/* NAVBAR ITEM SPACING */
+.eyenix-navbar .navbar-nav .nav-item {
+    margin: 0 12px;   
+}
+
+/* Reduce gap on mobile */
+@media (max-width: 991px) {
+    .eyenix-navbar .navbar-nav .nav-item {
+        margin: 6px 0;
+    }
+}

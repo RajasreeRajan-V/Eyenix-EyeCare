@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 
-class ServiceController extends Controller
+class ServiceController 
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $services = Service::all();
+       return view('admin.admin_service', compact('services'));
     }
 
     /**
@@ -29,7 +30,8 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        //
+        Service::create($request->validated());
+        return redirect()->route('admin.service.index')->with('success', 'Service created successfully.');
     }
 
     /**
@@ -53,7 +55,10 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+          
+        $service = Service::findOrFail($service->id);
+        $service->update($request->validated());
+        return redirect()->route('admin.service.index')->with('success', 'Service updated successfully.');
     }
 
     /**

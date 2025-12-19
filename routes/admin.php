@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->group(function () {
@@ -21,15 +22,18 @@ Route::name('admin.')->group(function () {
       Route::delete('/material/{material}', [FrameController::class, 'destroyMaterial'])
         ->name('material.destroy');
 
-        Route::delete('/frame-type/{frameType}', [FrameController::class, 'destroyFrameType'])
+      Route::delete('/frame-type/{frameType}', [FrameController::class, 'destroyFrameType'])
         ->name('frame-type.destroy');
 
-        Route::put('/material/{id}/update', [FrameController::class, 'updateMaterial'])
+      Route::put('/material/{id}/update', [FrameController::class, 'updateMaterial'])
         ->name('material.update'); 
         
-        Route::put('/frame-type/{id}/update', [FrameController::class, 'updateFrameType'])
+      Route::put('/frame-type/{id}/update', [FrameController::class, 'updateFrameType'])
         ->name('frame-type.update');
 
       Route::resource('ProductColor', ProductColorController::class);  
+
+      Route::resource('service', ServiceController::class);
+
      });
 });
