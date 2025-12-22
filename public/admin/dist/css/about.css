@@ -1,0 +1,164 @@
+:root {
+    --red: #99c2ff;
+    --back: #000;
+}
+body {
+    min-height: 100vh;
+    position: relative;
+    background: url('/img/banner11.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+/* Glassy Blue Blur Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    /* Blue glass tint */
+    background: rgba(0, 30, 40, 0.55);
+
+    /* Blur effect */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+.about-top-curve svg {
+    width: 100vw;            /* stretch svg fully */
+    height: 150px;
+    display: block;
+}
+.about {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
+}
+.glassy-about {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 153, 255, 0.25),
+        rgba(0, 102, 204, 0.15)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 35px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 
+        0 8px 32px rgba(0, 123, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Improve text contrast */
+.glassy-about h1 {
+    color: #ffffff;
+}
+
+.glassy-about h4 {
+    color: #000000;
+}
+
+.glassy-about p {
+    color: rgba(255, 255, 255, 0.9);
+}
+.glassy-about:hover {
+    box-shadow:
+        0 12px 40px rgba(0, 123, 255, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Glassmorphism Card */
+.glass-card {
+    background: rgba(0, 123, 255, 0.18);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Image glass effect */
+.image-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+/* Improve text contrast */
+.glass-card h1,
+.glass-card h4 {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card p {
+    opacity: 0.9;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 30px 20px;
+    }
+}
+
+.about-about {
+    background-color: #000 !important;
+}
+
+
+
+
+/* Glassy modal content */
+.glassy-modal .modal-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: #fff; /* Default text color */
+}
+
+/* Headings (h1–h6, modal title) */
+.glassy-modal h1,
+.glassy-modal h2,
+.glassy-modal h3,
+.glassy-modal h4,
+.glassy-modal h5,
+.glassy-modal h6,
+.glassy-modal .modal-title {
+    color: #ffffff;
+}
+
+/* Labels */
+.glassy-modal label {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Buttons text */
+.glassy-modal .btn {
+    color: #ffffff;
+}
+
+/* Close button (Bootstrap 5) */
+.glassy-modal .btn-close {
+    filter: invert(1);
+}
+
+/* Inputs placeholder text (optional) */
+.glassy-modal ::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.modal-content.glass-card {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

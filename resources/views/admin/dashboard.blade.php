@@ -189,6 +189,14 @@
                                 </p>
                             </a>
                         </li>
+                          <li class="nav-item">
+                            <a href="{{ route('admin.about.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    MANAGE ABOUT US
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.brand.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tags"></i>
@@ -226,6 +234,22 @@
                                 <i class="nav-icon fas fa-tags"></i>
                                 <p>
                                     MANAGE Services
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.AdminGallery.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    MANAGE Gallery
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.ContactLens.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>
+                                    MANAGE CONTACTLENS
                                 </p>
                             </a>
                         </li>

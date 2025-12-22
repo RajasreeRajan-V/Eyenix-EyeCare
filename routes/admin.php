@@ -36,5 +36,11 @@ Route::name('admin.')->group(function () {
 
       Route::resource('service', ServiceController::class);
 
+      Route::resource('about', AboutController::class);
+
+      Route::resource('AdminGallery', GalleryController::class);
+
+      Route::resource('ContactLens', ContactLensController::class);
+
      });
 });

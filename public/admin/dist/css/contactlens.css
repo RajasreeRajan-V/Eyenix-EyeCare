@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+
+/* ================= VARIABLES ================= */
+:root {
+    --primary-blue: #ffffff;
+    --dark-blue: #003366;
+    --white: #ffffff;
+}
+
+/* ================= BODY BACKGROUND ================= */
+body {
+    min-height: 100vh;
+    background: url('/img/banner11.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Global Glass Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(56, 189, 248, 0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: -1;
+}
+
+/* ================= BANNER SECTION ================= */
+.banner-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(173, 216, 230, 0.5);
+    z-index: 1;
+}
+
+.banner-section .container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px 20px;
+}
+
+.banner-section h1,
+.banner-section h4,
+.banner-section p {
+    color: #ffffff;
+}
+
+/* ================= HERO TEXT ================= */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #003366;
+    text-shadow: 0 3px 15px rgba(0, 123, 255, 0.4);
+}
+
+.hero-subtitle {
+    font-weight: 500;
+    color: #e0f2ff;
+}
+
+.hero-desc {
+    font-size: 15.5px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: auto;
+}
+
+/* ================= CONTACT LENS GLASS SECTION ================= */
+.contactlens-section {
+    position: relative;
+    margin: 60px auto;
+    padding: 60px 20px;
+    border-radius: 24px;
+
+    background: rgba(0, 123, 255, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 123, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+
+    z-index: 1;
+}
+
+/* Glass Shine */
+.contactlens-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.15)
+    );
+    pointer-events: none;
+}
+
+/* ================= SECTION HEADING ================= */
+.section-title-small {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #cfe8ff;
+    text-transform: uppercase;
+}
+
+.section-title-main {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.section-title-text {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ================= PRODUCT CARD ================= */
+.product-card {
+    background: rgba(15, 23, 42, 0.55);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.2);
+}
+
+/* ================= PRODUCT IMAGE ================= */
+.product-img-wrapper img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* ================= PRODUCT INFO ================= */
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.product-brand,
+.product-power {
+    font-size: 14px;
+    color: #fff;
+}
+
+.product-price {
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* ================= BUTTONS ================= */
+.btn-edit {
+    background: #ffc107;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+}
+
+/* ================= GLASSY SMALL CARD ================= */
+.glassy-card {
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.glassy-card img {
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .section-title-main {
+        font-size: 26px;
+    }
+    .product-img-wrapper img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contactlens-section {
+        padding: 40px 15px;
+    }
+}
+.glassy-modal .modal-content {
+    background: rgba(146, 223, 245, 0.5);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
