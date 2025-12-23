@@ -42,5 +42,9 @@ Route::name('admin.')->group(function () {
 
       Route::resource('ContactLens', ContactLensController::class);
 
+      Route::resource('Collection', CollectionController::class);
+
+      Route::resource('EyeCamp', EyeCampController::class);
+
      });
 });

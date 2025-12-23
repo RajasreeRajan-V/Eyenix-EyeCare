@@ -10,4 +10,12 @@ class ProductColor extends Model
     /** @use HasFactory<\Database\Factories\ProductColorFactory> */
     use HasFactory;
     protected $fillable = ['name'];
+
+     public function collections()
+    {
+        return $this->belongsToMany(
+            Collection::class,
+            'collection_product_color'
+        );
+    }
 }

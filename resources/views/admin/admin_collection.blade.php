@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         .owl-carousel .item {
             position: relative;
@@ -98,6 +102,16 @@
                 font-size: 28px;
             }
         }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 6px 8px;
+        }
     </style>
 </head>
 
@@ -120,10 +134,10 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="{{ route('admin.contactus.index') }}">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" name="search"
+                        placeholder="Search contacts..." value="{{ request('search') }}" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -131,6 +145,7 @@
                     </div>
                 </div>
             </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -178,94 +193,7 @@
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     HOME
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.contactus.index') }}" class="nav-link">
-                               <i class="nav-icon fas fa-address-book"></i>
-                                <p>
-                                    CONTACT US
-                                </p>
-                            </a>
-                        </li>
-                          <li class="nav-item">
-                            <a href="{{ route('admin.about.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE ABOUT US
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.brand.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE BRANDS
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.shape.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE SHAPES
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.frame.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE FRAMES
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.ProductColor.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE PRODUCT COLOURS
-                                </p>
-                            </a>
-                        </li>
-                          <li class="nav-item">
-                            <a href="{{ route('admin.service.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE Services
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.AdminGallery.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE Gallery
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.ContactLens.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE CONTACTLENS
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.Collection.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE COLLECTIONS
-                                </p>
-                            </a>
-                        </li>
-                         <li class="nav-item">
-                            <a href="{{ route('admin.EyeCamp.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tags"></i>
-                                <p>
-                                    MANAGE EYE CAMP
+
                                 </p>
                             </a>
                         </li>
@@ -800,75 +728,401 @@
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">Product-Collection</h3>
+
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addCollectionModal">
+                    <i class="fas fa-plus"></i> Add Product-Collection
+                </button>
+            </div>
+
+            <div class="modal fade" id="addCollectionModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+
+                        <form action="{{ route('admin.Collection.store') }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title">Add Product-Collection</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Price</label>
+                                        <input type="text" name="price" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <label>Front Image</label>
+                                        <input type="file" name="front_image" class="form-control-file">
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <label>Back Image</label>
+                                        <input type="file" name="back_image" class="form-control-file">
+                                    </div>
+
+                                    <div class="col-md-4 mt-3">
+                                        <label>Type</label>
+                                        <select name="type" class="form-control">
+                                            <option value="" disabled selected>Select Type</option>
+                                            <option>EyeGlass</option>
+                                            <option>SunGlass</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mt-3">
+                                        <label>Gender</label>
+                                        <select name="gender" class="form-control">
+                                            <option value="" disabled selected>Select Gender</option>
+                                            <option>Men</option>
+                                            <option>Women</option>
+                                            <option>UniSex</option>
+                                            <option>KIDS</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mt-3">
+                                        <label>Brand</label>
+                                        <select name="brand_id" class="form-control" required>
+                                            <option value="" disabled selected>Select Brand</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mt-3">
+                                        <label>Shape</label>
+                                        <select name="shape_id" class="form-control">
+                                            <option value="" disabled selected>Select Shape</option>
+                                            @foreach($shapes as $shape)
+                                                <option value="{{ $shape->id }}">{{ $shape->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mt-3">
+                                        <label>Frame</label>
+                                        <select name="frame_id" class="form-control">
+                                            <option value="" disabled selected>Select Frame</option>
+                                            @foreach($frames as $frame)
+                                                <option value="{{ $frame->id }}">{{ $frame->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-4 mt-3">
+                                        <label>Colors</label>
+                                        <div class="row">
+                                            @foreach($colors as $color)
+                                                <div class="col-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="colors[]" value="{{ $color->id }}"
+                                                            class="form-check-input" id="color{{ $color->id }}">
+                                                        <label class="form-check-label" for="color{{ $color->id }}">
+                                                            {{ $color->name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-12 mt-3">
+                                        <label>Description</label>
+                                        <textarea name="description" rows="3" class="form-control"></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    Save Collection
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
 
             <!-- Main content -->
-            <section class="content">
-                <div class="owl-carousel owl-theme">
+            <section class="content mt-4">
+                <div class="container-fluid">
 
-                    <!-- SLIDE 1 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner2.jpg') }}" class="carousel-img">
-
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Welcome to Eyenix Eye Care
-                            </h4>
-
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find Frames That Fit Your Style Perfectly
-                            </h1>
-
-                            <p class="fs-5 text-light">
-                                Upgrade your look with high-quality lenses and trendsetting frames designed for
-                                everyday durability and exceptional visual comfort. See better, live better.
-                            </p>
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 text-white">
+                                <i class="fas fa-layer-group"></i> Product-Collection List
+                            </h5>
+                            <span class="badge badge-info px-3 py-2">
+                                Total Product-Collection: {{ $collections->count() }}
                         </div>
-                    </div>
 
-                    <!-- SLIDE 2 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner11.jpg') }}" class="carousel-img">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover table-bordered text-center mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th style="width: 50px;">#</th>
+                                        <th style="width: 90px;">Image</th>
+                                        <th>Name</th>
+                                        <th>Brand</th>
+                                        <th>Price</th>
+                                        <th style="width: 180px;">Colors</th>
+                                        <th style="width: 120px;">Action</th>
+                                    </tr>
+                                </thead>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Your Vision, Our Priority
-                            </h4>
+                                <tbody>
+                                    @forelse($collections as $index => $collection)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Stylish Frames Crafted for Everyday Comfort
-                            </h1>
+                                            <td>
+                                                <img src="{{ asset('storage/' . $collection->front_image) }}"
+                                                    class="img-thumbnail"
+                                                    style="width: 70px; height: 50px; object-fit: cover;">
+                                            </td>
 
-                            <p class="fs-5 text-light">
-                                Explore a wide range of modern, lightweight, and durable spectacles designed to
-                                match your personality and enhance your visual clarity with precision lenses.
-                            </p>
-                        </div>
-                    </div>
+                                            <td class="font-weight-bold">
+                                                {{ $collection->name }}
+                                            </td>
 
-                    <!-- SLIDE 3 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner3.jpg') }}" class="carousel-img">
+                                            <td>
+                                                <span class="badge badge-secondary">
+                                                    {{ $collection->brand->name }}
+                                                </span>
+                                            </td>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Modern Eye Care, Trusted Expertise
-                            </h4>
+                                            <td>
+                                                <span class="badge badge-success">
+                                                    ₹ {{ $collection->price }}
+                                                </span>
+                                            </td>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find the Perfect Spectacles for Your Vision
-                            </h1>
+                                            <td>
+                                                @foreach($collection->colors as $color)
+                                                    <span class="badge badge-info mr-1 mb-1">
+                                                        {{ $color->name }}
+                                                    </span>
+                                                @endforeach
+                                            </td>
 
-                            <p class="fs-5 text-light">
-                                Discover a premium collection of stylish frames, high-quality lenses, and
-                                advanced eye care solutions. Comfort, clarity, and elegance—all in one place.
-                            </p>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal"
+                                                    data-target="#editCollectionModal"
+                                                    data-url="{{ route('admin.Collection.update', $collection->id) }}"
+                                                    data-name="{{ $collection->name }}"
+                                                    data-price="{{ $collection->price }}"
+                                                    data-type="{{ $collection->type }}"
+                                                    data-gender="{{ $collection->gender }}"
+                                                    data-description="{{ $collection->description }}"
+                                                    data-brand="{{ $collection->brand_id }}"
+                                                    data-shape="{{ $collection->shape_id }}"
+                                                    data-frame="{{ $collection->frame_id }}"
+                                                    data-colors="{{ $collection->colors->pluck('id') }}"
+                                                    data-front_image="{{ $collection->front_image }}"
+                                                    data-back_image="{{ $collection->back_image }}">
+                                                    Edit
+                                                </button>
+
+
+                                                <form action="{{ route('admin.Collection.destroy', $collection->id) }}"
+                                                    method="POST" style="display:inline;"
+                                                    onsubmit="return confirm('Delete this collection?')">
+
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-sm btn-danger" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-muted py-4">
+                                                No collections found
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                 </div>
             </section>
 
-            <!-- /.content -->
+            <div class="modal fade" id="editCollectionModal" tabindex="-1">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <form id="editCollectionForm" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="modal-header bg-warning text-white">
+                                <h5 class="modal-title">Edit Product-Collection</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="row">
+
+                                    <!-- Name -->
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                        <input type="text" name="name" id="edit_name" class="form-control" required>
+                                    </div>
+
+                                    <!-- Price -->
+                                    <div class="col-md-6">
+                                        <label>Price</label>
+                                        <input type="text" name="price" id="edit_price" class="form-control">
+                                    </div>
+
+                                    <!-- Front Image -->
+                                    <div class="col-md-6 mt-3">
+                                        <label>Front Image</label>
+                                        <input type="file" name="front_image" class="form-control-file">
+                                        <small class="text-muted">Leave empty to keep existing image</small>
+                                        <div class="mt-2">
+                                            <img id="edit_front_preview" src=""
+                                                style="width:100px; height:70px; object-fit:cover;"
+                                                class="img-thumbnail">
+                                        </div>
+                                    </div>
+
+                                    <!-- Back Image -->
+                                    <div class="col-md-6 mt-3">
+                                        <label>Back Image</label>
+                                        <input type="file" name="back_image" class="form-control-file">
+                                        <small class="text-muted">Leave empty to keep existing image</small>
+                                        <div class="mt-2">
+                                            <img id="edit_back_preview" src=""
+                                                style="width:100px; height:70px; object-fit:cover;"
+                                                class="img-thumbnail">
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Type -->
+                                    <div class="col-md-4 mt-3">
+                                        <label>Type</label>
+                                        <select name="type" id="edit_type" class="form-control">
+                                            <option value="EyeGlass">Eye Glass</option>
+                                            <option value="SunGlass">Sun Glass</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Gender -->
+                                    <div class="col-md-4 mt-3">
+                                        <label>Gender</label>
+                                        <select name="gender" id="edit_gender" class="form-control">
+                                            <option value="Men">Men</option>
+                                            <option value="Women">Women</option>
+                                            <option value="UniSex">UniSex</option>
+                                            <option value="KIDS">KIDS</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Brand -->
+                                    <div class="col-md-4 mt-3">
+                                        <label>Brand</label>
+                                        <select name="brand_id" id="edit_brand" class="form-control">
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <!-- Shape -->
+                                    <div class="col-md-4 mt-3">
+                                        <label>Shape</label>
+                                        <select name="shape_id" id="edit_shape" class="form-control">
+                                            @foreach($shapes as $shape)
+                                                <option value="{{ $shape->id }}">{{ $shape->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <!-- Frame -->
+                                    <div class="col-md-4 mt-3">
+                                        <label>Frame</label>
+                                        <select name="frame_id" id="edit_frame" class="form-control">
+                                            @foreach($frames as $frame)
+                                                <option value="{{ $frame->id }}">{{ $frame->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <!-- Colors -->
+                                    <div class="col-md-4 mt-3">
+                                        <label>Colors</label>
+                                        <div class="row">
+                                            @foreach($colors as $color)
+                                                <div class="col-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="colors[]" value="{{ $color->id }}"
+                                                            class="form-check-input edit-color"
+                                                            id="edit_color{{ $color->id }}">
+                                                        <label class="form-check-label" for="edit_color{{ $color->id }}">
+                                                            {{ $color->name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="col-md-12 mt-3">
+                                        <label>Description</label>
+                                        <textarea name="description" id="edit_description" rows="3"
+                                            class="form-control"></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-warning" type="submit">Update Collection</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer" style="background-color: #000;">
@@ -906,19 +1160,61 @@
 
     <!-- Owl Carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
     <script>
-        $(function () {
-            $('.owl-carousel').owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                nav: true,
-                dots: true
-            });
+        $('#editCollectionModal').on('show.bs.modal', function (event) {
+
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+
+            // Basic fields
+            modal.find('#edit_name').val(button.data('name'));
+            modal.find('#edit_price').val(button.data('price'));
+            modal.find('#edit_type').val(button.data('type'));
+            modal.find('#edit_gender').val(button.data('gender'));
+            modal.find('#edit_description').val(button.data('description'));
+
+            // Select fields
+            modal.find('#edit_brand').val(button.data('brand'));
+            modal.find('#edit_shape').val(button.data('shape'));
+            modal.find('#edit_frame').val(button.data('frame'));
+
+            // Colors (checkboxes)
+            $('.edit-color').prop('checked', false);
+            var colors = button.data('colors');
+
+            if (colors) {
+                if (typeof colors === 'string') {
+                    colors = JSON.parse(colors);
+                }
+
+                colors.forEach(function (id) {
+                    $('#edit_color' + id).prop('checked', true);
+                });
+            }
+
+
+            // Image previews
+            var frontImage = button.data('front_image');
+            var backImage = button.data('back_image');
+
+            if (frontImage) {
+                modal.find('#edit_front_preview').attr('src', '/storage/' + frontImage);
+            } else {
+                modal.find('#edit_front_preview').attr('src', '');
+            }
+
+            if (backImage) {
+                modal.find('#edit_back_preview').attr('src', '/storage/' + backImage);
+            } else {
+                modal.find('#edit_back_preview').attr('src', '');
+            }
+
+            // Set form action
+            $('#editCollectionForm').attr('action', button.data('url'));
         });
     </script>
 
+
 </body>
+
 </html>
