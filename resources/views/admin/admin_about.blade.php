@@ -56,6 +56,11 @@
                             <i class="fas fa-edit me-1"></i> Edit About Us
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">
+                            <i class="fas fa-sign-out-alt me-1"></i> Logout
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

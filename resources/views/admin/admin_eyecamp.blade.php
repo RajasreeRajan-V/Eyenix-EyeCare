@@ -18,6 +18,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/css/gallery.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/eyecamp.css') }}">
     <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
 
 </head>
@@ -50,8 +51,13 @@
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#createGalleryModal">
                             <i class="fas fa-plus-circle me-1"></i> Create Eye Camp
                         </a>
-
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">
+                            <i class="fas fa-sign-out-alt me-1"></i> Logout
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -63,7 +69,6 @@
 
                 <form action="{{ route('admin.EyeCamp.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h5 class="modal-title">
@@ -144,6 +149,7 @@
                                 <select name="status" class="form-control" required>
                                     <option value="upcoming">Upcoming</option>
                                     <option value="completed">Completed</option>
+                                    <option value="cancelled">OnGoing</option>
                                     <option value="cancelled">Cancelled</option>
                                 </select>
                             </div>
@@ -161,109 +167,207 @@
                     </div>
 
                 </form>
-
-
             </div>
         </div>
     </div>
-    <section class="gallery-section py-5">
+    <section class="eye-camp-section py-5">
         <div class="container text-center">
 
+            <!-- Heading -->
             <div class="gallery-heading wow fadeInUp">
-                <span class="section-title-small">Our Clinic</span>
+                <span class="section-title-small">Community Care</span>
 
-                <h2 class="section-title-main">
-                    Eyenix Eye Care Eye Camp
+                <h2 class="section-title-main text-primary">
+                    Eye Care Eye Camps
                 </h2>
 
                 <p class="section-title-text">
-                    A glimpse into our advanced facilities, expert care, and patient-friendly environment.
+                    Free eye check-ups and vision care services conducted for the community.
                 </p>
             </div>
 
+            <!-- Cards -->
             <div class="row mt-5 g-4">
 
+                @forelse ($eyeCamps as $camp)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="eye-camp-card position-relative">
 
+                            <!-- Action Buttons -->
+                            <div class="camp-actions">
+                                <!-- Edit -->
+                                <a href="javascript:void(0)" class="btn btn-sm btn-warning editEyeCampBtn"
+                                    data-id="{{ $camp->id }}" data-url="{{ route('admin.EyeCamp.update', $camp->id) }}"
+                                    data-title="{{ $camp->title }}" data-description="{{ $camp->description }}"
+                                    data-start_date="{{ $camp->start_date }}" data-end_date="{{ $camp->end_date }}"
+                                    data-start_time="{{ $camp->start_time }}" data-end_time="{{ $camp->end_time }}"
+                                    data-location="{{ $camp->location }}" data-organizer="{{ $camp->organizer }}"
+                                    data-status="{{ $camp->status }}" data-image="{{ asset('storage/' . $camp->image) }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+
+
+                                <!-- Delete -->
+                                <form action="{{ route('admin.EyeCamp.destroy', $camp->id) }}" method="POST"
+                                    onsubmit="return confirm('Delete this eye camp?')" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <img src="{{ asset('storage/' . $camp->image) }}" alt="Eye Camp">
+
+                            <div class="eye-camp-content">
+                                <h5>{{ $camp->title }}</h5>
+
+                                <p class="date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    {{ \Carbon\Carbon::parse($camp->start_date)->format('d F Y') }}
+                                </p>
+
+                                <p class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ $camp->location }}
+                                </p>
+
+                                <span class="status
+                                            @if($camp->status === 'upcoming')
+                                                upcoming
+                                            @elseif($camp->status === 'ongoing')
+                                                ongoing
+                                            @elseif($camp->status === 'completed')
+                                                completed
+                                            @elseif($camp->status === 'cancelled')
+                                                cancelled
+                                            @endif
+                                        ">
+                                    {{ ucfirst($camp->status) }}
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12">
+                        <p class="text-muted">No eye camps available.</p>
+                    </div>
+                @endforelse
 
             </div>
         </div>
     </section>
-    <!-- EDIT GALLERY MODAL -->
-    <div class="modal fade glassy-modal" id="editGalleryModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+    <!-- EDIT EYE CAMP MODAL -->
+    <div class="modal fade glassy-modal" id="editEyeCampModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
 
-                <form id="editGalleryForm" method="POST" enctype="multipart/form-data">
+                <form id="editEyeCampForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
-                    <input type="hidden" name="id" id="editGalleryId">
+                    <!-- Hidden ID -->
+                    <input type="hidden" id="editEyeCampId">
 
                     <!-- Modal Header -->
-                    <div class="modal-header py-2">
-                        <h6 class="modal-title">
-                            <i class="fas fa-edit me-1"></i> Edit Gallery
-                        </h6>
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <i class="fas fa-hospital me-2"></i> Edit Eye Camp
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
                     <!-- Modal Body -->
-                    <div class="modal-body py-2">
+                    <div class="modal-body">
 
-                        <!-- IMAGE PREVIEWS -->
-                        <div class="row mb-2 text-center">
-                            <div class="col-6">
-                                <small class="fw-semibold">Primary Image</small>
-                                <img id="editPreviewImage" src="" class="img-fluid rounded shadow-sm"
-                                    style="max-height:120px;">
+                        <!-- Image Preview -->
+                        <div class="mb-3 text-center">
+                            <img id="editImagePreview" src="" class="img-fluid rounded shadow-sm"
+                                style="max-height:150px; display:none;">
+                        </div>
+
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label class="form-label">Camp Title <span class="text-danger">*</span></label>
+                            <input type="text" name="title" id="editTitle" class="form-control" required>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea name="description" id="editDescription" class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Start Date</label>
+                                <input type="date" name="start_date" id="editStartDate" class="form-control">
                             </div>
 
-                            <div class="col-6">
-                                <small class="fw-semibold">Secondary Image</small>
-                                <img id="editPreviewImage2" src="" class="img-fluid rounded shadow-sm d-none"
-                                    style="max-height:120px;">
-                                <small id="noSecondImage" class="text-muted d-none">
-                                    No image
-                                </small>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">End Date</label>
+                                <input type="date" name="end_date" id="editEndDate" class="form-control">
                             </div>
                         </div>
 
-                        <!-- IMAGE INPUTS -->
-                        <div class="row g-2">
-                            <div class="col-md-6">
-                                <label class="form-label small">Change Primary Image</label>
-                                <input type="file" name="image" class="form-control form-control-sm">
+                        <!-- Time -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Start Time</label>
+                                <input type="time" name="start_time" id="editStartTime" class="form-control">
                             </div>
 
-                            <div class="col-md-6">
-                                <label class="form-label small">Change Secondary Image</label>
-                                <input type="file" name="image2" class="form-control form-control-sm">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">End Time</label>
+                                <input type="time" name="end_time" id="editEndTime" class="form-control">
                             </div>
                         </div>
 
-                        <!-- TITLE -->
-                        <div class="mt-2">
-                            <label class="form-label small">Image Title</label>
-                            <input type="text" name="title" id="editTitle" class="form-control form-control-sm"
-                                placeholder="Optional title">
+                        <!-- Location & Organizer -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Location</label>
+                                <input type="text" name="location" id="editLocation" class="form-control">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Organizer</label>
+                                <input type="text" name="organizer" id="editOrganizer" class="form-control">
+                            </div>
                         </div>
 
-                        <!-- DESCRIPTION -->
-                        <div class="mt-2">
-                            <label class="form-label small">Description</label>
-                            <textarea name="description" id="editDescription" class="form-control form-control-sm"
-                                rows="2" placeholder="Short description"></textarea>
+                        <!-- Image & Status -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Change Image</label>
+                                <input type="file" name="image" class="form-control">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Status</label>
+                                <select name="status" id="editStatus" class="form-control" required>
+                                    <option value="upcoming">Upcoming</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="ongoing">OnGoing</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
                         </div>
 
                     </div>
 
                     <!-- Modal Footer -->
-                    <div class="modal-footer py-2">
-                        <button type="button" class="btn btn-sm btn-outline-light" data-bs-dismiss="modal">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                             Cancel
                         </button>
-                        <button type="submit" class="btn btn-sm btn-primary">
-                            <i class="fas fa-save me-1"></i> Update
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i> Update Eye Camp
                         </button>
                     </div>
 
@@ -272,7 +376,7 @@
             </div>
         </div>
     </div>
-    <!-- JS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script>
@@ -289,7 +393,45 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
 
+            const editButtons = document.querySelectorAll('.editEyeCampBtn');
+            const editModal = new bootstrap.Modal(document.getElementById('editEyeCampModal'));
+            const form = document.getElementById('editEyeCampForm');
+
+            editButtons.forEach(button => {
+                button.addEventListener('click', function () {
+
+                    //Set form action using Blade-generated route
+                    form.action = this.dataset.url;
+
+                    // Fill inputs
+                    document.getElementById('editTitle').value = this.dataset.title || '';
+                    document.getElementById('editDescription').value = this.dataset.description || '';
+                    document.getElementById('editStartDate').value = this.dataset.start_date || '';
+                    document.getElementById('editEndDate').value = this.dataset.end_date || '';
+                    document.getElementById('editStartTime').value = this.dataset.start_time || '';
+                    document.getElementById('editEndTime').value = this.dataset.end_time || '';
+                    document.getElementById('editLocation').value = this.dataset.location || '';
+                    document.getElementById('editOrganizer').value = this.dataset.organizer || '';
+                    document.getElementById('editStatus').value = this.dataset.status || '';
+
+                    // Image preview
+                    const imagePreview = document.getElementById('editImagePreview');
+                    if (this.dataset.image) {
+                        imagePreview.src = this.dataset.image;
+                        imagePreview.style.display = 'block';
+                    } else {
+                        imagePreview.style.display = 'none';
+                    }
+
+                    editModal.show();
+                });
+            });
+
+        });
+    </script>
 
 
 </body>

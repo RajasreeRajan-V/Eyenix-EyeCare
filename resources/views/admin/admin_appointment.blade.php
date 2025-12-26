@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         .owl-carousel .item {
             position: relative;
@@ -98,6 +102,16 @@
                 font-size: 28px;
             }
         }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 6px 8px;
+        }
     </style>
 </head>
 
@@ -120,10 +134,10 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="{{ route('admin.contactus.index') }}">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" name="search"
+                        placeholder="Search contacts..." value="{{ request('search') }}" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -131,6 +145,7 @@
                     </div>
                 </div>
             </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -174,7 +189,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}" class="nav-link active">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     HOME
@@ -270,7 +285,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.appointment.index') }}" class="nav-link">
+                            <a href="{{ route('admin.appointment.index') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-clock"></i>
                                 <p>
                                     MANAGE APPOINTMENTS
@@ -317,76 +332,125 @@
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
-            <!-- /.content-header -->
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="owl-carousel owl-theme">
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-white">
+                    <i class="fas fa-calendar-check"></i> Appointments List
+                </h5>
 
-                    <!-- SLIDE 1 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner2.jpg') }}" class="carousel-img">
+                <div>
+                    <span class="badge bg-info px-3 py-2 me-2">
+                        Total Appointments: {{ $appointments->count() }}
+                    </span>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Welcome to Eyenix Eye Care
-                            </h4>
+                    <button onclick="printAppointments()" class="btn btn-light btn-sm">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <a href="{{ route('admin.appointments.download') }}" class="btn btn-success btn-sm">
+                        <i class="fas fa-download"></i> Download
+                    </a>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find Frames That Fit Your Style Perfectly
-                            </h1>
+                </div>
+            </div>
 
-                            <p class="fs-5 text-light">
-                                Upgrade your look with high-quality lenses and trendsetting frames designed for
-                                everyday durability and exceptional visual comfort. See better, live better.
-                            </p>
+            <section class="content mt-4">
+                <div class="container-fluid">
+
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 text-white">
+                                <i class="fas fa-calendar-check"></i> Appointments List
+                            </h5>
                         </div>
-                    </div>
 
-                    <!-- SLIDE 2 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner11.jpg') }}" class="carousel-img">
+                        <div class="card-body table-responsive p-0" id="printArea">
+                            <table class="table table-hover table-bordered text-center mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Patient Name</th>
+                                        <th>Phone</th>
+                                        <th>Eye Camp</th>
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>Booked At</th>
+                                        <th class="no-print">Action</th>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Your Vision, Our Priority
-                            </h4>
+                                    </tr>
+                                </thead>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Stylish Frames Crafted for Everyday Comfort
-                            </h1>
+                                <tbody>
+                                    @forelse($appointments as $index => $appointment)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
 
-                            <p class="fs-5 text-light">
-                                Explore a wide range of modern, lightweight, and durable spectacles designed to
-                                match your personality and enhance your visual clarity with precision lenses.
-                            </p>
-                        </div>
-                    </div>
+                                            <td class="fw-bold">
+                                                {{ $appointment->name }}
+                                            </td>
 
-                    <!-- SLIDE 3 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner3.jpg') }}" class="carousel-img">
+                                            <td>
+                                                {{ $appointment->phone }}
+                                            </td>
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Modern Eye Care, Trusted Expertise
-                            </h4>
+                                            <td>
+                                                <span class="badge bg-primary">
+                                                    {{ $appointment->eyeCamp->title ?? 'N/A' }}
+                                                </span>
+                                            </td>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find the Perfect Spectacles for Your Vision
-                            </h1>
+                                            <td>
+                                                {{ \Carbon\Carbon::parse($appointment->eyeCamp->start_date)->format('d M Y') }}
+                                            </td>
 
-                            <p class="fs-5 text-light">
-                                Discover a premium collection of stylish frames, high-quality lenses, and
-                                advanced eye care solutions. Comfort, clarity, and elegance—all in one place.
-                            </p>
+                                            <td>
+                                                {{ $appointment->eyeCamp->location }}
+                                            </td>
+
+                                            <td>
+                                                <span class="badge bg-secondary">
+                                                    {{ $appointment->created_at->format('d M Y') }}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <!-- PRINT BUTTON -->
+                                                <button class="btn btn-sm btn-outline-primary no-print" onclick="printSingleAppointment(
+                                                    '{{ $appointment->name }}',
+                                                    '{{ $appointment->phone }}',
+                                                    '{{ $appointment->eyeCamp->title }}',
+                                                    '{{ $appointment->eyeCamp->start_date }}',
+                                                    '{{ $appointment->eyeCamp->location }}'
+                                                )">
+                                                    <i class="fas fa-print"></i>
+                                                </button>
+
+                                                <!-- DELETE BUTTON -->
+                                                <form action="{{ route('admin.appointment.destroy', $appointment->id) }}"
+                                                    method="POST" class="d-inline"
+                                                    onsubmit="return confirm('Are you sure you want to delete this appointment?');">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger no-print">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-muted py-4">
+                                                No appointments found
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                 </div>
             </section>
 
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer" style="background-color: #000;">
@@ -426,16 +490,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script>
-        $(function () {
-            $('.owl-carousel').owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                nav: true,
-                dots: true
-            });
-        });
+        function printAppointments() {
+            let printContents = document.getElementById('printArea').innerHTML;
+            let originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = `
+        <html>
+        <head>
+            <title>Appointments List</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+            <style>
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #000; padding: 8px; }
+                th { background: #f1f1f1; }
+                body { padding: 20px; }
+            </style>
+        </head>
+        <body>
+            <h3 class="text-center mb-4">Eye Camp Appointments</h3>
+            ${printContents}
+        </body>
+        </html>
+    `;
+
+            window.print();
+            document.body.innerHTML = originalContents;
+            location.reload();
+        }
+    </script>
+    <script>
+        function printSingleAppointment(name, phone, camp, date, location) {
+
+            let printWindow = window.open('', '', 'width=800,height=600');
+
+            printWindow.document.write(`
+        <html>
+        <head>
+            <title>Appointment</title>
+            <style>
+                body { font-family: Arial; padding: 20px; }
+                h2 { text-align: center; margin-bottom: 20px; }
+                table { width: 100%; border-collapse: collapse; }
+                td { border: 1px solid #000; padding: 10px; }
+            </style>
+        </head>
+        <body>
+            <h2>Eye Camp Appointment</h2>
+            <table>
+                <tr><td><b>Patient Name</b></td><td>${name}</td></tr>
+                <tr><td><b>Phone</b></td><td>${phone}</td></tr>
+                <tr><td><b>Eye Camp</b></td><td>${camp}</td></tr>
+                <tr><td><b>Date</b></td><td>${date}</td></tr>
+                <tr><td><b>Location</b></td><td>${location}</td></tr>
+            </table>
+        </body>
+        </html>
+    `);
+
+            printWindow.document.close();
+            printWindow.print();
+        }
     </script>
 
 </body>

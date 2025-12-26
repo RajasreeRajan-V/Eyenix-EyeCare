@@ -1,0 +1,191 @@
+.about-glass-section {
+    position: relative;
+    background: url('/img/banner11.jpg') center center / cover no-repeat;
+    overflow: hidden;
+}
+
+/* Glassy blue overlay */
+.about-glass-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(56, 189, 248, 0.15); /* blue tint */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1;
+}
+
+/* Keep content above overlay */
+.about-glass-section > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Optional: improve text contrast */
+.about-glass-section h1,
+.about-glass-section h4,
+.about-glass-section p {
+    color: #fff;
+}
+
+.about-glass-section .text-primary {
+    color: #cfe5ff !important;
+}
+
+/* TOP CURVE */
+.section-top-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 3;
+}
+
+.section-top-curve svg {
+    width: 100%;
+    height: 120px;
+}
+
+/* BOTTOM CURVE */
+.section-bottom-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 3;
+}
+
+.section-bottom-curve svg {
+    width: 100%;
+    height: 120px;
+}
+.about-glass-section .container {
+    z-index: 2;
+    position: relative;
+}
+.gallery-heading {
+    display: inline-block;
+    padding: 28px 40px;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    margin-bottom: 40px;
+}
+/* Floating heading center top */
+.section-floating-heading {
+    position: absolute;
+    top: 110px; /* adjust if needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.section-floating-heading .gallery-heading {
+    pointer-events: auto;
+    max-width: 700px;
+}
+/* GLASSY BLUE EYE CAMP CARD */
+.eye-camp-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.35); /* blue glass */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    transition: all 0.35s ease;
+}
+
+/* Hover effect */
+.eye-camp-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 65px rgba(56, 189, 248, 0.55);
+}
+
+/* Image styling */
+.eye-camp-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content area */
+.eye-camp-content {
+    padding: 20px 22px;
+    color: #fff;
+}
+
+/* Title */
+.eye-camp-content h5 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Meta text */
+.eye-camp-content p {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: #000;
+}
+
+.eye-camp-content i {
+    color: #0d6efd;
+    margin-right: 6px;
+}
+
+/* Status badge */
+.eye-camp-content .status {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    backdrop-filter: blur(6px);
+    color: green;
+}
+
+/* Status colors */
+.status.upcoming {
+    background: rgba(34, 197, 94, 0.25);
+    color: #000;
+}
+
+.status.ongoing {
+    background: rgba(59, 130, 246, 0.25);
+    color: green;
+}
+
+.status.completed {
+    background: rgba(100, 116, 139, 0.25);
+    color: red;
+}
+
+.status.cancelled {
+    background: rgba(239, 68, 68, 0.25);
+    color: #fecaca;
+}
+.eye-camp-card.open-booking-modal {
+    cursor: pointer;
+}
+
+/* .eye-camp-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+} */
+.alert {
+    position: relative;
+    z-index: 9999;
+}

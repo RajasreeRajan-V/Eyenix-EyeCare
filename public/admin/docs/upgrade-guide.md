@@ -85,7 +85,7 @@ Old sample entry (with tree menu)
     </span>
   </a>
   <ul class="treeview-menu">
-    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard</a></li>
   </ul>
 </li>
 ```
@@ -105,7 +105,7 @@ New sample entry (with tree menu)
     <li class="nav-item">
       <a href="index.html" class="nav-link active">
         <i class="far fa-circle nav-icon"></i>
-        <p>Dashboard v1</p>
+        <p>Dashboard</p>
       </a>
     </li>
   </ul>
@@ -155,7 +155,7 @@ New Content Header Markup
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard v1</li>
+          <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </div>
     </div>

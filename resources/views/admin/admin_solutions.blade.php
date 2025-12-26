@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         .owl-carousel .item {
             position: relative;
@@ -98,6 +102,16 @@
                 font-size: 28px;
             }
         }
+
+        .table td,
+        .table th {
+            vertical-align: middle;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 6px 8px;
+        }
     </style>
 </head>
 
@@ -120,10 +134,10 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <form class="form-inline ml-3" method="GET" action="{{ route('admin.contactus.index') }}">
                 <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
+                    <input class="form-control form-control-navbar" type="search" name="search"
+                        placeholder="Search contacts..." value="{{ request('search') }}" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
@@ -131,6 +145,7 @@
                     </div>
                 </div>
             </form>
+
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -174,7 +189,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}" class="nav-link active">
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     HOME
@@ -278,7 +293,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.solution.index') }}" class="nav-link">
+                            <a href="{{ route('admin.solution.index') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-flask"></i>
                                 <p>
                                     MANAGE SOLUTIONS
@@ -317,76 +332,243 @@
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
-            <!-- /.content-header -->
+            <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-white">
+                    <i class="fas fa-calendar-check"></i> Lens Solutions
+                </h5>
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="owl-carousel owl-theme">
+                <div>
+                    <div class="card-header bg-dark d-flex justify-content-between align-items-center">
 
-                    <!-- SLIDE 1 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner2.jpg') }}" class="carousel-img">
+                        <div>
+                            {{-- <span class="badge bg-info px-3 py-2 me-2">
+                                Total Appointments: {{ $appointments->count() }}
+                            </span> --}}
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Welcome to Eyenix Eye Care
-                            </h4>
+                            <!-- CREATE LENS SOLUTION BUTTON -->
+                            <button type="button" class="btn btn-primary btn-sm me-1" data-bs-toggle="modal"
+                                data-bs-target="#createSolutionModal">
+                                <i class="fas fa-plus"></i> Create Lens Solution
+                            </button>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find Frames That Fit Your Style Perfectly
-                            </h1>
-
-                            <p class="fs-5 text-light">
-                                Upgrade your look with high-quality lenses and trendsetting frames designed for
-                                everyday durability and exceptional visual comfort. See better, live better.
-                            </p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <!-- CREATE LENS SOLUTION MODAL -->
+            <div class="modal fade" id="createSolutionModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
 
-                    <!-- SLIDE 2 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner11.jpg') }}" class="carousel-img">
+                        <form action="{{ route('admin.solution.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Your Vision, Our Priority
-                            </h4>
+                            <!-- Modal Header -->
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title">Create Lens Solution</h5>
+                                <button type="button" class="btn-close btn-close-white"
+                                    data-bs-dismiss="modal"></button>
+                            </div>
 
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Stylish Frames Crafted for Everyday Comfort
-                            </h1>
+                            <!-- Modal Body -->
+                            <div class="modal-body">
 
-                            <p class="fs-5 text-light">
-                                Explore a wide range of modern, lightweight, and durable spectacles designed to
-                                match your personality and enhance your visual clarity with precision lenses.
-                            </p>
-                        </div>
+                                <!-- Contact Lens -->
+                                <div class="mb-3">
+                                    <label class="form-label">Contact Lens</label>
+                                    <select name="contact_lens_id" class="form-select" required>
+                                        <option value="">Select Contact Lens</option>
+                                        @foreach($contactLenses as $lens)
+                                            <option value="{{ $lens->id }}">{{ $lens->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <!-- Solution Name -->
+                                <div class="mb-3">
+                                    <label class="form-label">Solution Name</label>
+                                    <input type="text" name="name" class="form-control" required>
+                                </div>
+
+                                <!-- Image -->
+                                <div class="mb-3">
+                                    <label class="form-label">Image</label>
+                                    <input type="file" name="img" class="form-control" required>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="description" class="form-control" rows="4" required></textarea>
+                                </div>
+
+                            </div>
+
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Solution</button>
+                            </div>
+
+                        </form>
+
                     </div>
+                </div>
+            </div>
 
-                    <!-- SLIDE 3 -->
-                    <div class="item">
-                        <img src="{{ asset('img/banner3.jpg') }}" class="carousel-img">
+            <section class="content mt-4">
+                <div class="container-fluid">
 
-                        <div class="carousel-caption">
-                            <h4 class="text-primary text-uppercase fw-bold mb-3">
-                                Modern Eye Care, Trusted Expertise
-                            </h4>
-
-                            <h1 class="display-4 text-uppercase text-white mb-3">
-                                Find the Perfect Spectacles for Your Vision
-                            </h1>
-
-                            <p class="fs-5 text-light">
-                                Discover a premium collection of stylish frames, high-quality lenses, and
-                                advanced eye care solutions. Comfort, clarity, and elegance—all in one place.
-                            </p>
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 text-white">
+                                <i class="fas fa-calendar-check"></i> Appointments List
+                            </h5>
                         </div>
+
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover table-bordered text-center mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Solution Name</th>
+                                        <th>Contact Lens</th>
+                                        <th>Image</th>
+                                        <th>Description</th>
+                                        <th>Created At</th>
+                                        <th class="no-print">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @forelse($solutions as $index => $solution)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+
+                                            <td class="fw-bold">
+                                                {{ $solution->name }}
+                                            </td>
+
+                                            <td>
+                                                <span class="badge bg-primary">
+                                                    {{ $solution->contactLens->name ?? 'N/A' }}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <img src="{{ asset('storage/' . $solution->img) }}" width="60"
+                                                    class="rounded border">
+                                            </td>
+
+                                            <td>
+                                                {{ Str::limit($solution->description, 50) }}
+                                            </td>
+
+                                            <td>
+                                                {{ $solution->created_at->format('d M Y') }}
+                                            </td>
+
+                                            <td class="no-print">
+                                                <!-- EDIT -->
+                                                <button class="btn btn-sm btn-outline-warning me-1" data-bs-toggle="modal"
+                                                    data-bs-target="#editSolutionModal{{ $solution->id }}">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+
+
+                                                <!-- DELETE -->
+                                                <form action="{{ route('admin.solution.destroy', $solution->id) }}"
+                                                    method="POST" class="d-inline"
+                                                    onsubmit="return confirm('Delete this solution?');">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button class="btn btn-sm btn-outline-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-muted py-4">
+                                                No lens solutions found
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
 
                 </div>
             </section>
+            @foreach($solutions as $solution)
+                <div class="modal fade" id="editSolutionModal{{ $solution->id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
 
-            <!-- /.content -->
+                            <form action="{{ route('admin.solution.update', $solution->id) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="modal-header bg-warning">
+                                    <h5 class="modal-title">Edit Lens Solution</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <!-- Contact Lens -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Contact Lens</label>
+                                        <select name="contact_lens_id" class="form-select" required>
+                                            @foreach($contactLenses as $lens)
+                                                <option value="{{ $lens->id }}" {{ $solution->contact_lens_id == $lens->id ? 'selected' : '' }}>
+                                                    {{ $lens->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <!-- Name -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Solution Name</label>
+                                        <input type="text" name="name" class="form-control" value="{{ $solution->name }}"
+                                            required>
+                                    </div>
+
+                                    <!-- Image -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Image</label>
+                                        <input type="file" name="img" class="form-control">
+                                        <img src="{{ asset('storage/' . $solution->img) }}" width="80" class="mt-2 rounded">
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="description" class="form-control" rows="3"
+                                            required>{{ $solution->description }}</textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-warning">Update</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer" style="background-color: #000;">
@@ -425,18 +607,6 @@
     <!-- Owl Carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-    <script>
-        $(function () {
-            $('.owl-carousel').owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                nav: true,
-                dots: true
-            });
-        });
-    </script>
 
 </body>
 

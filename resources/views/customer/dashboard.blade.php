@@ -118,7 +118,7 @@
                     <a href="{{ route('dashboard') }}" class="nav-item nav-link active">Home</a>
                     <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
                     <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
-                    <a href="#" class="nav-item nav-link">Blogs</a>
+                    <a href="{{ route('eyecamp') }}" class="nav-item nav-link">EyeCampaign</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
                             <span class="dropdown-toggle">Pages</span>

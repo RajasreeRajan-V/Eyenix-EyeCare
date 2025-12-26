@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\EyeCamp;
 use App\Http\Requests\StoreEyeCampRequest;
 use App\Http\Requests\UpdateEyeCampRequest;
+use Illuminate\Support\Facades\Storage;
 
 class EyeCampController 
 {
@@ -13,7 +14,8 @@ class EyeCampController
      */
     public function index()
     {
-      return view('admin.admin_eyecamp');
+        $eyeCamps = EyeCamp::all();
+      return view('admin.admin_eyecamp', compact('eyeCamps'));
     }
 
     /**
@@ -58,16 +60,38 @@ class EyeCampController
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEyeCampRequest $request, EyeCamp $eyeCamp)
+    public function update(UpdateEyeCampRequest $request, string $id)
     {
-        //
+      $data = $request->validated();
+
+      $eyeCamp = EyeCamp::findOrFail($id);
+      if ($request->hasFile('image')) {
+
+        if ($eyeCamp->image && Storage::disk('public')->exists($eyeCamp->image)) {
+            Storage::disk('public')->delete($eyeCamp->image);
+        }
+
+        $data['image'] = $request->file('image')
+                                ->store('eye-camps', 'public');
+    } else {
+
+        unset($data['image']);
+    }
+    $eyeCamp->update($data);
+     return redirect()
+            ->back()
+            ->with('success', 'Eye Camp updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EyeCamp $eyeCamp)
+    public function destroy(string $id)
     {
-        //
+        $eyecamp = EyeCamp::findOrFail($id);
+        $eyecamp ->delete();
+        return redirect()
+            ->back()
+            ->with('success', 'Eye Camp delete successfully');
     }
 }

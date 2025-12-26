@@ -46,5 +46,11 @@ Route::name('admin.')->group(function () {
 
       Route::resource('EyeCamp', EyeCampController::class);
 
+      Route::resource('appointment', AppointmentController::class);
+
+      Route::get('/appointments/download', [AppointmentController::class, 'downloadAppointments'])->name('appointments.download');
+
+      Route::resource('solution', LensSolutionController::class);
+
      });
 });

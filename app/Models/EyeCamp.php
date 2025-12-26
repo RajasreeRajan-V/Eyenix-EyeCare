@@ -19,4 +19,9 @@ class EyeCamp extends Model
         'organizer',
         'status',
     ];
+public function appointments()
+{
+    return $this->hasMany(Appointment::class);
+}
+
 }
