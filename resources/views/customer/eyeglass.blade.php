@@ -88,9 +88,25 @@
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
-                <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
-                <!-- <img src="{{ asset('img/logo.png') }}" alt="Logo"> -->
+            <a href="" class="navbar-brand d-flex align-items-center gap-2 p-0">
+                <a href="#" class="navbar-brand fancy-brand d-flex align-items-center gap-3 p-3">
+                    <!-- Logo Icon -->
+                    <div class="logo-icon d-flex align-items-center justify-content-center">
+                        <img src="{{ asset('img/logo.png')}}" alt="Logo" class="brand-logo">
+                    </div>
+
+                    <!-- Brand Text -->
+                    <div class="brand-text">
+                        <h1 class="brand-title m-0">Eyenix <span>Eye Care</span></h1>
+                        <p class="brand-tagline m-0">Vision • Style • Comfort</p>
+                    </div>
+
+                    <!-- Decorative Lines for Animation -->
+                    <span class="top-key"></span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
