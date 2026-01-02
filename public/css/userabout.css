@@ -1,0 +1,178 @@
+:root {
+    --red: #99c2ff;
+    --back: #000;
+}
+
+/* ==============================
+   USER ABOUT SECTION BACKGROUND
+================================ */
+.userAbout {
+    position: relative;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: hidden;
+
+    background: url('/img/banner11.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/* GLASS BLUR OVERLAY */
+.userAbout::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background: rgba(0, 30, 40, 0.55);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* ENSURE CONTENT STAYS ABOVE OVERLAY */
+.userAbout > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==============================
+   TOP CURVE
+================================ */
+.userAbout-top-curve svg {
+    width: 100vw;
+    height: 150px;
+    display: block;
+}
+
+/* ==============================
+   GLASSY CONTENT CARD
+================================ */
+.glassy-userAbout {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 153, 255, 0.25),
+        rgba(0, 102, 204, 0.15)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 35px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+        0 8px 32px rgba(0, 123, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+/* TEXT COLORS */
+.glassy-userAbout h1 {
+    color: #ffffff;
+}
+
+.glassy-userAbout h4 {
+    color: #000000;
+}
+
+.glassy-userAbout p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* HOVER EFFECT */
+.glassy-userAbout:hover {
+    box-shadow:
+        0 12px 40px rgba(0, 123, 255, 0.35),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* ==============================
+   BOTTOM CURVE
+================================ */
+/* FIX GAP AFTER BOTTOM CURVE */
+.userAbout-curve {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.userAbout-curve svg {
+    display: block;
+    width: 100%;
+    height: 150px;
+}
+
+
+/* ==============================
+   MOBILE OPTIMIZATION
+================================ */
+@media (max-width: 768px) {
+    .glassy-userAbout {
+        padding: 30px 20px;
+    }
+}
+
+/* ==============================
+   USER ABOUT – ABOUT SECTION
+================================ */
+.userAbout-about {
+    background-color: var(--red); /* red background */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ==============================
+   GLASS CARD
+================================ */
+.glass-card {
+    background: rgba(34, 58, 84, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 50px;
+    border: 2px solid #000; /* solid black border */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
+}
+
+/* ==============================
+   IMAGE GLASS
+================================ */
+.image-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+/* ==============================
+   TEXT COLORS
+================================ */
+.glass-card h1,
+.glass-card h4 {
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* BUTTONS INSIDE GLASS CARD */
+.glass-card .btn {
+    color: #ffffff;
+}
+
+/* ==============================
+   MOBILE OPTIMIZATION
+================================ */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 30px 20px;
+    }
+}

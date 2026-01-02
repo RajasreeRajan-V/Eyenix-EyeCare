@@ -285,9 +285,17 @@
                                 </p>
                             </a>
                         </li>
+                         <li class="nav-item">
+                            <a href="{{ route('admin.review.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-flask"></i>
+                                <p>
+                                    MANAGE REVIEWS
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">
-                                <i class="fas fa-sign-out-alt me-1"></i> Logout
+                                <i class="fas fa-sign-out-alt me-1"></i> LOGOUT
                             </a>
                         </li>
 

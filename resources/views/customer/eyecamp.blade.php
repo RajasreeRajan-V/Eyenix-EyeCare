@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Stocker - Stock Market Website Template</title>
+    <title>Eyenix Eye Care - Eye Opticals</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -24,6 +24,7 @@
     <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -43,7 +44,43 @@
         </div>
     </div>
     <!-- Spinner End -->
+           <!-- Floating Icons -->
+    <div class="dashboard-floating-icons">
 
+        <!-- Chatbot Toggle (Lottie) -->
+        <div id="chatbotToggle" style="cursor:pointer; text-align:center;">
+            <iframe src="https://lottie.host/embed/ff037b49-d0e1-44b7-87e3-284e9fc8b20e/VN5anB14ce.lottie"
+                style="width:120px;height:120px;border:none;pointer-events:none;">
+            </iframe>
+        </div>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/9961667111" target="_blank" class="social-float whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/eyenix_eye_care?igsh=N3NrY3p4ejMxZjdq" target="_blank"
+            class="social-float instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+    </div>
+
+    <!-- Chatbot Box -->
+    <div id="chatbotBox" style="display:none;">
+        <div class="chatbot-header">
+            Chat Support
+            <span id="closeChatbot">&times;</span>
+        </div>
+
+        <div class="chatbot-body" id="chatMessages"></div>
+
+        <div class="chatbot-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -56,186 +93,176 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link active">About</a>
-                    <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="blog.html" class="nav-item nav-link">Blogs</a>
+                    <a href="{{ route('dashboard') }}" class="nav-item nav-link">Home</a>
+                    <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                    <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
+                    <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
+                    <a href="{{ route('eyecamp') }}" class="nav-item nav-link active">EyeCampaign</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                            <span class="dropdown-toggle">Pages</span>
+                            <span class="dropdown-toggle">Our Products</span>
                         </a>
                         <div class="dropdown-menu m-0">
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="team.html" class="dropdown-item">Our team</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="offer.html" class="dropdown-item">Our offer</a>
-                            <a href="FAQ.html" class="dropdown-item">FAQs</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                            <a href="{{ route('eyeglass') }}" class="dropdown-item">Eye glasses</a>
+                            <a href="{{ route('sunglass') }}" class="dropdown-item">Sun glasses</a>
+                            <a href="{{ route('contactlens') }}" class="dropdown-item">Contact Lens</a>
+                            <a href="{{ route('contactlens.solutions') }}" class="dropdown-item">Contact Solutions</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
             </div>
         </nav>
 
-</div>
-<!-- Navbar & Hero End -->
+    </div>
+    <!-- Navbar & Hero End -->
 
-<div class="container-fluid py-5 about-glass-section">
+    <div class="container-fluid py-5 about-glass-section">
 
-    <!-- TOP CURVE -->
-    <div class="section-top-curve">
-        <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
-            <path d="M0,100 C360,0 1080,150 1440,50 L1440,0 L0,0 Z" fill="var(--back)"></path>
-        </svg>
+        <!-- TOP CURVE -->
+        <div class="section-top-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path d="M0,100 C360,0 1080,150 1440,50 L1440,0 L0,0 Z" fill="var(--back)"></path>
+            </svg>
+        </div>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <!-- FLOATING CENTER HEADING -->
+        <div class="section-floating-heading wow" data-wow-delay="0.2s">
+            <div class="gallery-heading text-center">
+                <span class="section-title-small">Community Care</span>
+
+                <h2 class="section-title-main text-primary">
+                    Eye Care Eye Camps
+                </h2>
+
+                <p class="section-title-text text-white">
+                    Free eye check-ups and vision care services conducted for the community.
+                </p>
+            </div>
+        </div>
+        <div class="container mt-4">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+        </div>
+        <!-- CONTENT -->
+        <div class="container position-relative">
+            <div class="row mt-5 g-4 pt-5">
+
+                @forelse ($eyeCamps as $camp)
+                    @php
+                        $canBook = in_array($camp->status, ['upcoming', 'ongoing']);
+                    @endphp
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="eye-camp-card position-relative wow fadeInUp
+                            {{ $canBook ? 'open-booking-modal' : 'disabled' }}" @if($canBook) data-bs-toggle="modal"
+                                data-bs-target="#bookingModal" data-camp-id="{{ $camp->id }}" data-title="{{ $camp->title }}"
+                                data-date="{{ \Carbon\Carbon::parse($camp->start_date)->format('d F Y') }}"
+                            data-location="{{ $camp->location }}" @endif>
+
+                            <img src="{{ asset('storage/' . $camp->image) }}" alt="Eye Camp">
+
+                            <div class="eye-camp-content">
+                                <h5>{{ $camp->title }}</h5>
+
+                                <p class="date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    {{ \Carbon\Carbon::parse($camp->start_date)->format('d F Y') }}
+                                </p>
+
+                                <p class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ $camp->location }}
+                                </p>
+
+                                <span class="status {{ $camp->status }}">
+                                    {{ ucfirst($camp->status) }}
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p class="text-muted">No eye camps available.</p>
+                    </div>
+                @endforelse
+
+            </div>
+        </div>
+
+        <br><br><br><br><br>
+
+        <!-- BOTTOM CURVE -->
+        <div class="section-bottom-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path d="M0,50 C360,150 1080,0 1440,100 L1440,150 L0,150 Z" fill="var(--back)"></path>
+            </svg>
+        </div>
+
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-    <!-- FLOATING CENTER HEADING -->
-    <div class="section-floating-heading wow" data-wow-delay="0.2s">
-        <div class="gallery-heading text-center">
-            <span class="section-title-small">Community Care</span>
+                <div class="modal-header">
+                    <h5 class="modal-title">Book Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-            <h2 class="section-title-main text-primary">
-                Eye Care Eye Camps
-            </h2>
+                <form action="{{ route('appointment.store') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
 
-            <p class="section-title-text text-white">
-                Free eye check-ups and vision care services conducted for the community.
-            </p>
-        </div>
-    </div>
-<div class="container mt-4">
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    @endif
-</div>
-    <!-- CONTENT -->
-    <div class="container position-relative">
-        <div class="row mt-5 g-4 pt-5">
+                        <input type="hidden" name="eye_camp_id" id="camp_id">
 
-            @forelse ($eyeCamps as $camp)
-                @php
-                    $canBook = in_array($camp->status, ['upcoming', 'ongoing']);
-                @endphp
+                        <div class="mb-2">
+                            <label class="form-label">Eye Camp</label>
+                            <input type="text" class="form-control" id="camp_title" readonly>
+                        </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div
-                        class="eye-camp-card position-relative wow fadeInUp
-                        {{ $canBook ? 'open-booking-modal' : 'disabled' }}"
+                        <div class="mb-2">
+                            <label class="form-label">Date</label>
+                            <input type="text" class="form-control" id="camp_date" readonly>
+                        </div>
 
-                        @if($canBook)
-                            data-bs-toggle="modal"
-                            data-bs-target="#bookingModal"
-                            data-camp-id="{{ $camp->id }}"
-                            data-title="{{ $camp->title }}"
-                            data-date="{{ \Carbon\Carbon::parse($camp->start_date)->format('d F Y') }}"
-                            data-location="{{ $camp->location }}"
-                        @endif
-                    >
+                        <div class="mb-2">
+                            <label class="form-label">Location</label>
+                            <input type="text" class="form-control" id="camp_location" readonly>
+                        </div>
 
-                        <img src="{{ asset('storage/' . $camp->image) }}" alt="Eye Camp">
+                        <hr>
 
-                        <div class="eye-camp-content">
-                            <h5>{{ $camp->title }}</h5>
+                        <div class="mb-2">
+                            <label class="form-label">Patient Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
 
-                            <p class="date">
-                                <i class="fas fa-calendar-alt"></i>
-                                {{ \Carbon\Carbon::parse($camp->start_date)->format('d F Y') }}
-                            </p>
-
-                            <p class="location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                {{ $camp->location }}
-                            </p>
-
-                            <span class="status {{ $camp->status }}">
-                                {{ ucfirst($camp->status) }}
-                            </span>
+                        <div class="mb-2">
+                            <label class="form-label">Phone</label>
+                            <input type="text" name="phone" class="form-control" required>
                         </div>
 
                     </div>
-                </div>
-            @empty
-                <div class="col-12 text-center">
-                    <p class="text-muted">No eye camps available.</p>
-                </div>
-            @endforelse
 
-        </div>
-    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary w-100">
+                            Confirm Booking
+                        </button>
+                    </div>
 
-    <br><br><br><br><br>
+                </form>
 
-    <!-- BOTTOM CURVE -->
-    <div class="section-bottom-curve">
-        <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
-            <path d="M0,50 C360,150 1080,0 1440,100 L1440,150 L0,150 Z" fill="var(--back)"></path>
-        </svg>
-    </div>
-
-</div>
-
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title">Book Appointment</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-
-            <form action="{{ route('appointment.store') }}" method="POST">
-                @csrf
-                <div class="modal-body">
-
-                    <input type="hidden" name="eye_camp_id" id="camp_id">
-
-                    <div class="mb-2">
-                        <label class="form-label">Eye Camp</label>
-                        <input type="text" class="form-control" id="camp_title" readonly>
-                    </div>
-
-                    <div class="mb-2">
-                        <label class="form-label">Date</label>
-                        <input type="text" class="form-control" id="camp_date" readonly>
-                    </div>
-
-                    <div class="mb-2">
-                        <label class="form-label">Location</label>
-                        <input type="text" class="form-control" id="camp_location" readonly>
-                    </div>
-
-                    <hr>
-
-                    <div class="mb-2">
-                        <label class="form-label">Patient Name</label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-
-                    <div class="mb-2">
-                        <label class="form-label">Phone</label>
-                        <input type="text" name="phone" class="form-control" required>
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary w-100">
-                        Confirm Booking
-                    </button>
-                </div>
-
-            </form>
-
         </div>
     </div>
-</div>
 
     <!-- Features Start -->
     <div class="container-fluid feature pb-5">
@@ -392,26 +419,7 @@
     </div>
     <!-- Footer End -->
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right
-                        reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
-                    Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Copyright End -->
+
 
 
     <!-- Back to Top -->
@@ -432,17 +440,17 @@
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.open-booking-modal').forEach(card => {
-        card.addEventListener('click', function () {
-            document.getElementById('camp_id').value = this.dataset.campId;
-            document.getElementById('camp_title').value = this.dataset.title;
-            document.getElementById('camp_date').value = this.dataset.date;
-            document.getElementById('camp_location').value = this.dataset.location;
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.open-booking-modal').forEach(card => {
+                card.addEventListener('click', function () {
+                    document.getElementById('camp_id').value = this.dataset.campId;
+                    document.getElementById('camp_title').value = this.dataset.title;
+                    document.getElementById('camp_date').value = this.dataset.date;
+                    document.getElementById('camp_location').value = this.dataset.location;
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 
 </body>
 

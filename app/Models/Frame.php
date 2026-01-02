@@ -25,4 +25,8 @@ class Frame extends Model
     {
         return $this->belongsTo(Material::class);
     }
+    public function collections()
+    {
+        return $this->hasMany(Collection::class);
+    }
 }

@@ -1,0 +1,237 @@
+/* ================= CONTACT LENS SECTION ================= */
+.contactlens-section {
+    position: relative;
+    padding: 80px 0;
+    backdrop-filter: blur(14px);
+    color: #033;
+    overflow: hidden;
+}
+
+/* ================= HEADING ================= */
+.contactlens-heading {
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.75),
+        rgba(240,252,255,0.85)
+    );
+    backdrop-filter: blur(16px);
+    border-radius: 22px;
+    padding: 40px 28px;
+    max-width: 880px;
+    margin: 0 auto 60px;
+    box-shadow:
+        0 18px 45px rgba(0, 140, 170, 0.28),
+        inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+
+/* Subtitle */
+.contactlens-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #0aa;
+    font-weight: 600;
+}
+
+/* Title */
+.contactlens-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #012;
+    margin: 10px 0;
+}
+
+/* Text */
+.contactlens-text {
+    font-size: 0.95rem;
+    color: #045;
+    max-width: 680px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* ================= CONTACT LENS CARD ================= */
+.contactlens {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.9),
+        rgba(245,252,255,0.95)
+    );
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.12),
+        inset 0 0 0 1px rgba(255,255,255,0.7);
+    transition: all 0.35s ease;
+    height: 100%;
+}
+
+/* Hover polish */
+.contactlens:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 22px 55px rgba(0, 150, 180, 0.35),
+        inset 0 0 0 1px rgba(0,160,190,0.25);
+}
+
+/* ================= IMAGE ================= */
+.contactlens .gallery-image-wrapper {
+    background: radial-gradient(
+        circle at center,
+        #ffffff,
+        #eef9fc
+    );
+    padding: 25px;
+}
+
+.contactlens .gallery-image-wrapper img {
+    object-fit: contain;
+    max-height: 240px;
+    margin: auto;
+    transition: transform 0.4s ease;
+}
+
+/* Gentle zoom on hover */
+.contactlens:hover .gallery-image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* ================= DETAILS ================= */
+.contactlens-details {
+    padding: 22px 20px 24px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: #023;
+}
+
+/* Product name */
+.contactlens-details h5 {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #012;
+    margin-bottom: 6px;
+}
+
+/* Description */
+.contactlens-details p {
+    font-size: 0.85rem;
+    color: #045;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Specs list */
+.contactlens-details ul {
+    margin-bottom: 10px;
+}
+
+.contactlens-details ul li {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    color: #034;
+}
+
+.contactlens-details ul li strong {
+    color: #012;
+}
+
+/* ================= PRICE ================= */
+.contactlens-price {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0,0,0,0.15);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #008fb3;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .contactlens-title {
+        font-size: 2rem;
+    }
+
+    .contactlens-details {
+        padding: 18px 16px;
+    }
+}
+/* ================= FILTER PANEL ================= */
+.filter-panel {
+    background: rgba(255,255,255,0.9);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+/* Hide radio */
+.lens-filter-item input {
+    display: none;
+}
+
+/* Filter item */
+.lens-filter-item {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    transition: 0.3s ease;
+}
+
+/* Content */
+.lens-filter-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: #f7fcff;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Image */
+.lens-filter-img {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.lens-filter-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.lens-filter-img i {
+    font-size: 18px;
+    color: #009fb3;
+}
+
+/* Text */
+.lens-filter-content span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #013;
+}
+
+/* Hover */
+.lens-filter-item:hover .lens-filter-content {
+    background: #eaf7fb;
+}
+
+/* Active */
+.lens-filter-item.active .lens-filter-content {
+    background: linear-gradient(135deg, #009fb3, #00bcd4);
+    color: #fff;
+}
+
+.lens-filter-item.active span {
+    color: #fff;
+}

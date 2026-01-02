@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('admin/dist/css/gallery.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/dist/css/eyecamp.css') }}">
     <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/review.css')}}">
 </head>
 
 <body>
@@ -170,96 +170,142 @@
             </div>
         </div>
     </div>
-    <section class="eye-camp-section py-5">
-        <div class="container text-center">
-
-            <!-- Heading -->
-            <div class="gallery-heading wow fadeInUp">
-                <span class="section-title-small">Community Care</span>
-
-                <h2 class="section-title-main text-primary">
-                    Eye Care Eye Camps
-                </h2>
-
-                <p class="section-title-text">
-                    Free eye check-ups and vision care services conducted for the community.
+    <!-- Testimonial Start -->
+    <div class="container-fluid testimonial pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-abcd">Reviews</h4>
+                <h1 class="display-5 mb-4">What Our Customers Say</h1>
+                <p class="mb-0">
+                    Real experiences from our valued customers. Discover how our quality eyewear,
+                    contact lenses, and expert care have made a difference in their vision and comfort.
                 </p>
             </div>
 
-            <!-- Cards -->
-            <div class="row mt-5 g-4">
-
-                @forelse ($eyeCamps as $camp)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="eye-camp-card position-relative">
-
-                            <!-- Action Buttons -->
-                            <div class="camp-actions">
-                                <!-- Edit -->
-                                <a href="javascript:void(0)" class="btn btn-sm btn-warning editEyeCampBtn"
-                                    data-id="{{ $camp->id }}" data-url="{{ route('admin.EyeCamp.update', $camp->id) }}"
-                                    data-title="{{ $camp->title }}" data-description="{{ $camp->description }}"
-                                    data-start_date="{{ $camp->start_date }}" data-end_date="{{ $camp->end_date }}"
-                                    data-start_time="{{ $camp->start_time }}" data-end_time="{{ $camp->end_time }}"
-                                    data-location="{{ $camp->location }}" data-organizer="{{ $camp->organizer }}"
-                                    data-status="{{ $camp->status }}" data-image="{{ asset('storage/' . $camp->image) }}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-
-
-
-                                <!-- Delete -->
-                                <form action="{{ route('admin.EyeCamp.destroy', $camp->id) }}" method="POST"
-                                    onsubmit="return confirm('Delete this eye camp?')" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" title="Delete">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </div>
-
-                            <img src="{{ asset('storage/' . $camp->image) }}" alt="Eye Camp">
-
-                            <div class="eye-camp-content">
-                                <h5>{{ $camp->title }}</h5>
-
-                                <p class="date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    {{ \Carbon\Carbon::parse($camp->start_date)->format('d F Y') }}
-                                </p>
-
-                                <p class="location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    {{ $camp->location }}
-                                </p>
-
-                                <span class="status
-                                            @if($camp->status === 'upcoming')
-                                                upcoming
-                                            @elseif($camp->status === 'ongoing')
-                                                ongoing
-                                            @elseif($camp->status === 'completed')
-                                                completed
-                                            @elseif($camp->status === 'cancelled')
-                                                cancelled
-                                            @endif
-                                        ">
-                                    {{ ucfirst($camp->status) }}
-                                </span>
-                            </div>
-
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
+                <div class="testimonial-item">
+                    <div class="testimonial-quote-left">
+                    </div>
+                    <div class="testimonial-img">
+                        <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="testimonial-text">
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
+                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
+                            accusamus.
+                        </p>
+                    </div>
+                    <div class="testimonial-title">
+                        <div>
+                            <h4 class="mb-0">Person Name</h4>
+                            <p class="mb-0">Profession</p>
+                        </div>
+                        <div class="d-flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
                     </div>
-                @empty
-                    <div class="col-12">
-                        <p class="text-muted">No eye camps available.</p>
+                    <div class="testimonial-quote-right">
+                        <i class="fas fa-quote-right fa-2x"></i>
                     </div>
-                @endforelse
-
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-quote-left">
+                        <i class="fas fa-quote-left fa-2x"></i>
+                    </div>
+                    <div class="testimonial-img">
+                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="testimonial-text">
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
+                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
+                            accusamus.
+                        </p>
+                    </div>
+                    <div class="testimonial-title">
+                        <div>
+                            <h4 class="mb-0">Person Name</h4>
+                            <p class="mb-0">Profession</p>
+                        </div>
+                        <div class="d-flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-quote-right">
+                        <i class="fas fa-quote-right fa-2x"></i>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-quote-left">
+                        <i class="fas fa-quote-left fa-2x"></i>
+                    </div>
+                    <div class="testimonial-img">
+                        <img src="{{ asset('img/testimonial-3.jpg')}}" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="testimonial-text">
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
+                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
+                            accusamus.
+                        </p>
+                    </div>
+                    <div class="testimonial-title">
+                        <div>
+                            <h4 class="mb-0">Person Name</h4>
+                            <p class="mb-0">Profession</p>
+                        </div>
+                        <div class="d-flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-quote-right">
+                        <i class="fas fa-quote-right fa-2x"></i>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-quote-left">
+                        <i class="fas fa-quote-left fa-2x"></i>
+                    </div>
+                    <div class="testimonial-img">
+                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="testimonial-text">
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
+                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
+                            accusamus.
+                        </p>
+                    </div>
+                    <div class="testimonial-title">
+                        <div>
+                            <h4 class="mb-0">Person Name</h4>
+                            <p class="mb-0">Profession</p>
+                        </div>
+                        <div class="d-flex text-primary">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-quote-right">
+                        <i class="fas fa-quote-right fa-2x"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Testimonial End -->
 
     <!-- EDIT EYE CAMP MODAL -->
     <div class="modal fade glassy-modal" id="editEyeCampModal" tabindex="-1" aria-hidden="true">
@@ -432,8 +478,7 @@
 
         });
     </script>
-
-
+    <script src="{{ asset(' js/main.js') }}"></script>
 </body>
 
 </html>

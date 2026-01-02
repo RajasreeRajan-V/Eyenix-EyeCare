@@ -30,6 +30,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/userabout.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/gallery.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -44,7 +47,7 @@
         </div>
     </div>
     <!-- Spinner End -->
-           <!-- Floating Icons -->
+       <!-- Floating Icons -->
     <div class="dashboard-floating-icons">
 
         <!-- Chatbot Toggle (Lottie) -->
@@ -81,6 +84,7 @@
             <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
+
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -95,8 +99,8 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('dashboard') }}" class="nav-item nav-link">Home</a>
                     <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
-                    <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
-                    <a href="{{ route('service') }}" class="nav-item nav-link active">Services</a>
+                    <a href="{{ route('gallery') }}" class="nav-item nav-link active">Gallery</a>
+                    <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
                     <a href="{{ route('eyecamp') }}" class="nav-item nav-link">EyeCampaign</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
@@ -112,123 +116,118 @@
                     <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact Us</a>
                 </div>
             </div>
-        </nav>
+    </div>
+    </nav>
+
     </div>
     <!-- Navbar & Hero End -->
 
+    <!-- GALLERY TOP CURVE -->
+    <div class="gallery-top-curve">
+        <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+            <path d="M0,50 C360,150 1080,0 1440,100 L1440,0 L0,0 Z" fill="var(--back)">
+            </path>
+        </svg>
+    </div>
+    <br><br><br>
 
-    <!-- Services Start -->
+    <section class="gallery-section py-5">
+        <div class="container text-center">
 
-    <!-- Services Section -->
-    <div class="container-fluid service ">
-        <div class="services-top-curve">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C360,140 1080,0 1440,80 L1440,0 L0,0 Z" fill="#000">
+            <div class="gallery-heading wow fadeInUp">
+                <span class="section-title-small">Our Clinic</span>
+
+                <h2 class="section-title-main">
+                    Eyenix Eye Care Gallery
+                </h2>
+
+                <p class="section-title-text">
+                    A glimpse into our advanced facilities, expert care, and patient-friendly environment.
+                </p>
+            </div>
+
+            <div class="row mt-5 g-4">
+
+                @foreach ($gallerys as $item)
+                    <div class="col-lg-4 col-md-6 wow zoomIn">
+
+                        {{-- If second image exists --}}
+                        @if ($item->image2)
+                            <div class="gallery-item has-two-images">
+
+                                <!-- ACTION BUTTONS -->
+                                <div class="gallery-actions">
+                                    <a href="#" class="btn btn-sm btn-edit" data-bs-toggle="modal"
+                                        data-bs-target="#editGalleryModal" data-id="{{ $item->id }}"
+                                        data-title="{{ $item->title }}" data-description="{{ $item->description }}"
+                                        data-image="{{ asset('storage/' . $item->image) }}"
+                                        data-image2="{{ asset('storage/' . $item->image2) }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+
+                                    <form action="{{ route('admin.AdminGallery.destroy', $item->id) }}" method="POST"
+                                        class="d-inline"
+                                        onsubmit="return confirm('Are you sure you want to delete this gallery item?');">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-sm btn-delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                                <!-- IMAGE WRAPPER -->
+                                <div class="gallery-image-wrapper">
+                                    <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid img-main"
+                                        alt="{{ $item->title }}">
+
+                                    <img src="{{ asset('storage/' . $item->image2) }}" class="img-fluid img-secondary"
+                                        alt="{{ $item->title }}">
+                                </div>
+
+                                <!-- OVERLAY -->
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <i class="fas fa-search-plus mb-3"></i>
+                                        <h5>{{ $item->title }}</h5>
+                                        <p>{{ $item->description }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        @else
+                            {{-- Single image item --}}
+                            <div class="gallery-item">
+
+                                <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid" alt="{{ $item->title }}">
+
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <i class="fas fa-search-plus mb-3"></i>
+                                        <h5>{{ $item->title }}</h5>
+                                        <p>{{ $item->description }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        @endif
+
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="gallery-bottom-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path d="M0,100 C360,0 1080,150 1440,50 L1440,150 L0,150 Z" fill="var(--back)">
                 </path>
             </svg>
         </div>
-        <div class="container service-inner">
+    </section>
 
-            <div class="text-center mx-auto pb-5">
-                <h4 class="text-primary">Our Services</h4>
-                <h1 class="display-5 mb-4">We Services provided best offer</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-1.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-2.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Managements</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-4.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Supply Optimization</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-5.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Hr Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/service-6.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Marketing Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="services-bottom-curve">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,0 C360,0 1080,140 1440,60 L1440,120 L0,120 Z" fill="#000">
-                </path>
-            </svg>
-        </div>
-    </div>
-    </div>
 
 
 
@@ -237,91 +236,112 @@
         <div class="container py-5 border-start-0 border-end-0"
             style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
             <div class="row g-5">
+
+                <!-- BRAND -->
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="footer-item">
-                        <a href="index.html" class="p-0">
-                            <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Stocker</h4>
-                            <!-- <img src="{{ asset('img/logo.png') }}" alt="Logo"> -->
+                        <a href="/" class="p-0">
+                            <h4 class="text-white">
+                                <i class="fas fa-eye me-3"></i>Eyenix Eye Care
+                            </h4>
                         </a>
-                        <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit
-                            amet, consectetur adipiscing...</p>
+                        <p class="mb-4">
+                            Eyenix Eye Care provides advanced eye testing, premium eyewear,
+                            and trusted vision solutions with a patient-first approach.
+                        </p>
+
                         <div class="d-flex">
                             <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
                                 <i class="fas fa-apple-alt text-white"></i>
                                 <div class="ms-3">
-                                    <small class="text-white">Download on the</small>
-                                    <h6 class="text-white">App Store</h6>
+                                    <small class="text-white">Download on</small>
+                                    <h6 class="text-white mb-0">App Store</h6>
                                 </div>
                             </a>
                             <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
                                 <i class="fas fa-play text-primary"></i>
                                 <div class="ms-3">
                                     <small class="text-white">Get it on</small>
-                                    <h6 class="text-white">Google Play</h6>
+                                    <h6 class="text-white mb-0">Google Play</h6>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- QUICK LINKS -->
                 <div class="col-md-6 col-lg-6 col-xl-2">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Quick Links</h4>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Attractions</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Tickets</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Our Services</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Eye Camps</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Book Appointment</a>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact</a>
                     </div>
                 </div>
+
+                <!-- SUPPORT -->
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Support</h4>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Refund Policy</a>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Customer Support</a>
                     </div>
                 </div>
+
+                <!-- CONTACT -->
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Contact Info</h4>
+
                         <div class="d-flex align-items-center">
                             <i class="fas fa-map-marker-alt text-primary me-3"></i>
-                            <p class="text-white mb-0">123 Street New York.USA</p>
+                            <p class="text-white mb-0">
+                                Main Road, City Center,<br>Kerala, India
+                            </p>
                         </div>
+
                         <div class="d-flex align-items-center">
                             <i class="fas fa-envelope text-primary me-3"></i>
-                            <p class="text-white mb-0">info@example.com</p>
+                            <p class="text-white mb-0">support@eyenixeyecare.com</p>
                         </div>
+
                         <div class="d-flex align-items-center">
                             <i class="fa fa-phone-alt text-primary me-3"></i>
-                            <p class="text-white mb-0">(+012) 3456 7890</p>
+                            <p class="text-white mb-0">+91 98765 43210</p>
                         </div>
+
                         <div class="d-flex align-items-center mb-4">
-                            <i class="fab fa-firefox-browser text-primary me-3"></i>
-                            <p class="text-white mb-0">Yoursite@ex.com</p>
+                            <i class="fas fa-globe text-primary me-3"></i>
+                            <p class="text-white mb-0">www.eyenixeyecare.com</p>
                         </div>
+
                         <div class="d-flex">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                    class="fab fa-facebook-f text-white"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                    class="fab fa-twitter text-white"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                    class="fab fa-instagram text-white"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i
-                                    class="fab fa-linkedin-in text-white"></i></a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#">
+                                <i class="fab fa-linkedin-in text-white"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
     <!-- Footer End -->
-
-
 
 
     <!-- Back to Top -->

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Eyenix Eye Care - Stock Market Website Template</title>
+   <title>Eyenix Eye Care - Eye Opticals</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -25,12 +25,15 @@
     <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    {{--
+    <link href="{{ asset('css/contact.css') }}" rel="stylesheet"> --}}
 
 </head>
 
@@ -44,7 +47,43 @@
         </div>
     </div>
     <!-- Spinner End -->
+               <!-- Floating Icons -->
+    <div class="dashboard-floating-icons">
 
+        <!-- Chatbot Toggle (Lottie) -->
+        <div id="chatbotToggle" style="cursor:pointer; text-align:center;">
+            <iframe src="https://lottie.host/embed/ff037b49-d0e1-44b7-87e3-284e9fc8b20e/VN5anB14ce.lottie"
+                style="width:120px;height:120px;border:none;pointer-events:none;">
+            </iframe>
+        </div>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/9961667111" target="_blank" class="social-float whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/eyenix_eye_care?igsh=N3NrY3p4ejMxZjdq" target="_blank"
+            class="social-float instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+    </div>
+
+    <!-- Chatbot Box -->
+    <div id="chatbotBox" style="display:none;">
+        <div class="chatbot-header">
+            Chat Support
+            <span id="closeChatbot">&times;</span>
+        </div>
+
+        <div class="chatbot-body" id="chatMessages"></div>
+
+        <div class="chatbot-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -76,24 +115,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="{{ route('dashboard') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ route('dashboard') }}" class="nav-item nav-link">Home</a>
                     <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                    <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
                     <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
-                    <a href="#" class="nav-item nav-link">Blogs</a>
+                    <a href="{{ route('eyecamp') }}" class="nav-item nav-link">EyeCampaign</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                            <span class="dropdown-toggle">Pages</span>
+                            <span class="dropdown-toggle">Our Products</span>
                         </a>
                         <div class="dropdown-menu m-0">
-                            <a href="#" class="dropdown-item">Our Features</a>
-                            <a href="#" class="dropdown-item">Our team</a>
-                            <a href="#" class="dropdown-item">Testimonial</a>
-                            <a href="#" class="dropdown-item">Our offer</a>
-                            <a href="#" class="dropdown-item">FAQs</a>
-                            <a href="#" class="dropdown-item">404 Page</a>
+                            <a href="{{ route('eyeglass') }}" class="dropdown-item">Eye glasses</a>
+                            <a href="{{ route('sunglass') }}" class="dropdown-item">Sun glasses</a>
+                            <a href="{{ route('contactlens') }}" class="dropdown-item">Contact Lens</a>
+                            <a href="{{ route('contactlens.solutions') }}" class="dropdown-item">Contact Solutions</a>
                         </div>
                     </div>
-                    <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact Us</a>
+                    <a href="{{ route('contact.index') }}" class="nav-item nav-link active">Contact Us</a>
                 </div>
             </div>
         </nav>
@@ -344,26 +382,7 @@
     </div>
     <!-- Footer End -->
 
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right
-                        reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
-                    Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Copyright End -->
+
 
 
     <!-- Back to Top -->

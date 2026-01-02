@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+
+/* ================= VARIABLES ================= */
+:root {
+    --red: #99c2ff;
+    --back: #000;
+}
+
+ body {
+        min-height: 100vh;
+        background: url('/img/banner11.jpg') no-repeat center center / cover;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* Glassy blue overlay */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(56, 189, 248, 0.15); /* blue glass tint */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: -1;
+    }
+ /* ================= GALLERY ================= */
+.gallery-section {
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.15);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.gallery-overlay i {
+    font-size: 36px;
+    color: #38bdf8;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Gallery text content */
+.gallery-content {
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.gallery-content h5 {
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: #99c2ff;
+}
+
+.gallery-content p {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #e5e7eb;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* Animate text on hover */
+.gallery-item:hover .gallery-content {
+    transform: translateY(0);
+}
+@media (max-width: 768px) {
+    .gallery-overlay {
+        opacity: 1;
+        background: linear-gradient(
+            to top,
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.25)
+        );
+    }
+
+    .gallery-content {
+        transform: translateY(0);
+    }
+}
+.glassy-modal .modal-content {
+    background: rgba(146, 223, 245, 0.5);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+/* ================= GALLERY HEADING ================= */
+.gallery-heading {
+    display: inline-block;
+    padding: 28px 40px;
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    margin-bottom: 40px;
+}
+
+/* Small title */
+.gallery-heading .section-title-small {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #99c2ff;
+    display: inline-block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Accent underline */
+.gallery-heading .section-title-small::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    margin: 6px auto 0;
+    background: linear-gradient(90deg, #38bdf8, transparent);
+    border-radius: 2px;
+}
+
+/* Main heading */
+.gallery-heading .section-title-main {
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 12px 0 10px;
+}
+
+/* Description */
+.gallery-heading .section-title-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    color: #dbeafe;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery-heading {
+        padding: 22px 20px;
+    }
+
+    .gallery-heading .section-title-main {
+        font-size: 32px;
+    }
+}
+/* ================= GALLERY ACTION BUTTONS ================= */
+
+.gallery-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+/* Show on hover */
+.gallery-item:hover .gallery-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Buttons base */
+.gallery-actions .btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    padding: 0;
+    transition: 0.3s ease;
+}
+
+/* Edit button */
+.btn-edit {
+    background: rgba(56, 189, 248, 0.8);
+}
+
+.btn-edit:hover {
+    background: #38bdf8;
+    transform: scale(1.1);
+}
+
+/* Delete button */
+.btn-delete {
+    background: rgba(239, 68, 68, 0.8);
+}
+
+.btn-delete:hover {
+    background: #ef4444;
+    transform: scale(1.1);
+}
+
+/* Mobile: always visible */
+@media (max-width: 768px) {
+    .gallery-actions {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ================= TWO IMAGE GALLERY ENHANCEMENT ================= */
+
+.gallery-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+/* Base image styles */
+.gallery-image-wrapper img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        filter 0.7s ease;
+}
+
+/* MAIN IMAGE */
+.gallery-image-wrapper .img-main {
+    opacity: 1;
+    z-index: 1;
+    filter: brightness(1) contrast(1);
+}
+
+/* SECOND IMAGE (hidden initially) */
+.gallery-image-wrapper .img-secondary {
+    opacity: 0;
+    z-index: 2;
+    transform: scale(1.08);
+    filter: brightness(1.12) contrast(1.05) saturate(1.05);
+}
+
+/* HOVER EFFECT */
+.gallery-item.has-two-images:hover .img-main {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+.gallery-item.has-two-images:hover .img-secondary {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* Soft glass glow on hover */
+.gallery-item.has-two-images::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(56, 189, 248, 0.15),
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.gallery-item.has-two-images:hover::after {
+    opacity: 1;
+}
+/* FIX overlay visibility */
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+/* Image wrapper stays below overlay */
+.gallery-image-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* Images stay inside wrapper */
+.gallery-image-wrapper img {
+    z-index: 1;
+}
+
+/* Glow layer below text */
+.gallery-item.has-two-images::after {
+    z-index: 2;
+}
+
+/* ================= GALLERY CURVES (USERABOUT STYLE) ================= */
+
+.gallery-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top curve */
+.gallery-top-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 1;
+}
+
+.gallery-top-curve svg {
+    display: block;
+    width: 100%;
+    height: 150px;
+}
+
+/* Bottom curve */
+.gallery-bottom-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 1;
+}
+
+.gallery-bottom-curve svg {
+    display: block;
+    width: 100%;
+    height: 150px;
+}
+
+/* Keep gallery content above curves */
+.gallery-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+    .gallery-top-curve svg,
+    .gallery-bottom-curve svg {
+        height: 100px;
+    }
+}
+
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
+
+    /* Reduce image height */
+    .gallery-item img,
+    .gallery-image-wrapper {
+        height: 200px;
+    }
+
+    /* Disable hover zoom */
+    .gallery-item:hover img {
+        transform: none;
+    }
+
+    /* Disable two-image swap on mobile */
+    .gallery-image-wrapper .img-secondary {
+        display: none;
+    }
+
+    .gallery-image-wrapper .img-main {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    /* Always show overlay */
+    .gallery-overlay {
+        opacity: 1;
+        background: linear-gradient(
+            to top,
+            rgba(15, 23, 42, 0.9),
+            rgba(15, 23, 42, 0.3)
+        );
+        align-items: flex-end;
+        padding-bottom: 12px;
+    }
+
+    /* Text layout */
+    .gallery-content {
+        padding: 12px;
+        transform: none;
+    }
+
+    .gallery-content h5 {
+        font-size: 18px;
+    }
+
+    .gallery-content p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* Action buttons always visible & tappable */
+    .gallery-actions {
+        opacity: 1;
+        transform: none;
+        top: 8px;
+        right: 8px;
+    }
+
+    .gallery-actions .btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    /* Disable glow on mobile */
+    .gallery-item.has-two-images::after {
+        display: none;
+    }
+}

@@ -41,6 +41,7 @@
     /* Change this to any color you want */
 }
 
+
 /*** Button Start ***/
 .btn {
     font-weight: 600;
@@ -1028,8 +1029,9 @@
     position: relative;
     background: url('/img/blury-back.png') center/cover no-repeat;
     backdrop-filter: blur(4px);
-    padding-top: 60px;
-    padding-bottom: 60px;
+
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* SERVICE CARD HOVER UPGRADE */
@@ -1071,7 +1073,7 @@
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: var(--red);
+    color: var(--back);
     position: relative;
     display: inline-block;
 }
@@ -1083,7 +1085,7 @@
     bottom: -6px;
     width: 50%;
     height: 3px;
-    background: var(--red);
+    background: var(--back);
     border-radius: 10px;
 }
 
@@ -1570,21 +1572,86 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
 /*** Offer End ***/
 
 /*** Blog Start ***/
+
+/* SECTION BACKGROUND */
+.blog {
+    background: var(--red);
+    padding: 60px 0;
+}
+
+/* ============================= */
+/* MAIN BLACK GLASS WRAPPER CARD */
+/* ============================= */
+.blog-glass-wrapper {
+    padding: 50px 40px;
+    border-radius: 22px;
+
+    /* Black glass */
+    background: rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 2px solid rgba(0, 0, 0, 0.9);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+/* TEXT COLORS INSIDE BLACK GLASS */
+.blog-glass-wrapper h1,
+.blog-glass-wrapper h4 {
+    color: #ffffff;
+}
+
+.blog-glass-wrapper p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================= */
+/* GLASSY BLUE BLOG CARD */
+/* ============================= */
 .blog .blog-item {
-    border-radius: 10px;
-    background: var(--bs-white);
-    box-shadow: inset 0 0 45px rgba(0, 0, 0, .1);
-    transition: 0.5s;
+    border-radius: 14px;
+    background: rgba(30, 144, 255, 0.18);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 2px solid rgba(0, 0, 0, 0.85);
+
+    box-shadow:
+        0 8px 30px rgba(0, 80, 200, 0.25),
+        inset 0 0 25px rgba(255, 255, 255, 0.15);
+
+    transition: all 0.5s ease;
 }
 
+/* HOVER EFFECT */
+.blog .blog-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(30, 144, 255, 0.28);
+
+    box-shadow:
+        0 15px 45px rgba(0, 80, 200, 0.45),
+        inset 0 0 30px rgba(255, 255, 255, 0.25);
+}
+
+/* TEXT COLORS ON BLUE GLASS */
+.blog .blog-item h4,
+.blog .blog-item h5,
 .blog .blog-item a {
-    transition: 0.5s;
+    color: #ffffff;
 }
 
-.blog .blog-item:hover a:hover {
-    color: var(--bs-primary);
+.blog .blog-item p {
+    color: rgba(255, 255, 255, 0.85);
 }
 
+/* ============================= */
+/* IMAGE STYLES */
+/* ============================= */
 .blog .blog-item .blog-img {
     border-radius: 10px;
     position: relative;
@@ -1599,15 +1666,17 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     transform: scale(1.2);
 }
 
+/* BLUE GLASS OVERLAY */
 .blog .blog-item .blog-img::after {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    inset: 0;
     border-radius: 10px;
-    background: rgba(0, 208, 132, 0.1);
+    background: linear-gradient(
+        135deg,
+        rgba(0, 120, 255, 0.35),
+        rgba(0, 200, 255, 0.15)
+    );
     opacity: 0;
     transition: 0.5s;
     z-index: 1;
@@ -1617,6 +1686,7 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     opacity: 1;
 }
 
+/* IMAGE TITLE BUTTON */
 .blog .blog-item .blog-img .blog-title {
     position: absolute;
     bottom: 25px;
@@ -1625,39 +1695,24 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
 }
 
 .blog .blog-item .blog-img .blog-title a {
-    color: var(--bs-white);
-    background: var(--bs-primary);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.6);
     transition: 0.5s;
 }
 
-.blog .blog-item:hover .blog-img .blog-title a:hover {
-    color: var(--bs-dark);
-}
-
+/* ============================= */
+/* CAROUSEL */
+/* ============================= */
 .blog-carousel .owl-stage-outer {
     margin-top: 58px;
 }
 
-.blog .owl-nav .owl-prev {
-    position: absolute;
-    top: -58px;
-    left: 0;
-    background: var(--bs-primary);
-    color: var(--bs-white);
-    padding: 6px 35px;
-    border-radius: 30px;
-    transition: 0.5s;
-}
-
-.blog .owl-nav .owl-prev:hover {
-    background: var(--bs-dark);
-    color: var(--bs-primary);
-}
-
+.blog .owl-nav .owl-prev,
 .blog .owl-nav .owl-next {
     position: absolute;
     top: -58px;
-    right: 0;
     background: var(--bs-primary);
     color: var(--bs-white);
     padding: 6px 35px;
@@ -1665,25 +1720,161 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     transition: 0.5s;
 }
 
+.blog .owl-nav .owl-prev { left: 0; }
+.blog .owl-nav .owl-next { right: 0; }
+
+.blog .owl-nav .owl-prev:hover,
 .blog .owl-nav .owl-next:hover {
     background: var(--bs-dark);
     color: var(--bs-primary);
 }
 
+/* ============================= */
+/* FILTER BUTTONS */
+/* ============================= */
+.collection-filters .btn {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 5px 14px;
+    font-size: 13px;
+    margin: 3px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.collection-filters .btn:hover {
+    background: var(--back);
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.collection-filters .btn.active {
+    background: var(--back);
+    color: var(--red) !important;
+    border-color: var(--back);
+}
+
 /*** Blog End ***/
-
-
-/*** FAQs Start ***/
-.faq-section .accordion .accordion-item .accordion-header .accordion-button {
-    color: var(--bs-secondary);
+/* ------------------------------------------------ */
+/*** FAQs Glassy Section ***/
+.faq-section {
+    position: relative;
+    background: var(--red);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 2px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.8);
 }
 
-.faq-section .accordion .accordion-item .accordion-header .accordion-button.collapsed {
-    color: var(--bs-dark);
+/* Heading contrast */
+.faq-section h1,
+.faq-section h4,
+.faq-section p {
+    color: #000;
 }
 
-/*** FAQs End ***/
+/*** Accordion Glass Effect ***/
+.faq-section .accordion {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
 
+/* Individual accordion item */
+.faq-section .accordion-item {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+/* Accordion buttons */
+.faq-section .accordion-button {
+    background: rgba(0, 123, 255, 0.12);
+    color: #000;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+}
+
+/* Collapsed state */
+.faq-section .accordion-button.collapsed {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+}
+
+/* Active accordion */
+.faq-section .accordion-button:not(.collapsed) {
+    background: rgba(0, 123, 255, 0.25);
+    color: #000;
+    box-shadow: inset 0 0 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Accordion body */
+.faq-section .accordion-body {
+    background: rgba(255, 255, 255, 0.5);
+    color: #000;
+    backdrop-filter: blur(8px);
+}
+
+/*** Image Glass Frame ***/
+.faq-section .bg-primary {
+    background: rgba(0, 0, 0, 0.35) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    padding: 15px;
+}
+/*** FAQ Accordion Blue Glass Effect ***/
+
+#accordionFlushSection {
+    background: rgba(0, 123, 255, 0.18) !important; /* blue glass */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(0, 0, 0, 0.6); /* black glass border */
+    border-radius: 16px;
+    box-shadow:
+        0 10px 35px rgba(0, 80, 200, 0.35),
+        inset 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+/* Individual accordion items */
+#accordionFlushSection .accordion-item {
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Accordion button (question) */
+#accordionFlushSection .accordion-button {
+    background: rgba(0, 123, 255, 0.25);
+    color: #000;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+/* Collapsed state */
+#accordionFlushSection .accordion-button.collapsed {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+}
+
+/* Active (opened) accordion */
+#accordionFlushSection .accordion-button:not(.collapsed) {
+    background: rgba(0, 123, 255, 0.35);
+    color: #000;
+    box-shadow: inset 0 0 18px rgba(0, 123, 255, 0.45);
+}
+
+/* Accordion body (answer) */
+#accordionFlushSection .accordion-body {
+    background: rgba(255, 255, 255, 0.55);
+    color: #000;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------------------END--------------------------------------------------- */
 /*** Team Start ***/
 .team .team-item {
     position: relative;
@@ -1793,24 +1984,55 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
 /*** Team End ***/
 
 /*** Testimonial Start ***/
+/*** Testimonial – Glassy Black Theme ***/
+
+/* SECTION BACKGROUND */
+.testimonial {
+    background: radial-gradient(
+        circle at top,
+        rgba(40, 40, 40, 0.95),
+        rgba(10, 10, 10, 0.98)
+    );
+    padding: 70px 0;
+}
+
+/* TESTIMONIAL CARD */
 .testimonial .testimonial-item {
     position: relative;
     margin-bottom: 30px;
     padding: 0 25px 25px 25px;
+    border-radius: 16px;
 }
 
+/* GLASSY BLACK CARD BASE */
 .testimonial .testimonial-item::before {
     content: "";
     position: absolute;
-    width: 100%;
-    height: calc(100% - 50px);
-    bottom: 0;
-    left: 0;
-    border-radius: 10px;
-    background: var(--bs-light);
+    inset: 0;
+    border-radius: 16px;
+
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.6),
+        inset 0 0 25px rgba(255, 255, 255, 0.05);
+
     z-index: -1;
+    transition: 0.4s ease;
 }
 
+/* HOVER GLOW */
+.testimonial .testimonial-item:hover::before {
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.9),
+        inset 0 0 35px rgba(255, 255, 255, 0.08);
+}
+
+/* IMAGE */
 .testimonial .testimonial-item .testimonial-img {
     display: flex;
     justify-content: center;
@@ -1820,30 +2042,44 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     width: 100px;
     height: 100px;
     border-radius: 100px;
-    border: 5px solid var(--bs-light);
-    border-style: double;
-    background: var(--bs-white);
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    background: #000;
 }
 
+/* TEXT */
 .testimonial .testimonial-item .testimonial-text {
     padding: 25px 0;
     text-align: center;
+    color: rgba(255, 255, 255, 0.85);
 }
 
-.testimonial .testimonial-item .testimonial-title {
-    display: flex;
-    justify-content: space-between;
+.testimonial .testimonial-item h4,
+.testimonial .testimonial-item p {
+    color: #ffffff !important;
+}
+/* TESTIMONIAL HEADER TEXT WHITE */
+.testimonial .text-center h1,
+.testimonial .text-center p {
+    color: #ffffff !important;
 }
 
+/* QUOTE ICONS */
+.testimonial .testimonial-item .testimonial-quote-left,
+.testimonial .testimonial-item .testimonial-quote-right {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--bs-primary);
+}
+
+/* POSITIONING */
 .testimonial .testimonial-item .testimonial-quote-left {
     position: absolute;
-    width: 60px;
-    height: 60px;
     top: 20px;
     left: 25px;
-    border-radius: 60px;
-    color: var(--bs-primary);
-    background: var(--bs-white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1851,111 +2087,47 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
 
 .testimonial .testimonial-item .testimonial-quote-right {
     position: absolute;
-    width: 60px;
-    height: 60px;
     bottom: -30px;
     right: 25px;
-    margin-top: -5px;
-    border-radius: 60px;
-    color: var(--bs-primary);
-    background: var(--bs-white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.testimonial-carousel .owl-stage-outer {
-    margin-top: 58px;
-    margin-right: -1px;
-}
-
-.testimonial .owl-nav .owl-prev {
-    position: absolute;
-    top: -58px;
-    left: 0;
-    background: var(--bs-primary);
-    color: var(--bs-white);
-    padding: 5px 30px;
-    border-radius: 30px;
-    transition: 0.5s;
-}
-
-.testimonial .owl-nav .owl-prev:hover {
-    background: var(--bs-secondary);
-    color: var(--bs-white);
-}
-
+/* NAV BUTTONS */
+.testimonial .owl-nav .owl-prev,
 .testimonial .owl-nav .owl-next {
-    position: absolute;
-    top: -58px;
-    right: 0;
-    background: var(--bs-primary);
-    color: var(--bs-white);
-    padding: 5px 30px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 32px;
     border-radius: 30px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
+.testimonial .owl-nav .owl-prev:hover,
 .testimonial .owl-nav .owl-next:hover {
-    background: var(--bs-secondary);
-    color: var(--bs-white);
-}
-
-.testimonial-carousel .owl-dots {
-    display: flex;
-    justify-content: center;
-}
-
-.testimonial-carousel .owl-dots .owl-dot {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    margin: 20px 10px 0 10px;
     background: var(--bs-primary);
-    transition: 0.5s;
+    color: #fff;
+}
+
+/* DOTS */
+.testimonial-carousel .owl-dots .owl-dot {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .testimonial-carousel .owl-dots .owl-dot.active {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    background: var(--bs-secondary);
-    transition: 0.5s;
-}
-
-.testimonial-carousel .owl-dots .owl-dot span {
-    position: relative;
-    margin-top: 50%;
-    margin-left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.testimonial-carousel .owl-dots .owl-dot.active span::after {
     background: var(--bs-primary);
 }
 
 .testimonial-carousel .owl-dots .owl-dot span::after {
-    content: "";
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: var(--bs-white);
-    transition: 0.5s;
+    background: #fff;
 }
 
-/*** Testimonial End ***/
 
 /*** Footer Start ***/
 .footer {
@@ -2266,9 +2438,6 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     transform: translateY(-2px);
 }
 
-
-
-
 /* Ensure content stays above the wave */
 .our-story-section .container,
 .our-story-section .about-collage {
@@ -2361,89 +2530,155 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     transform: scale(1.08) translateY(-12px) rotate(0deg) !important;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
+/* ================================
+   BLUE GLASSY CARD FOR
+   OUR STORY TEXT CONTENT
+================================ */
+
+/* Target only the TEXT column inside Our Story */
+.our-story-section .col-xl-7 {
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 80, 200, 0.45),
+        rgba(0, 140, 255, 0.25)
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    padding: 45px 40px;
+    border-radius: 22px;
+
+    border: 1.5px solid rgba(0, 0, 0, 0.65);
+    box-shadow: 0 25px 55px rgba(0, 60, 140, 0.45);
+
+    z-index: 3;
+}
+
+/* Glass border glow */
+.our-story-section .col-xl-7::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(0, 120, 255, 0.4)
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+}
+
+/* Improve text contrast inside glass */
+.our-story-section .ourstory-title {
+    color: #ffffff;
+}
+
+.our-story-section .ourstory-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* CTA highlight */
+.our-story-section .ourstory-link {
+    color: #ffffff;
+}
+
+.our-story-section .ourstory-link:hover {
+    color: var(--red);
+    border-bottom-color: var(--red);
+}
+
+/* Responsive polish */
+@media (max-width: 768px) {
+    .our-story-section .col-xl-7 {
+        padding: 35px 25px;
+        border-radius: 18px;
+    }
+}
+/* ================================
+   PURE CSS BLACK WAVES
+   (TOP & BOTTOM – FULL WIDTH)
+================================ */
+
+.our-story-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top wave */
+.our-story-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: #000;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 55%,
+        85% 70%,
+        70% 45%,
+        55% 60%,
+        40% 30%,
+        25% 55%,
+        10% 40%,
+        0 65%
+    );
+    z-index: 1;
+}
+
+/* Bottom wave */
+.our-story-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: #000;
+    clip-path: polygon(
+        0 45%,
+        15% 30%,
+        30% 55%,
+        45% 35%,
+        60% 65%,
+        75% 45%,
+        90% 60%,
+        100% 40%,
+        100% 100%,
+        0 100%
+    );
+    z-index: 1;
+}
+
+/* Keep content above waves */
+.our-story-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .our-story-section::before,
+    .our-story-section::after {
+        height: 80px;
+    }
+}
+
 /*** Service Start ***/
 
-
-/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
-.collection-section {
-    background: var(--red);
-}
-
-.card-product {
-    background: rgba(255, 255, 255, 0.15); /* transparent white */
-    backdrop-filter: blur(10px) saturate(180%); /* glass effect */
-    -webkit-backdrop-filter: blur(10px) saturate(180%);
-    
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* soft glass border */
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-    padding: 15px;
-}
-
-.card-product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.card-product img {
-    object-fit: cover;
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-}
-
-.product-title {
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.product-price {
-    font-size: 1.1rem;
-    color: #ff4d4f;
-    margin-bottom: 10px;
-}
-.collection-filters .btn {
-    background: transparent;
-    color: black;
-    border: 2px solid black;
-
-    /* ↓ Smaller size */
-    padding: 5px 14px;  
-    font-size: 13px;    
-    margin: 3px;
-
-    transition: all 0.3s ease;
-    font-weight: 600;
-
-    /* ↓ Smaller radius */
-    border-radius: 6px;
-}
-
-/* Hover */
-.collection-filters .btn:hover {
-    background: var(--back);
-    color: var(--red);
-    border-color: var(--red);
-}
-
-/* Active */
-.collection-filters .btn.active {
-    background: var(--back);
-    color: var(--red) !important;
-    border-color: var(--back);
-}
 
 /* Contact section glassy background */
 .contact {
     position: relative;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.15),
-        rgba(255, 255, 255, 0.05)
-    );
+    background: linear-gradient(135deg, #a4c7ea, #46586a);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -2550,4 +2785,537 @@ BRAND NAME REVEAL ON HOVER (NEWLY ADDED)
     word-break: break-word;    
     overflow-wrap: anywhere;  
     color: #fff;
+}
+
+/*-------------- SOCIAL MEDIA LINKS--------------------- */
+/* Floating Social Icons */
+.dashboard-floating-icons {
+    position: fixed;
+    bottom: 80px;
+    right: 2px;
+    z-index: 1050;
+}
+
+/* Icon links */
+.social-float {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Icons */
+.social-float i {
+    font-size: 28px;
+}
+
+/* WhatsApp */
+.social-float.whatsapp i {
+    color: #fff;
+    background-color: #25D366;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;      /* centers icon vertically */
+    text-align: center;    /* centers icon horizontally */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+.social-float.instagram i {
+    color: #fff;
+    background-color: #E1306C;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;      /* centers icon vertically */
+    text-align: center;    /* centers icon horizontally */
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+/* ================= CHATBOT CONTAINER ================= */
+
+#chatbotBox {
+    position: fixed;
+    bottom: 140px;
+    right: 20px;
+    width: 320px;
+    max-height: 480px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    z-index: 1100;
+    overflow: hidden;
+    animation: chatbotFadeIn 0.3s ease;
+}
+
+@keyframes chatbotFadeIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ================= HEADER ================= */
+
+.chatbot-header {
+    background: linear-gradient(135deg, var(--red), #b30000);
+    color: #fff;
+    padding: 14px 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.chatbot-header span {
+    cursor: pointer;
+    font-size: 22px;
+    opacity: 0.85;
+}
+
+.chatbot-header span:hover {
+    opacity: 1;
+}
+
+/* ================= BODY ================= */
+
+.chatbot-body {
+    flex: 1;
+    padding: 14px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    background: #fafafa;
+}
+
+/* ================= FOOTER ================= */
+
+.chatbot-footer {
+    padding: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 8px;
+    background: #fff;
+}
+
+.chatbot-footer input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 10px 14px;
+    font-size: 14px;
+    outline: none;
+}
+
+.chatbot-footer input:focus {
+    border-color: var(--red);
+}
+
+/* ================= FOOTER BUTTON (SEND) ================= */
+
+.chatbot-footer button {
+    background: linear-gradient(135deg, #ff4d4d, #b30000);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+    font-size: 16px;
+}
+
+.chatbot-footer button:hover {
+    background: linear-gradient(135deg, #ff6666, #cc0000);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-footer button:active {
+    transform: translateY(0) scale(0.95);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: icon inside button */
+.chatbot-footer button i {
+    font-size: 18px;
+    pointer-events: none;
+}
+
+/* ================= MESSAGES ================= */
+
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.message.bot {
+    background: #f1f3f5;
+    color: #333;
+    align-self: flex-start;
+    border-top-left-radius: 4px;
+}
+
+.message.user {
+    background: var(--red);
+    color: #fff;
+    align-self: flex-end;
+    border-top-right-radius: 4px;
+}
+
+/* ================= BOT OPTIONS ================= */
+
+.bot-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bot-options button {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: var(--red);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.bot-options button:hover {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+}
+
+/* ================= TYPING INDICATOR ================= */
+
+.message.typing {
+    background: #f1f3f5;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 16px;
+}
+
+.message.typing .dot {
+    width: 6px;
+    height: 6px;
+    margin-right: 4px;
+    background: #999;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1.4s infinite both;
+}
+
+@keyframes blink {
+    0% { opacity: 0.3; }
+    20% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+    #chatbotBox {
+        width: 92%;
+        right: 4%;
+        bottom: 90px;
+    }
+}
+/* ===================GET IN TOUCH=============== */
+
+/* ---------- Glassy Blue Modal ---------- */
+.modal-content {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 120, 255, 0.25),
+    rgba(0, 180, 255, 0.15)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 50px rgba(0, 60, 120, 0.35);
+}
+
+/* Header */
+.modal-header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 90, 200, 0.85),
+    rgba(0, 160, 255, 0.85)
+  );
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+/* ---------- Glass Cards ---------- */
+.contact-info-box,
+.contact-form-box {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 12px 30px rgba(0, 80, 160, 0.25);
+  color: #fff;
+}
+
+/* Headings */
+.contact-info-box h6,
+.modal-title {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Text */
+.contact-info-box p,
+.contact-info-box a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+
+.contact-info-box a:hover {
+  color: #ffffff;
+}
+
+/* Icons */
+.contact-icon {
+  font-size: 22px;
+  color: #9fe4ff;
+  margin-right: 15px;
+  margin-top: 4px;
+  min-width: 30px;
+}
+
+/* ---------- Form Fields ---------- */
+.contact-form-box .form-control {
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.contact-form-box .form-control::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.contact-form-box .form-control:focus {
+  background: rgba(255,255,255,0.3);
+  border-color: #9fe4ff;
+  box-shadow: 0 0 0 0.2rem rgba(159, 228, 255, 0.3);
+}
+
+/* ---------- Button ---------- */
+.contact-form-box button {
+  border-radius: 30px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00b4ff, #007bff);
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 120, 255, 0.5);
+}
+
+.contact-form-box button:hover {
+  background: linear-gradient(135deg, #007bff, #0056d2);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .contact-info-box,
+  .contact-form-box {
+    padding: 20px;
+  }
+}
+/* Contact item blocks */
+.contact-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 80, 160, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 120, 255, 0.35);
+}
+
+/* Icon alignment inside block */
+.contact-item .contact-icon {
+  margin-top: 4px;
+}
+/* ---------------------END------------------------ */
+
+/* LOCATION SECTION */
+.location {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 123, 255, 0.15),
+        rgba(0, 0, 0, 0.45)
+    );
+    backdrop-filter: blur(12px);
+}
+
+/* GLASS CARD */
+.location-glass {
+    background: rgba(0, 123, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* IMAGE GLASS */
+.location-image {
+    background: rgba(0, 123, 255, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+/* ICONS BLACK */
+.location i {
+    color: #000000 !important;
+}
+
+/* TEXT COLORS */
+.location h1 {
+    color: #000 !important;
+}
+
+.location .d-flex h4 {
+    color: #000 !important;
+}
+
+.location p {
+    color: #000 !important;
+}
+
+/* BUTTON HOVER */
+.location .btn-outline-light:hover {
+    background: #000 !important;
+    color: #0d6efd;
+}
+/* Image wrapper */
+.location-image {
+    background: rgba(0, 123, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Image */
+.location-map {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block; /* prevents bottom gap */
+}
+
+/* Floating Lottie Button */
+.map-lottie-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
+
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.4);
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.map-lottie-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Prevent iframe from adding layout height */
+.map-lottie-btn iframe {
+    width: 40px;
+    height: 40px;
+    border: none;
+    pointer-events: none;
+    display: block;
+}
+
+/* ---------SERVICES-------------- */
+:root {
+    --curve-black: #000000;
+}
+
+/* SERVICES SECTION */
+.service {
+    
+    position: relative;
+    z-index: 2;
+}
+
+
+.services-top-curve,
+.services-bottom-curve {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    line-height: 0;
+    overflow: hidden;
+}
+
+.services-top-curve svg,
+.services-bottom-curve svg {
+    width: 100%;
+    height: 120px;
+    display: block;
+}
+
+
+
+/* REMOVE HAIRLINE GAPS */
+.services-top-curve {
+    margin-bottom: -1px;
+}
+
+.services-bottom-curve {
+    margin-top: -1px;
+}
+
+
+.py-5 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.service-inner {
+    padding-top: 90px;
+    padding-bottom: 90px;
 }

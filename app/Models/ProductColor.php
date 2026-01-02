@@ -18,4 +18,5 @@ class ProductColor extends Model
             'collection_product_color'
         );
     }
+    
 }

@@ -1,0 +1,496 @@
+/* Floating Social Icons */
+.floating-social-icons {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  transition: all 0.4s ease;
+}
+
+/* Icon Styles */
+.floating-social-icons a {
+  width: 50px;
+  height: 50px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.floating-social-icons a:nth-child(2) {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+/* Mobile Toggle Button */
+.mobile-social-toggle {
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: #dfa667;
+  color: #000;
+  border-radius: 50%;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+}
+
+/* Hidden on mobile initially */
+.mobile-collapsed {
+  transform: translateY(80px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Shown after click */
+.mobile-expanded {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Rotate toggle */
+.mobile-social-toggle.active {
+  transform: rotate(180deg);
+}
+
+/* Mobile-only rules */
+@media (max-width: 768px) {
+
+  /* Hide main icons by default on mobile */
+  .floating-social-icons {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Show toggle button */
+  .mobile-social-toggle {
+    display: flex !important;
+  }
+
+  /* When expanded, icons appear above toggle */
+  .floating-social-icons.mobile-expanded {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    bottom: 200px !important;
+  }
+}
+
+/* --- Chat Icon --- */
+.chat-icon {
+  cursor: pointer;
+  position: fixed;
+  bottom: 240px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  /* overflow: hidden;  */
+}
+
+.chat-icon:hover {
+  transform: scale(1.1);
+  /* overflow: hidden;  */
+}
+
+#chatIcon iframe {
+  pointer-events: none;
+  width: 130%;
+  height: 130%;
+  transform: translate(-10%, -10%);
+  border: none;
+}
+
+/* --- Background Overlay (optional) --- */
+.chat-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* --- Chat Modal --- */
+.chat-modal {
+  display: none;
+  position: fixed;
+  bottom: 150px;
+  right: 80px;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.chat-modal-content {
+  background: #fff;
+  border-radius: 15px;
+  width: 350px;
+  height: 480px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-in-out;
+  position: relative;
+}
+
+/* --- Close Button --- */
+.chat-close {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.chat-close:hover {
+  color: #000;
+}
+
+/* --- Chat Body --- */
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  padding: 20px;
+}
+
+/* --- Messages Container --- */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Messages --- */
+.message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 15px;
+  animation: fadeIn 0.4s ease-in-out;
+  word-wrap: break-word;
+}
+
+/* --- Bot & User Messages --- */
+.message.bot {
+  background: #f1f1f1;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+}
+
+.message.user {
+  background: #dfa667;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+/* --- Input Area --- */
+.chat-input-area {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  background: #f7f7f7;
+  outline: none;
+}
+
+.chat-input-area button {
+  background: #dfa667;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chat-input-area button:hover {
+  background: #c78c45;
+}
+
+/* --- Typing Dots --- */
+.typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #dfa667;
+  border-radius: 50%;
+  animation: blink 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* --- Quick Buttons --- */
+.bot-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.opt-btn {
+  background: #dfa667;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.opt-btn:hover {
+  background: #c78c45;
+}
+
+/* --- Links --- */
+.message.bot a {
+  color: #dfa667;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.message.bot a:hover {
+  text-decoration: underline;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =======================================
+   MOBILE RESPONSIVE FIXED CHATBOT ICON
+======================================= */
+@media (max-width: 768px) {
+  .chat-icon {
+    bottom: 60px;
+    left: 250px;
+    width: 60px;
+    height: 60px;
+    /* overflow: hidden;  */
+  }
+
+  .chat-modal {
+    bottom: 110px;
+    left: 10px;
+  }
+
+  .chat-modal-content {
+    width: 90vw;
+    height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  #chatIcon iframe {
+    width: 160%;
+    height: 160%;
+    transform: translate(-18%, -18%);
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-icon.mobile-collapsed {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(80px);
+  }
+
+  .chat-icon.mobile-expanded {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0);
+    bottom: 165px !important;
+    /* matches social icons */
+  }
+}
+ .chat-modal {
+        bottom: 20px !important;
+    }
+
+    .chat-modal-content {
+        height: 75vh !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-body {
+        flex: 1;
+        padding: 10px !important;
+        margin: 0 !important;
+    }
+
+    .chat-messages {
+        flex: 1;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .chat-input-area {
+        flex-shrink: 0 !important;
+        padding: 6px 0 !important;
+        margin: 0 !important;
+        background: #fff;
+    }
+
+    .chat-input-area input {
+        flex: 1;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .chat-input-area button {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+/* ---- DESKTOP (default) ---- */
+/* Show desktop chat icon */
+#chatIcon {
+  display: block;
+}
+
+/* Hide mobile version on desktop */
+.chat-icon.mobile-collapsed {
+  display: none;
+}
+
+
+/* ---- MOBILE ---- */
+@media (max-width: 768px) {
+
+  /* Hide desktop chat icon */
+  #chatIcon {
+    display: none !important;
+  }
+
+
+    /* Mobile chat icon collapsed - place it BELOW social toggle */
+    .chat-icon.mobile-collapsed {
+        display: block !important;
+        opacity: 1;
+        pointer-events: auto;
+        bottom: 40px !important;  /* LOWER position */
+        right: 20px !important;
+        transform: translateY(0) !important;
+    }
+
+    /* Mobile chat icon when expanded - still BELOW icons */
+    .chat-icon.mobile-expanded {
+        display: block !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        bottom: 40px !important; /* KEEP SAME FOR EXPANDED */
+        right: 20px !important;
+    }
+ 
+}
+
+/* --- FIX: Make mobile chat icon follow social toggle --- */
+@media (max-width: 768px) {
+
+  /* Hide chat icon when social icons are collapsed */
+  .mobile-collapsed.chat-icon {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(80px) !important;
+  }
+
+  /* Show chat icon only when mobile menu expands */
+  .mobile-expanded.chat-icon {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+    bottom: 165px !important;
+    right: 20px !important;
+  }
+}
+
+#mobileChatIcon iframe {
+    pointer-events: none;
+}

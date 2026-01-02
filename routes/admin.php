@@ -52,5 +52,7 @@ Route::name('admin.')->group(function () {
 
       Route::resource('solution', LensSolutionController::class);
 
+      Route::resource('review', ReviewController::class);
+
      });
 });

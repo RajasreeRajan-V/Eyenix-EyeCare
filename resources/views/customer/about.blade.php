@@ -1,451 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>Stocker - Stock Market Website Template</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+<head>
+    <meta charset="utf-8">
+    <title>Eyenix Eye Care - Eye Opticals</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"> 
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
 
-        <!-- Icon Font Stylesheet -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        <!-- Libraries Stylesheet -->
-        <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
-        <!-- Template Stylesheet -->
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    </head>
+    <!-- Template Stylesheet -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/userabout.css') }}" rel="stylesheet">
+</head>
 
-    <body>
+<body>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-        <!-- Spinner End -->
+    </div>
+    <!-- Spinner End -->
 
-        <!-- Topbar Start -->
-        <div class="container-fluid topbar bg-light px-5 d-none d-lg-block">
-            <div class="row gx-0 align-items-center">
-                <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-flex flex-wrap">
-                        <a href="#" class="text-muted small me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
-                        <a href="tel:+01234567890" class="text-muted small me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                        <a href="mailto:example@gmail.com" class="text-muted small me-0"><i class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
+        <!-- Floating Icons -->
+    <div class="dashboard-floating-icons">
+
+        <!-- Chatbot Toggle (Lottie) -->
+        <div id="chatbotToggle" style="cursor:pointer; text-align:center;">
+            <iframe src="https://lottie.host/embed/ff037b49-d0e1-44b7-87e3-284e9fc8b20e/VN5anB14ce.lottie"
+                style="width:120px;height:120px;border:none;pointer-events:none;">
+            </iframe>
+        </div>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/9961667111" target="_blank" class="social-float whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/eyenix_eye_care?igsh=N3NrY3p4ejMxZjdq" target="_blank"
+            class="social-float instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+    </div>
+
+    <!-- Chatbot Box -->
+    <div id="chatbotBox" style="display:none;">
+        <div class="chatbot-header">
+            Chat Support
+            <span id="closeChatbot">&times;</span>
+        </div>
+
+        <div class="chatbot-body" id="chatMessages"></div>
+
+        <div class="chatbot-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
+                <!-- <img src="{{ asset('img/logo.png') }}" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="{{ route('dashboard') }}" class="nav-item nav-link">Home</a>
+                    <a href="{{ route('about') }}" class="nav-item nav-link active">About</a>
+                    <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
+                    <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
+                    <a href="{{ route('eyecamp') }}" class="nav-item nav-link">EyeCampaign</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                            <span class="dropdown-toggle">Our Products</span>
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a href="{{ route('eyeglass') }}" class="dropdown-item">Eye glasses</a>
+                            <a href="{{ route('sunglass') }}" class="dropdown-item">Sun glasses</a>
+                            <a href="{{ route('contactlens') }}" class="dropdown-item">Contact Lens</a>
+                            <a href="{{ route('contactlens.solutions') }}" class="dropdown-item">Contact Solutions</a>
+                        </div>
                     </div>
+                    <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small></a>
-                        <a href="#"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> My Dashboard</small></a>
-                            <div class="dropdown-menu rounded">
-                                <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> My Profile</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i> Inbox</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i> Notifications</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i> Account Settings</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i> Log Out</a>
-                            </div>
+            </div>
+        </nav>
+
+    </div>
+    <!-- Navbar & Hero End -->
+
+
+
+    <div class="container-fluid userAbout pt-0 pb-0 position-relative">
+        <div class="userAbout-top-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+                <path d="M0,50 C360,150 1080,0 1440,100 L1440,0 L0,0 Z" fill="var(--back)"></path>
+            </svg>
+        </div>
+
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+
+                <!-- TEXT COLUMN -->
+                <div class="col-xl-6 fadeInLeft wow glassy-userAbout" data-wow-delay="0.2s">
+                    <h4>About Us</h4>
+                    <h1>{{ $about->title ?? 'Eyenix Eye Care' }}</h1>
+                    <p>
+                        {!! nl2br(e($about->description)) !!}
+                    </p>
+                </div>
+
+                <!-- IMAGE COLUMN -->
+                <div class="col-xl-6 col-lg-6 col-md-12 userAbout-left-wrapper position-relative"
+                    data-wow-delay="200ms">
+                    <div class="about-spec-frame">
+                        <div class="spin-wrapper">
+                            <img src="{{ asset('storage/' . $about->spectacle_image) }}" alt="Spectacle Image">
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        <!-- Topbar End -->
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
-                    <!-- <img src="{{ asset('img/logo.png') }}" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link active">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="blog.html" class="nav-item nav-link">Blogs</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                                <span class="dropdown-toggle">Pages</span>
-                            </a>
-                            <div class="dropdown-menu m-0">
-                                <a href="feature.html" class="dropdown-item">Our Features</a>
-                                <a href="team.html" class="dropdown-item">Our team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="offer.html" class="dropdown-item">Our offer</a>
-                                <a href="FAQ.html" class="dropdown-item">FAQs</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                    </div>
-                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
-                </div>
-            </nav>
-
-            <!-- Header Start -->
-            <div class="container-fluid bg-breadcrumb">
-                <div class="container text-center py-5" style="max-width: 900px;">
-                    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
-                    <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active text-primary">About</li>
-                    </ol>    
-                </div>
-            </div>
-            <!-- Header End -->
+        <div class="userAbout-curve">
+            <svg viewBox="0 0 1440 150" preserveAspectRatio="none" style="display:block; width:100%; height:150px;">
+                <path d="M0,100 C360,0 1080,150 1440,50 L1440,150 L0,150 Z" fill="var(--back)"></path>
+            </svg>
         </div>
-        <!-- Navbar & Hero End -->
+    </div>
 
+    <!-- About Start -->
+    <div class="container-fluid userAbout-about" style="background-color: var(--red);">
 
-        <!-- Abvout Start -->
-        <div class="container-fluid about py-5">
-            <div class="container py-5">
+        <div class="container">
+            <div class="glass-card py-5">
                 <div class="row g-5 align-items-center">
+
+                    <!-- LEFT CONTENT -->
                     <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
                         <div>
-                            <h4 class="text-primary">About Us</h4>
-                            <h1 class="display-5 mb-4">Meet our company unless miss the opportunity</h1>
-                            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum velit temporibus repudiandae ipsa, eaque perspiciatis cumque incidunt tenetur sequi reiciendis.
+                            <h4 class="text-primary">About Eyenix Eye Care</h4>
+                            <h1 class="display-5 mb-4 text-white">
+                                Where Advanced Eye Care Meets Trusted Vision Solutions
+                            </h1>
+
+                            <p class="mb-4 text-light">
+                                <strong>Eyenix Eye Care</strong> is a modern optical and eye care center located at
+                                <strong>San, Jos River View Complex, Near Bank of Baroda, Tanthode, Iritty, Kerala –
+                                    670703</strong>.
+                                We are dedicated to providing accurate eye testing, quality eyewear, and professional
+                                vision care for all age groups.
                             </p>
+
                             <div class="row g-4">
-                                <div class="col-md-6 col-lg-6 col-xl-6">
+
+                                <!-- Location -->
+                                <div class="col-md-6">
                                     <div class="d-flex">
-                                        <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                        <i class="fas fa-map-marker-alt fa-3x text-primary"></i>
                                         <div class="ms-4">
-                                            <h4>Business Consuluting</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                            <h4 class="text-white">Where We Are Located</h4>
+                                            <p class="text-white">
+                                                {!! nl2br(e($about->location)) !!}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-6 col-xl-6">
+
+                                <!-- Services -->
+                                <div class="col-md-6">
                                     <div class="d-flex">
-                                        <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                        <i class="fas fa-eye fa-3x text-primary"></i>
                                         <div class="ms-4">
-                                            <h4>Year Of Expertise</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                            <h4 class="text-white">What We Do</h4>
+                                            <p class="text-white">
+                                                {!! nl2br(e($about->what_we_do)) !!}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Button -->
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover Now</a>
+                                    <a href="#" class="btn btn-primary rounded-pill py-3 px-5">
+                                        Explore Our Services
+                                    </a>
                                 </div>
+
+                                <!-- Call -->
                                 <div class="col-sm-6">
                                     <div class="d-flex">
                                         <i class="fas fa-phone-alt fa-2x text-primary me-4"></i>
                                         <div>
-                                            <h4>Call Us</h4>
-                                            <p class="mb-0 fs-5" style="letter-spacing: 1px;">+01234567890</p>
+                                            <h4 class="text-white">Call Us</h4>
+                                            <p class="mb-0 fs-5">+91 {{ $about->phone }}</p>
                                         </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT IMAGE -->
+                    <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="image-glass">
+                            <img src="{{ asset('storage/' . $about->shop_image) }}" class="img-fluid rounded w-100"
+                                alt="Eyenix Eye Care">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+
+    <!-- Features Start -->
+    <div class="container-fluid feature pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow " data-wow-delay="0.2s" style="max-width: 800px;">
+                <br>
+                <h4 class="text-abcd section-title-small">Our Services</h4>
+                <h1 class="display-5 mb-4 section-title-main">See the Difference: Comprehensive Services for Your Best
+                    Vision.</h1>
+                <p class="mb-0 section-title-text">
+                    At Eyenix Eye Care, we offer a complete range of modern vision solutions, from precise digital eye
+                    exams to the latest in eyewear fashion. We connect you with the right technology and products to
+                    ensure clarity, comfort, and style.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="feature-item p-4">
+                        <div class="feature-icon p-4 mb-4">
+                            <i class="fas fa-chart-line fa-4x text-primary"></i>
+                        </div>
+                        <h4>Global Management</h4>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
+                            pariatur...
+                        </p>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="feature-item p-4">
+                        <div class="feature-icon p-4 mb-4">
+                            <i class="fas fa-university fa-4x text-primary"></i>
+                        </div>
+                        <h4>Corporate Banking</h4>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
+                            pariatur...
+                        </p>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="feature-item p-4">
+                        <div class="feature-icon p-4 mb-4">
+                            <i class="fas fa-file-alt fa-4x text-primary"></i>
+                        </div>
+                        <h4>Asset Management</h4>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
+                            pariatur...
+                        </p>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="feature-item p-4">
+                        <div class="feature-icon p-4 mb-4">
+                            <i class="fas fa-hand-holding-usd fa-4x text-primary"></i>
+                        </div>
+                        <h4>Investment Bank</h4>
+                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
+                            pariatur...
+                        </p>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+    <!-- Location Start -->
+    <div class="container-fluid location py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+
+                <!-- CONTENT -->
+                <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="location-glass p-5 rounded">
+                        <h4 class="text-dcba">Our Location</h4>
+                        <h1 class="display-5 mb-4 text-white">
+                            Visit Our Vision Care Center
+                        </h1>
+                        <p class="mb-4 text-light">
+                            Experience professional eye care, premium eyewear, and expert consultation
+                            at our conveniently located vision care center.
+                        </p>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div><i class="fas fa-map-marker-alt fa-3x text-info"></i></div>
+                                    <div class="ms-4">
+                                        <h4 class="text-white">Easy Access</h4>
+                                        <p class="text-light">
+                                            Centrally located with hassle-free parking and accessibility.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div><i class="fas fa-clinic-medical fa-3x text-info"></i></div>
+                                    <div class="ms-4">
+                                        <h4 class="text-white">Modern Facility</h4>
+                                        <p class="text-light">
+                                            Equipped with advanced eye testing and care technology.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-phone-alt fa-2x text-info me-4"></i>
+                                    <div>
+                                        <h4 class="text-white">Call Us</h4>
+                                        <p class="mb-0 fs-5 text-light" style="letter-spacing: 1px;">
+                                            +91 98765 43210
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
-                        <div class="bg-primary rounded position-relative overflow-hidden">
-                            <img src="{{ asset('img/about-2.png') }}" class="img-fluid rounded w-100" alt="">
-                            
-                            <div class="" style="position: absolute; top: -15px; right: -15px;">
-                                <img src="{{ asset('img/about-3.png') }}" class="img-fluid" style="width: 150px; height: 150px; opacity: 0.7;" alt="">
-                            </div>
-                            <div class="" style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
-                                <img src="{{ asset('img/about-4.png') }}" class="img-fluid" style="width: 100px; height: 150px; opacity: 0.9;" alt="">
-                            </div>
-                            <div class="rounded-bottom">
-                                <img src="{{ asset('img/about-5.jpg') }}" class="img-fluid rounded-bottom w-100" alt="">
-                            </div>
-                        </div>
+                </div>
+
+                <!-- IMAGE -->
+                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="location-image bg-info rounded position-relative overflow-hidden">
+                        <img src="{{ asset('img/indian-map.png') }}" class="img-fluid rounded" alt="Location"
+                            style="height:500px; width:100%; object-fit:cover;">
+
+
+                        <!-- Lottie Button -->
+                        <a class="map-lottie-btn" data-bs-toggle="modal" data-bs-target="#mapModal">
+                            <iframe
+                                src="https://lottie.host/embed/4caa8060-f9ea-4155-9164-5f5370f9fbd3/sFSlXwZNf6.lottie"
+                                style="width:50px;height:50px;border:none;pointer-events:none;">
+                            </iframe>
+                        </a>
                     </div>
                 </div>
+
+
             </div>
         </div>
-        <!-- About End -->
+    </div>
+    <!-- Location End -->
+    <div class="modal fade" id="mapModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded-4 overflow-hidden">
 
-        <!-- Features Start -->
-        <div class="container-fluid feature pb-5">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Our Features</h4>
-                    <h1 class="display-5 mb-4">Connecting businesses, ideas, and people for greater impact.</h1>
-                    <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
-                    </p>
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Eyenix Eye Care – Iritty</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="feature-item p-4">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fas fa-chart-line fa-4x text-primary"></i>
-                            </div>
-                            <h4>Global Management</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit pariatur...
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="feature-item p-4">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fas fa-university fa-4x text-primary"></i>
-                            </div>
-                            <h4>Corporate Banking</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit pariatur...
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="feature-item p-4">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fas fa-file-alt fa-4x text-primary"></i>
-                            </div>
-                            <h4>Asset Management</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit pariatur...
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="feature-item p-4">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fas fa-hand-holding-usd fa-4x text-primary"></i>
-                            </div>
-                            <h4>Investment Bank</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit pariatur...
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
+
+                <div class="modal-body p-0">
+                    <iframe src="https://www.google.com/maps?q=Eyenix+Eye+Care+Iritty+Kerala&output=embed" width="100%"
+                        height="450" style="border:0;" loading="lazy">
+                    </iframe>
                 </div>
+
             </div>
         </div>
-        <!-- Features End -->
+    </div>
 
-        <!-- Team Start -->
-        <div class="container-fluid team pb-5">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Our Team</h4>
-                    <h1 class="display-5 mb-4">Meet Our Advisers</h1>
-                    <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
-                    </p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{ asset('img/team-1.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="team-title">
-                                <h4 class="mb-0">David James</h4>
-                                <p class="mb-0">Profession</p>
-                            </div>
-                            <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{ asset('img/team-2.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="team-title">
-                                <h4 class="mb-0">David James</h4>
-                                <p class="mb-0">Profession</p>
-                            </div>
-                            <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{ asset('img/team-3.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="team-title">
-                                <h4 class="mb-0">David James</h4>
-                                <p class="mb-0">Profession</p>
-                            </div>
-                            <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{ asset('img/team-4.jpg') }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="team-title">
-                                <h4 class="mb-0">David James</h4>
-                                <p class="mb-0">Profession</p>
-                            </div>
-                            <div class="team-icon">
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team End -->
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5 border-start-0 border-end-0"
+            style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+            <div class="row g-5">
 
-        <!-- Footer Start -->
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-            <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-4">
-                        <div class="footer-item">
-                            <a href="index.html" class="p-0">
-                                <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Stocker</h4>
-                                <!-- <img src="{{ asset('img/logo.png') }}" alt="Logo"> -->
+                <!-- BRAND -->
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="footer-item">
+                        <a href="/" class="p-0">
+                            <h4 class="text-white">
+                                <i class="fas fa-eye me-3"></i>Eyenix Eye Care
+                            </h4>
+                        </a>
+                        <p class="mb-4">
+                            Eyenix Eye Care provides advanced eye testing, premium eyewear,
+                            and trusted vision solutions with a patient-first approach.
+                        </p>
+
+                        <div class="d-flex">
+                            <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
+                                <i class="fas fa-apple-alt text-white"></i>
+                                <div class="ms-3">
+                                    <small class="text-white">Download on</small>
+                                    <h6 class="text-white mb-0">App Store</h6>
+                                </div>
                             </a>
-                            <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
-                            <div class="d-flex">
-                                <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
-                                    <i class="fas fa-apple-alt text-white"></i>
-                                    <div class="ms-3">
-                                        <small class="text-white">Download on the</small>
-                                        <h6 class="text-white">App Store</h6>
-                                    </div>
-                                </a>
-                                <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
-                                    <i class="fas fa-play text-primary"></i>
-                                    <div class="ms-3">
-                                        <small class="text-white">Get it on</small>
-                                        <h6 class="text-white">Google Play</h6>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-2">
-                        <div class="footer-item">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Attractions</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Tickets</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item">
-                            <h4 class="text-white mb-4">Support</h4>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item">
-                            <h4 class="text-white mb-4">Contact Info</h4>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-map-marker-alt text-primary me-3"></i>
-                                <p class="text-white mb-0">123 Street New York.USA</p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-envelope text-primary me-3"></i>
-                                <p class="text-white mb-0">info@example.com</p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <i class="fa fa-phone-alt text-primary me-3"></i>
-                                <p class="text-white mb-0">(+012) 3456 7890</p>
-                            </div>
-                            <div class="d-flex align-items-center mb-4">
-                                <i class="fab fa-firefox-browser text-primary me-3"></i>
-                                <p class="text-white mb-0">Yoursite@ex.com</p>
-                            </div>
-                            <div class="d-flex">
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f text-white"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-twitter text-white"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-instagram text-white"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i class="fab fa-linkedin-in text-white"></i></a>
-                            </div>
+                            <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
+                                <i class="fas fa-play text-primary"></i>
+                                <div class="ms-3">
+                                    <small class="text-white">Get it on</small>
+                                    <h6 class="text-white mb-0">Google Play</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-        
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end text-body">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+
+                <!-- QUICK LINKS -->
+                <div class="col-md-6 col-lg-6 col-xl-2">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Quick Links</h4>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Our Services</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Eye Camps</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Book Appointment</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact</a>
                     </div>
                 </div>
+
+                <!-- SUPPORT -->
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Support</h4>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Refund Policy</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Customer Support</a>
+                    </div>
+                </div>
+
+                <!-- CONTACT -->
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Contact Info</h4>
+
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                            <p class="text-white mb-0">
+                                Main Road, City Center,<br>Kerala, India
+                            </p>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-envelope text-primary me-3"></i>
+                            <p class="text-white mb-0">support@eyenixeyecare.com</p>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-phone-alt text-primary me-3"></i>
+                            <p class="text-white mb-0">+91 98765 43210</p>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="fas fa-globe text-primary me-3"></i>
+                            <p class="text-white mb-0">www.eyenixeyecare.com</p>
+                        </div>
+
+                        <div class="d-flex">
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#">
+                                <i class="fab fa-linkedin-in text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <!-- Copyright End -->
+    </div>
+    <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-        
-        <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
-        <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-        <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-        <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
-        <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
-        <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-        
 
-        <!-- Template Javascript -->
-        <script src="{{ asset('js/main.js') }}"></script>
-    </body>
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="{{ asset('js/main.js') }}"></script>
+</body>
 
 </html>

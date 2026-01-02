@@ -14,4 +14,8 @@ class Brand extends Model
         'name',
         'img',
     ];  
+    public function collections()
+    {
+        return $this->hasMany(Collection::class);
+    }
 }

@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Eyenix Eye Care - Stock Market Website Template</title>
+   <title>Eyenix Eye Care - Eye Opticals</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,12 +28,15 @@
     <link href="{{ asset('lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
     <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="{{ asset(path: 'css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
 </head>
 
 <body>
@@ -47,53 +50,14 @@
     </div>
     <!-- Spinner End -->
 
-    <!-- Topbar Start -->
-    <div class="container-fluid topbar bg-light px-5 d-none d-lg-block">
-        {{-- <div class="row gx-0 align-items-center">
-            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-                <div class="d-flex flex-wrap">
-                    <a href="#" class="text-muted small me-4"><i
-                            class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
-                    <a href="tel:+01234567890" class="text-muted small me-4"><i
-                            class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                    <a href="mailto:example@gmail.com" class="text-muted small me-0"><i
-                            class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
-                </div>
-            </div>
-            <div class="col-lg-4 text-center text-lg-end">
-                <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a href="#"><small class="me-3 text-dark"><i
-                                class="fa fa-user text-primary me-2"></i>Register</small></a>
-                    <a href="#"><small class="me-3 text-dark"><i
-                                class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i
-                                    class="fa fa-home text-primary me-2"></i> My Dashboard</small></a>
-                        <div class="dropdown-menu rounded">
-                            <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> My Profile</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i> Inbox</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i> Notifications</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i> Account Settings</a>
-                            <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i> Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-    </div>
-    <!-- Topbar End -->
-
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand d-flex align-items-center gap-2 p-0">
-                <img src="{{ asset('img/logo.png')}}" alt="Logo" class="brand-logo">
-
                 <a href="#" class="navbar-brand fancy-brand d-flex align-items-center gap-3 p-3">
-
                     <!-- Logo Icon -->
                     <div class="logo-icon d-flex align-items-center justify-content-center">
-                        <i class="fas fa-glasses"></i>
+                        <img src="{{ asset('img/logo.png')}}" alt="Logo" class="brand-logo">
                     </div>
 
                     <!-- Brand Text -->
@@ -117,19 +81,18 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('dashboard') }}" class="nav-item nav-link active">Home</a>
                     <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                    <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
                     <a href="{{ route('service') }}" class="nav-item nav-link">Services</a>
                     <a href="{{ route('eyecamp') }}" class="nav-item nav-link">EyeCampaign</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                            <span class="dropdown-toggle">Pages</span>
+                            <span class="dropdown-toggle">Our Products</span>
                         </a>
                         <div class="dropdown-menu m-0">
-                            <a href="#" class="dropdown-item">Our Features</a>
-                            <a href="#" class="dropdown-item">Our team</a>
-                            <a href="#" class="dropdown-item">Testimonial</a>
-                            <a href="#" class="dropdown-item">Our offer</a>
-                            <a href="#" class="dropdown-item">FAQs</a>
-                            <a href="#" class="dropdown-item">404 Page</a>
+                            <a href="{{ route('eyeglass') }}" class="dropdown-item">Eye glasses</a>
+                            <a href="{{ route('sunglass') }}" class="dropdown-item">Sun glasses</a>
+                            <a href="{{ route('contactlens') }}" class="dropdown-item">Contact Lens</a>
+                            <a href="{{ route('contactlens.solutions') }}" class="dropdown-item">Contact Solutions</a>
                         </div>
                     </div>
                     <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact Us</a>
@@ -152,9 +115,10 @@
                                         Welcome to Eyenix Eye Care
                                     </h4>
 
-                                    <h1 class="display-4 text-uppercase text-white mb-4">
+                                    <h1 class="display-4 text-uppercase mb-4 text-abcd">
                                         Find Frames That Fit Your Style Perfectly
                                     </h1>
+
 
                                     <p class="mb-5 fs-5">
                                         Upgrade your look with high-quality lenses and trendsetting frames designed for
@@ -169,6 +133,7 @@
                                             <span class="bottom-key-1"></span>
                                             <span class="bottom-key-2"></span>
                                         </a>
+
                                     </div>
 
                                 </div>
@@ -177,7 +142,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="header-carousel-item">
                 <img src="{{ asset('img/banner2.jpg')}}" class="img-fluid w-100" alt="Image">
@@ -288,12 +252,16 @@
 
                 </div>
 
+
                 <!-- IMAGE COLUMN -->
                 <div class="col-xl-6 col-lg-6 col-md-12 about-left-wrapper position-relative" data-wow-delay="200ms">
                     <div class="about-spec-frame">
                         <div class="spin-wrapper">
                             <img src="{{ asset('img/blu-redSpec.png') }}" alt="Spectacle Image">
+
                         </div>
+
+
                     </div>
                 </div>
 
@@ -308,8 +276,157 @@
         </div>
     </div>
 
+    <!-- Floating Icons -->
+    <div class="dashboard-floating-icons">
 
-    <!-- About End -->
+        <!-- Chatbot Toggle (Lottie) -->
+        <div id="chatbotToggle" style="cursor:pointer; text-align:center;">
+            <iframe src="https://lottie.host/embed/ff037b49-d0e1-44b7-87e3-284e9fc8b20e/VN5anB14ce.lottie"
+                style="width:120px;height:120px;border:none;pointer-events:none;">
+            </iframe>
+        </div>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/9961667111" target="_blank" class="social-float whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/eyenix_eye_care?igsh=N3NrY3p4ejMxZjdq" target="_blank"
+            class="social-float instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+    </div>
+
+    <!-- Chatbot Box -->
+    <div id="chatbotBox" style="display:none;">
+        <div class="chatbot-header">
+            Chat Support
+            <span id="closeChatbot">&times;</span>
+        </div>
+
+        <div class="chatbot-body" id="chatMessages"></div>
+
+        <div class="chatbot-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Get In Touch Modal -->
+    <div class="modal fade" id="getInTouchModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4">
+
+                <!-- Modal Header -->
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Get In Touch</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="row g-4 align-items-stretch">
+
+                        <!-- Contact Info -->
+                        <div class="col-lg-5 d-flex">
+                            <div class="contact-info-box p-3 w-100">
+
+                                <div class="d-flex align-items-start mb-3 contact-item">
+                                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                                    <div>
+                                        <h6>Our Location</h6>
+                                        <p class="mb-0">
+                                            San, Jos River View Complex,<br>
+                                            Near Bank of Baroda, Tanthode,<br>
+                                            Iritty, Kerala
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start mb-3 contact-item">
+                                    <i class="fas fa-phone-alt contact-icon"></i>
+                                    <div>
+                                        <h6>Call Us</h6>
+                                        <a href="tel:+919961667111">+91 99616 67111</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start mb-3 contact-item">
+                                    <i class="fas fa-envelope contact-icon"></i>
+                                    <div>
+                                        <h6>Email</h6>
+                                        <a href="mailto:eyenixeyecare@gmail.com">eyenixeyecare@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-start contact-item">
+                                    <i class="fas fa-clock contact-icon"></i>
+                                    <div>
+                                        <h6>Working Hours</h6>
+                                        <p class="mb-0">
+                                            Mon – Sat : 9:30 AM – 7:30 PM<br>
+                                            Sunday : Closed
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="col-lg-7 d-flex">
+                            <div class="contact-form-box p-3 w-100 d-flex flex-column">
+
+                                <!-- Heading and Intro -->
+                                <h3 class="mb-2 text-white">Get in Touch</h3>
+                                <p class="mb-4 text-white">
+                                    Have questions or need assistance? Fill out the form below and our team will get
+                                    back to you as soon as possible.
+                                </p>
+
+                                <form class="d-flex flex-column h-100">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Your Name" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" placeholder="Phone Number" required>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <input type="email" class="form-control" placeholder="Email Address">
+                                        </div>
+
+                                        <div class="col-12">
+                                            <textarea class="form-control" rows="3"
+                                                placeholder="Your Message"></textarea>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <a class="fancy" href="#">
+                                                <span class="top-key"></span>
+                                                <span class="text">Send Message</span>
+                                                <span class="bottom-key-1"></span>
+                                                <span class="bottom-key-2"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <!-- Features Start -->
     <div class="container-fluid feature pb-5">
         <div class="container pb-5">
@@ -613,77 +730,110 @@
     </div>
     <!-- Brands End -->
 
-    <!-- Collection Start -->
-    <div class="container-fluid collection-section py-5">
-        <div class="container py-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-dcba">Our Collection</h4>
-                <h1 class="display-5 mb-4">Explore Our Products</h1>
-                <p class="mb-0 text-dcba">Discover the latest products from our collection. Each item is carefully curated to meet
-                    your style and quality needs.</p>
-            </div>
-
-            <!-- Filters -->
-            <div class="col-12 text-center mb-4">
-                <div class="collection-filters">
+    <!-- Blog Start -->
+    <div class="container-fluid blog pt-6 pb-5">
+        <div class="container pb-5">
+            <div class="blog-glass-wrapper">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                    <h4 class="text-dcba">Our Collection</h4>
+                    <h1 class="display-5 mb-4">Explore Our Products</h1>
+                    <p class="mb-0 text-dcba">Discover the latest products from our collection. Each item is carefully
+                        curated to meet
+                        your style and quality needs.</p>
+                </div>
+                <!-- Collection Filters -->
+                <div class="collection-filters text-center mb-4">
                     <button class="btn active" data-filter="*">All</button>
-                    <button class="btn" data-filter=".glasses">Glasses</button>
-                    <button class="btn" data-filter=".sunglasses">Sunglasses</button>
-                    <button class="btn" data-filter=".contact-lenses">Contact Lenses</button>
-                </div>
-            </div>
-
-            <div class="swiper collection-slider">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="card-product">
-                            <img src="{{ asset('img/product-1.jpg') }}" alt="Product 1">
-                            <h5 class="product-title">Product Name 1</h5>
-                            <p class="product-price">$49.99</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="card-product">
-                            <img src="{{ asset('img/product-2.jpg') }}" alt="Product 2">
-                            <h5 class="product-title">Product Name 2</h5>
-                            <p class="product-price">$59.99</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="card-product">
-                            <img src="{{ asset('img/product-3.jpg') }}" alt="Product 3">
-                            <h5 class="product-title">Product Name 3</h5>
-                            <p class="product-price">$39.99</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="card-product">
-                            <img src="{{ asset('img/product-4.jpg') }}" alt="Product 4">
-                            <h5 class="product-title">Product Name 4</h5>
-                            <p class="product-price">$29.99</p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">View Product</a>
-                        </div>
-                    </div>
-
+                    <button class="btn" data-filter="dividend">EyeGlasses</button>
+                    <button class="btn" data-filter="non-dividend">SunGlasses</button>
                 </div>
 
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <br><br>
-                <div class="swiper-pagination"></div>
+                <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="blog-item p-4">
+                        <div class="blog-img mb-4">
+                            <img src="{{ asset('img/service-1.jpg')}}" class="img-fluid w-100 rounded" alt="">
+                            <div class="blog-title">
+                                <a href="#" class="btn">Dividend Stocks</a>
+                            </div>
+                        </div>
+                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
+                            suscipit error corporis accusamus labore....
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle"
+                                style="width: 60px; height: 60px;" alt="">
+                            <div class="ms-3">
+                                <h5>Admin</h5>
+                                <p class="mb-0">October 9, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-item p-4">
+                        <div class="blog-img mb-4">
+                            <img src="{{ asset('img/service-2.jpg')}}" class="img-fluid w-100 rounded" alt="">
+                            <div class="blog-title">
+                                <a href="#" class="btn">Non-Dividend Stocks</a>
+                            </div>
+                        </div>
+                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
+                            suscipit error corporis accusamus labore....
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid rounded-circle"
+                                style="width: 60px; height: 60px;" alt="">
+                            <div class="ms-3">
+                                <h5>Admin</h5>
+                                <p class="mb-0">October 9, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-item p-4">
+                        <div class="blog-img mb-4">
+                            <img src="{{ asset('img/service-3.jpg')}}" class="img-fluid w-100 rounded" alt="">
+                            <div class="blog-title">
+                                <a href="#" class="btn">Dividend Stocks</a>
+                            </div>
+                        </div>
+                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
+                            suscipit error corporis accusamus labore....
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('img/testimonial-3.jpg')}}" class="img-fluid rounded-circle"
+                                style="width: 60px; height: 60px;" alt="">
+                            <div class="ms-3">
+                                <h5>Admin</h5>
+                                <p class="mb-0">October 9, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-item p-4">
+                        <div class="blog-img mb-4">
+                            <img src="{{ asset('img/service-4.jpg')}}" class="img-fluid w-100 rounded" alt="">
+                            <div class="blog-title">
+                                <a href="#" class="btn">Non-Dividend Stocks</a>
+                            </div>
+                        </div>
+                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
+                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
+                            suscipit error corporis accusamus labore....
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle"
+                                style="width: 60px; height: 60px;" alt="">
+                            <div class="ms-3">
+                                <h5>Admin</h5>
+                                <p class="mb-0">October 9, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
     </div>
-    <!-- Collection End -->
+    <!-- Blog End -->
 
     <!-- Our Story-->
     <div class="our-story-section">
@@ -756,215 +906,127 @@
     </div>
     <!-- Our Story -->
 
-    <!-- Blog Start -->
-    <div class="container-fluid blog pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Blog & News</h4>
-                <h1 class="display-5 mb-4">Articles For Pro Traders</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
-                </p>
-            </div>
-            <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
-                <div class="blog-item p-4">
-                    <div class="blog-img mb-4">
-                        <img src="{{ asset('img/service-1.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                        <div class="blog-title">
-                            <a href="#" class="btn">Dividend Stocks</a>
-                        </div>
-                    </div>
-                    <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                    <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                        suscipit error corporis accusamus labore....
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ms-3">
-                            <h5>Admin</h5>
-                            <p class="mb-0">October 9, 2025</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-item p-4">
-                    <div class="blog-img mb-4">
-                        <img src="{{ asset('img/service-2.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                        <div class="blog-title">
-                            <a href="#" class="btn">Non-Dividend Stocks</a>
-                        </div>
-                    </div>
-                    <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                    <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                        suscipit error corporis accusamus labore....
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid rounded-circle"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ms-3">
-                            <h5>Admin</h5>
-                            <p class="mb-0">October 9, 2025</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-item p-4">
-                    <div class="blog-img mb-4">
-                        <img src="{{ asset('img/service-3.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                        <div class="blog-title">
-                            <a href="#" class="btn">Dividend Stocks</a>
-                        </div>
-                    </div>
-                    <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                    <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                        suscipit error corporis accusamus labore....
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('img/testimonial-3.jpg')}}" class="img-fluid rounded-circle"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ms-3">
-                            <h5>Admin</h5>
-                            <p class="mb-0">October 9, 2025</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-item p-4">
-                    <div class="blog-img mb-4">
-                        <img src="{{ asset('img/service-4.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                        <div class="blog-title">
-                            <a href="#" class="btn">Non-Dividend Stocks</a>
-                        </div>
-                    </div>
-                    <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                    <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                        suscipit error corporis accusamus labore....
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle"
-                            style="width: 60px; height: 60px;" alt="">
-                        <div class="ms-3">
-                            <h5>Admin</h5>
-                            <p class="mb-0">October 9, 2025</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
-
-
     <!-- FAQs Start -->
     <div class="container-fluid faq-section pb-5">
         <div class="container pb-5 overflow-hidden">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">FAQs</h4>
-                <h1 class="display-5 mb-4">Frequently Asked Questions</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
+                <br>
+                <h1 class="display-5 mb-4">Contact Lens - Frequently Asked Questions</h1>
+                <p class="mb-0">
+                    Find answers to common questions about contact lenses, their usage,
+                    care, safety, and suitability for your eyes.
                 </p>
             </div>
+
             <div class="row g-5 align-items-center">
+                <!-- FAQ ACCORDION -->
                 <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="accordion accordion-flush bg-light rounded p-5" id="accordionFlushSection">
+
                         <div class="accordion-item rounded-top">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed rounded-top" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                    aria-controls="flush-collapseOne">
-                                    What Does This Tool Do?
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">
+                                    What Are Contact Lenses?
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushSection">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                    accordion body.</div>
+                                data-bs-parent="#accordionFlushSection">
+                                <div class="accordion-body">
+                                    Contact lenses are thin, curved lenses placed directly on the surface of the eye
+                                    to correct vision or enhance eye appearance.
+                                </div>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                    aria-controls="flush-collapseTwo">
-                                    What Are The Disadvantages Of Online Trading?
+                                    data-bs-target="#flush-collapseTwo">
+                                    Are Contact Lenses Safe To Use?
                                 </button>
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushSection">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                    accordion body. Let's imagine this being filled with some actual content.</div>
+                                data-bs-parent="#accordionFlushSection">
+                                <div class="accordion-body">
+                                    Yes, contact lenses are safe when used correctly. Proper hygiene, regular cleaning,
+                                    and following your eye care professional’s advice are essential.
+                                </div>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                    aria-controls="flush-collapseThree">
-                                    Is Online Trading Safe?
+                                    data-bs-target="#flush-collapseThree">
+                                    How Long Can I Wear Contact Lenses?
                                 </button>
                             </h2>
                             <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushSection">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                    accordion body. Let's imagine this being filled with some actual content.</div>
+                                data-bs-parent="#accordionFlushSection">
+                                <div class="accordion-body">
+                                    Wearing time depends on the type of lens. Daily, monthly, and extended-wear lenses
+                                    all have different recommended usage durations.
+                                </div>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                    aria-controls="flush-collapseFour">
-                                    What Is Online Trading, And How Dose It Work?
+                                    data-bs-target="#flush-collapseFour">
+                                    How Do I Clean And Store Contact Lenses?
                                 </button>
                             </h2>
                             <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushSection">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                    accordion body. Let's imagine this being filled with some actual content.</div>
+                                data-bs-parent="#accordionFlushSection">
+                                <div class="accordion-body">
+                                    Always clean lenses with recommended solutions, never water. Store them in a clean
+                                    lens case and replace the solution daily.
+                                </div>
                             </div>
                         </div>
+
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseFive" aria-expanded="false"
-                                    aria-controls="flush-collapseFive">
-                                    Which App Is Best For Online Trading?
+                                    data-bs-target="#flush-collapseFive">
+                                    Can I Sleep With My Contact Lenses?
                                 </button>
                             </h2>
                             <div id="flush-collapseFive" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushSection">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the second item's
-                                    accordion body. Let's imagine this being filled with some actual content.</div>
+                                data-bs-parent="#accordionFlushSection">
+                                <div class="accordion-body">
+                                    Only lenses designed for overnight wear should be worn while sleeping.
+                                    Sleeping with regular lenses can increase the risk of infection.
+                                </div>
                             </div>
                         </div>
+
                         <div class="accordion-item rounded-bottom">
                             <h2 class="accordion-header" id="flush-headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseSix" aria-expanded="false"
-                                    aria-controls="flush-collapseSix">
-                                    How To Create A Trading Account?
+                                    data-bs-target="#flush-collapseSix">
+                                    How Do I Know Which Contact Lens Is Right For Me?
                                 </button>
                             </h2>
                             <div id="flush-collapseSix" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushSection">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                    demonstrate the <code>.accordion-flush</code> class. This is the third item's
-                                    accordion body. Nothing more exciting happening here in terms of content, but just
-                                    filling up the space to make it look, at least at first glance, a bit more
-                                    representative of how this would look in a real-world application.</div>
+                                data-bs-parent="#accordionFlushSection">
+                                <div class="accordion-body">
+                                    An eye care professional can recommend the best contact lens based on your vision,
+                                    eye health, lifestyle, and comfort needs.
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
+                <!-- IMAGE -->
                 <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
                     <div class="bg-primary rounded">
-                        <img src="{{ asset('img/about-2.png')}}" class="img-fluid w-100" alt="">
+                        <img src="{{ asset('img/HOWTOWARE.png') }}" class="img-fluid w-100" alt="Contact Lens Care">
+                        <img src="{{ asset('img/HOWTOREMOVE.png') }}" class="img-fluid w-100" alt="Contact Lens Care">
                     </div>
                 </div>
             </div>
@@ -972,123 +1034,21 @@
     </div>
     <!-- FAQs End -->
 
-
-    <!-- Team Start -->
-    <div class="container-fluid team pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Our Team</h4>
-                <h1 class="display-5 mb-4">Meet Our Advisers</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('img/team-1.jpg')}}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('img/team-2.jpg')}}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('img/team-3.jpg')}}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('img/team-4.jpg')}}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
-
     <!-- Testimonial Start -->
     <div class="container-fluid testimonial pb-5">
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-primary">Testimonial</h4>
-                <h1 class="display-5 mb-4">Our Clients Riviews</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
+                <h4 class="text-abcd">Reviews</h4>
+                <h1 class="display-5 mb-4">What Our Customers Say</h1>
+                <p class="mb-0">
+                    Real experiences from our valued customers. Discover how our quality eyewear,
+                    contact lenses, and expert care have made a difference in their vision and comfort.
                 </p>
             </div>
+
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
                 <div class="testimonial-item">
                     <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
                     </div>
                     <div class="testimonial-img">
                         <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid" alt="Image">
@@ -1211,116 +1171,216 @@
     </div>
     <!-- Testimonial End -->
 
+
+    <!-- Location Start -->
+    <div class="container-fluid location py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+
+                <!-- CONTENT -->
+                <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="location-glass p-5 rounded">
+                        <h4 class="text-dcba">Our Location</h4>
+                        <h1 class="display-5 mb-4 text-white">
+                            Visit Our Vision Care Center
+                        </h1>
+                        <p class="mb-4 text-light">
+                            Experience professional eye care, premium eyewear, and expert consultation
+                            at our conveniently located vision care center.
+                        </p>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div><i class="fas fa-map-marker-alt fa-3x text-info"></i></div>
+                                    <div class="ms-4">
+                                        <h4 class="text-white">Easy Access</h4>
+                                        <p class="text-light">
+                                            Centrally located with hassle-free parking and accessibility.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div><i class="fas fa-clinic-medical fa-3x text-info"></i></div>
+                                    <div class="ms-4">
+                                        <h4 class="text-white">Modern Facility</h4>
+                                        <p class="text-light">
+                                            Equipped with advanced eye testing and care technology.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-phone-alt fa-2x text-info me-4"></i>
+                                    <div>
+                                        <h4 class="text-white">Call Us</h4>
+                                        <p class="mb-0 fs-5 text-light" style="letter-spacing: 1px;">
+                                            +91 98765 43210
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMAGE -->
+                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="location-image bg-info rounded position-relative overflow-hidden">
+                        <img src="{{ asset('img/indian-map.png') }}" class="img-fluid rounded" alt="Location"
+                            style="height:500px; width:100%; object-fit:cover;">
+
+
+                        <!-- Lottie Button -->
+                        <a class="map-lottie-btn" data-bs-toggle="modal" data-bs-target="#mapModal">
+                            <iframe
+                                src="https://lottie.host/embed/4caa8060-f9ea-4155-9164-5f5370f9fbd3/sFSlXwZNf6.lottie"
+                                style="width:50px;height:50px;border:none;pointer-events:none;">
+                            </iframe>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Location End -->
+    <div class="modal fade" id="mapModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded-4 overflow-hidden">
+
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Eyenix Eye Care – Iritty</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <iframe src="https://www.google.com/maps?q=Eyenix+Eye+Care+Iritty+Kerala&output=embed" width="100%"
+                        height="450" style="border:0;" loading="lazy">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Footer Start -->
     <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
         <div class="container py-5 border-start-0 border-end-0"
             style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
             <div class="row g-5">
+
+                <!-- BRAND -->
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="footer-item">
-                        <a href="index.html" class="p-0">
-                            <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Eyenix Eye Care</h4>
-                            <!-- <img src="{{ asset('img/logo.png')}}" alt="Logo"> -->
+                        <a href="/" class="p-0">
+                            <h4 class="text-white">
+                                <i class="fas fa-eye me-3"></i>Eyenix Eye Care
+                            </h4>
                         </a>
-                        <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit
-                            amet, consectetur adipiscing...</p>
+                        <p class="mb-4">
+                            Eyenix Eye Care provides advanced eye testing, premium eyewear,
+                            and trusted vision solutions with a patient-first approach.
+                        </p>
+
                         <div class="d-flex">
                             <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
                                 <i class="fas fa-apple-alt text-white"></i>
                                 <div class="ms-3">
-                                    <small class="text-white">Download on the</small>
-                                    <h6 class="text-white">App Store</h6>
+                                    <small class="text-white">Download on</small>
+                                    <h6 class="text-white mb-0">App Store</h6>
                                 </div>
                             </a>
                             <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
                                 <i class="fas fa-play text-primary"></i>
                                 <div class="ms-3">
                                     <small class="text-white">Get it on</small>
-                                    <h6 class="text-white">Google Play</h6>
+                                    <h6 class="text-white mb-0">Google Play</h6>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- QUICK LINKS -->
                 <div class="col-md-6 col-lg-6 col-xl-2">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Quick Links</h4>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Attractions</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Tickets</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Our Services</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Eye Camps</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Book Appointment</a>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Contact</a>
                     </div>
                 </div>
+
+                <!-- SUPPORT -->
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Support</h4>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Refund Policy</a>
                         <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
-                        <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Customer Support</a>
                     </div>
                 </div>
+
+                <!-- CONTACT -->
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item">
                         <h4 class="text-white mb-4">Contact Info</h4>
+
                         <div class="d-flex align-items-center">
                             <i class="fas fa-map-marker-alt text-primary me-3"></i>
-                            <p class="text-white mb-0">123 Street New York.USA</p>
+                            <p class="text-white mb-0">
+                                Main Road, City Center,<br>Kerala, India
+                            </p>
                         </div>
+
                         <div class="d-flex align-items-center">
                             <i class="fas fa-envelope text-primary me-3"></i>
-                            <p class="text-white mb-0">info@example.com</p>
+                            <p class="text-white mb-0">support@eyenixeyecare.com</p>
                         </div>
+
                         <div class="d-flex align-items-center">
                             <i class="fa fa-phone-alt text-primary me-3"></i>
-                            <p class="text-white mb-0">(+012) 3456 7890</p>
+                            <p class="text-white mb-0">+91 98765 43210</p>
                         </div>
+
                         <div class="d-flex align-items-center mb-4">
-                            <i class="fab fa-firefox-browser text-primary me-3"></i>
-                            <p class="text-white mb-0">Yoursite@ex.com</p>
+                            <i class="fas fa-globe text-primary me-3"></i>
+                            <p class="text-white mb-0">www.eyenixeyecare.com</p>
                         </div>
+
                         <div class="d-flex">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                    class="fab fa-facebook-f text-white"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                    class="fab fa-twitter text-white"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                    class="fab fa-instagram text-white"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i
-                                    class="fab fa-linkedin-in text-white"></i></a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#">
+                                <i class="fab fa-linkedin-in text-white"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
     <!-- Footer End -->
-
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right
-                        reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
-                    Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Copyright End -->
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
@@ -1335,10 +1395,52 @@
     <script src="{{ asset('lib/counterup/counterup.min.js')}}"></script>
     <script src="{{ asset('lib/lightbox/js/lightbox.min.js')}}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
 
     <!-- Template Javascript -->
+    {{--
+    <script src="{{ asset('js/chatbot.js')}}"></script> --}}
     <script src="{{ asset('js/main.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const swiper = new Swiper(".collection-slider", {
+                slidesPerView: 4,
+                spaceBetween: 30,
+                loop: true,
+
+                autoplay: false, // start paused
+
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+
+                breakpoints: {
+                    0: { slidesPerView: 1 },
+                    576: { slidesPerView: 2 },
+                    992: { slidesPerView: 3 },
+                    1200: { slidesPerView: 4 }
+                }
+            });
+
+            // Start autoplay after 2 seconds
+            setTimeout(() => {
+                swiper.params.autoplay = {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                };
+                swiper.autoplay.start();
+            }, 2000);
+        });
+    </script>
+
 </body>
 
 </html>

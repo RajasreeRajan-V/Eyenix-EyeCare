@@ -1,0 +1,112 @@
+/* ===============================
+   CONTACT SECTION – GLASSY BLUE
+================================ */
+
+.contact {
+    background: linear-gradient(135deg, #0a2540, #0d3b66);
+}
+
+/* Glass container */
+.contact .bg-dark,
+.contact .bg-light {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Section Headings */
+.contact h4 {
+    color: #eaf6ff;
+    font-weight: 600;
+}
+
+.text-abcd,
+.text-dcba {
+    color: #8fd3ff !important;
+}
+
+/* Contact Info Row */
+.contact-info-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Contact Items */
+.contact-add-item {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.contact-add-item:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* Icons */
+.contact-icon i {
+    color: #7fd3ff !important;
+}
+
+/* Text */
+.contact-add-item h4 {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.contact-add-item p {
+    color: #dceeff;
+    font-size: 14px;
+}
+
+/* Form Inputs */
+.contact .form-control {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border-radius: 12px;
+}
+
+.contact .form-control:focus {
+    box-shadow: 0 0 0 2px rgba(127, 211, 255, 0.5);
+}
+
+.contact .form-floating label {
+    color: #d0ecff;
+}
+
+/* Button */
+.fancy2 {
+    background: linear-gradient(135deg, #4facfe, #00c6ff);
+    color: #fff;
+    border-radius: 30px;
+    padding: 12px 28px;
+    border: none;
+    transition: 0.3s;
+}
+
+.fancy2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(79, 172, 254, 0.5);
+}
+
+/* Map */
+.contact iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    filter: saturate(120%) contrast(105%);
+}
+
+/* Alerts */
+.alert-success {
+    background: rgba(79, 172, 254, 0.2);
+    color: #dff4ff;
+    border: 1px solid rgba(79, 172, 254, 0.4);
+}
