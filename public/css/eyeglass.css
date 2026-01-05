@@ -267,3 +267,17 @@ body::before {
         border-radius: 14px;
     }
 }
+.eyeglass-top-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 3;
+}
+
+.eyeglass-top-curve svg {
+    width: 100%;
+    height: 220px; /* increased from 150px */
+    display: block;
+}

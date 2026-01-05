@@ -40,9 +40,10 @@
 ================================ */
 .userAbout-top-curve svg {
     width: 100vw;
-    height: 150px;
+    height: 220px; 
     display: block;
 }
+
 
 /* ==============================
    GLASSY CONTENT CARD

@@ -17,8 +17,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/dist/css/gallery.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/dist/css/eyecamp.css') }}">
+    
     <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('admin/dist/css/review.css')}}">
 </head>
@@ -171,140 +170,59 @@
         </div>
     </div>
     <!-- Testimonial Start -->
-    <div class="container-fluid testimonial pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-abcd">Reviews</h4>
-                <h1 class="display-5 mb-4">What Our Customers Say</h1>
-                <p class="mb-0">
-                    Real experiences from our valued customers. Discover how our quality eyewear,
-                    contact lenses, and expert care have made a difference in their vision and comfort.
+<!-- TESTIMONIAL SECTION -->
+<div class="container-fluid testimonial py-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h4 class="text-primary">Reviews</h4>
+            <h1 class="text-white">What Our Customers Say</h1>
+            <p class="text-light">Real experiences from our valued customers.</p>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial-carousel">
+
+            <div class="testimonial-item">
+                <div class="testimonial-img">
+                    <img src="{{ asset('img/testimonial-1.jpg') }}">
+                </div>
+                <p class="testimonial-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </p>
+                <h4>Person Name</h4>
+                <small>Profession</small>
+                <div class="stars">★★★★★</div>
             </div>
 
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
+            <div class="testimonial-item">
+                <div class="testimonial-img">
+                    <img src="{{ asset('img/testimonial-2.jpg') }}">
                 </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-3.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
+                <p class="testimonial-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+                <h4>Person Name</h4>
+                <small>Profession</small>
+                <div class="stars">★★★★★</div>
             </div>
+
+            <div class="testimonial-item">
+                <div class="testimonial-img">
+                    <img src="{{ asset('img/testimonial-3.jpg') }}">
+                </div>
+                <p class="testimonial-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+                <h4>Person Name</h4>
+                <small>Profession</small>
+                <div class="stars">★★★★★</div>
+            </div>
+
         </div>
     </div>
+</div>
+
+
     <!-- Testimonial End -->
 
     <!-- EDIT EYE CAMP MODAL -->
@@ -424,61 +342,25 @@
     </div>
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
-    <script>
-        const navbar = document.querySelector('.eyenix-navbar');
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
+<script>
+$(document).ready(function () {
+    $(".testimonial-carousel").owlCarousel({
+        autoPlay: true,
+        slideSpeed: 1200,
+        paginationSpeed: 1200,
+        navigation: true,
+        pagination: true,
+        items: 3,
+        itemsDesktop: [1200,3],
+        itemsTablet: [768,2],
+        itemsMobile: [0,1]
+    });
+});
+</script>
 
-            const editButtons = document.querySelectorAll('.editEyeCampBtn');
-            const editModal = new bootstrap.Modal(document.getElementById('editEyeCampModal'));
-            const form = document.getElementById('editEyeCampForm');
-
-            editButtons.forEach(button => {
-                button.addEventListener('click', function () {
-
-                    //Set form action using Blade-generated route
-                    form.action = this.dataset.url;
-
-                    // Fill inputs
-                    document.getElementById('editTitle').value = this.dataset.title || '';
-                    document.getElementById('editDescription').value = this.dataset.description || '';
-                    document.getElementById('editStartDate').value = this.dataset.start_date || '';
-                    document.getElementById('editEndDate').value = this.dataset.end_date || '';
-                    document.getElementById('editStartTime').value = this.dataset.start_time || '';
-                    document.getElementById('editEndTime').value = this.dataset.end_time || '';
-                    document.getElementById('editLocation').value = this.dataset.location || '';
-                    document.getElementById('editOrganizer').value = this.dataset.organizer || '';
-                    document.getElementById('editStatus').value = this.dataset.status || '';
-
-                    // Image preview
-                    const imagePreview = document.getElementById('editImagePreview');
-                    if (this.dataset.image) {
-                        imagePreview.src = this.dataset.image;
-                        imagePreview.style.display = 'block';
-                    } else {
-                        imagePreview.style.display = 'none';
-                    }
-
-                    editModal.show();
-                });
-            });
-
-        });
-    </script>
-    <script src="{{ asset(' js/main.js') }}"></script>
 </body>
 
 </html>

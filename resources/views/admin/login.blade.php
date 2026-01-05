@@ -163,12 +163,61 @@
         padding: 38px 26px;
       }
     }
+
+    /* PROFESSIONAL LOGO BADGE */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.logo-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 227, 255, 0.9),
+    rgba(59, 180, 216, 0.6)
+  );
+  box-shadow:
+    0 0 25px rgba(124, 227, 255, 0.6),
+    inset 0 0 12px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.logo-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+  padding: 10px;
+  object-fit: contain;
+}
+
+/* subtle hover – professional, not flashy */
+.login-container:hover .logo-ring {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 45px rgba(124, 227, 255, 0.8),
+    inset 0 0 16px rgba(255, 255, 255, 0.4);
+}
+
   </style>
 </head>
 
 <body>
   <div class="login-container">
-    <img src="" alt="Eyenix Eye Care Logo" />
+   <div class="logo-wrapper">
+  <div class="logo-ring">
+    <img src="{{ asset('img/logo1.jpeg') }}" alt="Eyenix Eye Care Logo" />
+  </div>
+</div>
+
 
     <h2>Eyenix Eye Care</h2>
     <span>Clear Vision. Trusted Care.</span>

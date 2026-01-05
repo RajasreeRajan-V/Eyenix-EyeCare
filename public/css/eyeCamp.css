@@ -33,6 +33,7 @@
 }
 
 /* TOP CURVE */
+/* TOP CURVE */
 .section-top-curve {
     position: absolute;
     top: 0;
@@ -42,10 +43,13 @@
     z-index: 3;
 }
 
+
 .section-top-curve svg {
     width: 100%;
-    height: 120px;
+    height: 200px; /* increased from 120px */
+    display: block;
 }
+
 
 /* BOTTOM CURVE */
 .section-bottom-curve {
