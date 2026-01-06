@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-   <title>Eyenix Eye Care - Eye Opticals</title>
+    <title>Eyenix Eye Care - Eye Opticals</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -235,22 +235,9 @@
                 <!-- TEXT COLUMN -->
                 <div class="col-xl-6 fadeInLeft wow" data-wow-delay="0.2s">
                     <h4 class="text-primary">About Us</h4>
-                    <h1 class="display-5 mb-4">Better Sight, Happier You. That's Our Promise.
+                    <h1 class="display-5 mb-4">{{ $about->title ?? 'Eyenix Eye Care' }}
                     </h1>
-                    <p>Welcome to Eyenix Eye Care - a place built with care, honesty, and a genuine desire to help
-                        people see better.</p>
-                    <p class="mb-4">Located at San, Jos River View Complex, near Bank of Baroda, Tanthode, Iritty, we
-                        proudly serve our local community with complete and reliable vision care. We believe that good
-                        eyesight can change the way you experience the world, and we’re here to make that experience
-                        clearer, brighter, and more comfortable.</p>
-                    <p class="mb-4">At Eyenix Eye Care, we don’t just check your eyes - we listen, we understand, and we
-                        guide you. Whether you’re coming in for a routine eye test, choosing your first pair of glasses,
-                        or exploring stylish frames and sunglasses, our team is here to help you feel confident and
-                        cared for.</p>
-                    <p class="mb-4">With modern computerized testing, quality eyewear options, and a warm, friendly
-                        environment, we aim to make every visit smooth and stress-free. Our customers often tell us they
-                        feel at home here - and that is exactly what we want.</p>
-
+                    <p>{!! nl2br(e($about->description)) !!}</p>
                 </div>
 
 
@@ -258,7 +245,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-12 about-left-wrapper position-relative" data-wow-delay="200ms">
                     <div class="about-spec-frame">
                         <div class="spin-wrapper">
-                            <img src="{{ asset('img/blu-redSpec.png') }}" alt="Spectacle Image">
+                            <img src="{{ asset('storage/' . $about->spectacle_image) }}" alt="Spectacle Image">
 
                         </div>
 
@@ -387,35 +374,37 @@
                                     back to you as soon as possible.
                                 </p>
 
-                                <form class="d-flex flex-column h-100">
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Your Name" required>
-                                        </div>
+                                <form action="{{ route('contact.submit') }}" method="POST" class="d-flex flex-column h-100">
+                            @csrf
 
-                                        <div class="col-md-6">
-                                            <input type="tel" class="form-control" placeholder="Phone Number" required>
-                                        </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                </div>
 
-                                        <div class="col-12">
-                                            <input type="email" class="form-control" placeholder="Email Address">
-                                        </div>
+                                <div class="col-md-6">
+                                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                                </div>
 
-                                        <div class="col-12">
-                                            <textarea class="form-control" rows="3"
-                                                placeholder="Your Message"></textarea>
-                                        </div>
+                                <div class="col-12">
+                                    <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                                </div>
 
-                                        <div class="col-12">
-                                            <a class="fancy" href="#">
-                                                <span class="top-key"></span>
-                                                <span class="text">Send Message</span>
-                                                <span class="bottom-key-1"></span>
-                                                <span class="bottom-key-2"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </form>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control" rows="3" placeholder="Your Message"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="fancy">
+                                        <span class="top-key"></span>
+                                        <span class="text">Send Message</span>
+                                        <span class="bottom-key-1"></span>
+                                        <span class="bottom-key-2"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
                             </div>
                         </div>
 
@@ -427,39 +416,61 @@
         </div>
     </div>
 
+@php
+    $icons = [
+        'fas fa-eye',
+        'fas fa-glasses',
+        'fas fa-eye-dropper',
+        'fas fa-clinic-medical',
+    ];
+@endphp
 
-    <!-- Features Start -->
-    <div class="container-fluid feature pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow " data-wow-delay="0.2s" style="max-width: 800px;">
-                <br>
-                <h4 class="text-abcd section-title-small">Our Services</h4>
-                <h1 class="display-5 mb-4 section-title-main">See the Difference: Comprehensive Services for Your Best
-                    Vision.</h1>
-                <p class="mb-0 section-title-text">
-                    At Eyenix Eye Care, we offer a complete range of modern vision solutions, from precise digital eye
-                    exams to the latest in eyewear fashion. We connect you with the right technology and products to
-                    ensure clarity, comfort, and style.
-                </p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+<!-- Features Start -->
+<div class="container-fluid feature pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow" data-wow-delay="0.2s" style="max-width: 800px;">
+            <br>
+            <h4 class="text-abcd section-title-small">Our Services</h4>
+            <h1 class="display-5 mb-4 section-title-main">
+                See the Difference: Comprehensive Services for Your Best Vision.
+            </h1>
+            <p class="mb-0 section-title-text">
+                At Eyenix Eye Care, we offer a complete range of modern vision solutions, from precise digital eye
+                exams to the latest in eyewear fashion. We connect you with the right technology and products to
+                ensure clarity, comfort, and style.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            @foreach($services as $index => $service)
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp"
+                     data-wow-delay="{{ 0.2 + ($index * 0.2) }}s">
+
                     <div class="feature-item p-4">
                         <div class="right-border"></div>
                         <div class="left-border"></div>
+
+                        <!-- ICON -->
                         <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-eye-dropper fa-4x text-abcd"></i>
+                            @if($service->icon)
+                                <i class="{{ $service->icon }} fa-4x text-abcd"></i>
+                            @else
+                                <i class="{{ $icons[$index % count($icons)] }} fa-4x text-abcd"></i>
+                            @endif
                         </div>
-                        <h4>Complete Eye Care Solutions</h4>
+
+                        <!-- TITLE -->
+                        <h4>{{ $service->title }}</h4>
+
+                        <!-- DESCRIPTION -->
                         <p class="mb-4">
-                            Experience precise vision assessment and personalized eye care with Eyenix Eye Care.
-                            From computerized eye testing to stylish eyewear, prescription glasses, power sunglasses,
-                            and contact lenses, we provide everything you need for clear, comfortable, and confident
-                            vision.
+                            {{ $service->description }}
                         </p>
 
+                        <!-- BUTTON -->
                         <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                            <a class="fancy1" href="#">
+                            <a class="fancy1" href="{{ route('service') }}">
                                 <span class="top-key"></span>
                                 <span class="text"> Learn More</span>
                                 <span class="bottom-key-1"></span>
@@ -468,95 +479,14 @@
                         </div>
 
                     </div>
-
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="feature-item p-4">
-                        <div class="right-border"></div>
-                        <div class="left-border"></div>
+            @endforeach
 
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-eye fa-4x text-abcd"></i>
-                        </div>
-
-                        <h4>Computerized Eye Testing</h4>
-
-                        <p class="mb-4">
-                            Get accurate and reliable vision results with our advanced computerized eye testing.
-                            Eyenix Eye Care ensures precise diagnosis to help you achieve the clearest vision possible.
-                        </p>
-
-                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                            <a class="fancy1" href="#">
-                                <span class="top-key"></span>
-                                <span class="text"> Learn More</span>
-                                <span class="bottom-key-1"></span>
-                                <span class="bottom-key-2"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="feature-item p-4">
-                        <div class="right-border"></div>
-                        <div class="left-border"></div>
-
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-glasses fa-4x text-abcd"></i>
-                        </div>
-
-                        <h4>Branded Frames & Sunglasses</h4>
-
-                        <p class="mb-4">
-                            Explore a wide range of premium branded frames and stylish sunglasses.
-                            Eyenix Eye Care brings you the latest trends with superior comfort, durability,
-                            and visual clarity to match your personality and lifestyle.
-                        </p>
-
-                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                            <a class="fancy1" href="#">
-                                <span class="top-key"></span>
-                                <span class="text"> Learn More</span>
-                                <span class="bottom-key-1"></span>
-                                <span class="bottom-key-2"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="feature-item p-4">
-                        <div class="right-border"></div>
-                        <div class="left-border"></div>
-
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-eye-dropper fa-4x text-abcd"></i>
-                        </div>
-
-                        <h4>Prescription Glasses</h4>
-
-                        <p class="mb-4">
-                            Discover perfectly crafted prescription glasses designed for clarity, comfort,
-                            and everyday wear. Eyenix Eye Care ensures accurate power lenses and stylish frames
-                            to suit every personality and vision need.
-                        </p>
-
-                        <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                            <a class="fancy1" href="#">
-                                <span class="top-key"></span>
-                                <span class="text"> Learn More</span>
-                                <span class="bottom-key-1"></span>
-                                <span class="bottom-key-2"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
-    <!-- Features End -->
+</div>
+<!-- Features End -->
+
 
     <!-- Offer Start -->
     <div class="container-fluid offer-section pb-0">
@@ -1273,104 +1203,104 @@
 
     <!-- Footer Start -->
     <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-    <!-- Footer Start -->
-    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
 
-        <!-- MAIN FOOTER CONTENT -->
-        <div class="container py-5 border-start-0 border-end-0"
-            style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+            <!-- MAIN FOOTER CONTENT -->
+            <div class="container py-5 border-start-0 border-end-0"
+                style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
 
-            <div class="row g-5">
+                <div class="row g-5">
 
-                <!-- BRAND -->
-                <div class="col-md-6 col-lg-6 col-xl-4">
-                    <div class="footer-item">
-                        <h4 class="text-white">Eyenix Eye Care</h4>
-                        <p>
-                            Providing advanced eye testing, premium eyewear, and trusted vision
-                            solutions with a patient-first approach.
-                        </p>
+                    <!-- BRAND -->
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <h4 class="text-white">Eyenix Eye Care</h4>
+                            <p>
+                                Providing advanced eye testing, premium eyewear, and trusted vision
+                                solutions with a patient-first approach.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- QUICK LINKS -->
-                <div class="col-md-6 col-lg-6 col-xl-2">
-                    <div class="footer-item">
-                        <h4 class="text-white mb-4">Quick Links</h4>
-                        <a href="{{ route('about') }}">About Us</a>
-                        <a href="{{ route('service') }}">Services</a>
-                        <a href="{{ route('eyecamp') }}">Eye Camps</a>
-                        <a href="{{ route('eyeglass') }}">Eye Glasses</a>
-                        <a href="{{ route('contact.index') }}">Contact</a>
+                    <!-- QUICK LINKS -->
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="{{ route('about') }}">About Us</a>
+                            <a href="{{ route('service') }}">Services</a>
+                            <a href="{{ route('eyecamp') }}">Eye Camps</a>
+                            <a href="{{ route('eyeglass') }}">Eye Glasses</a>
+                            <a href="{{ route('contact.index') }}">Contact</a>
+                        </div>
                     </div>
-                </div>
 
-                <!-- SUPPORT -->
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item">
-                        <h4 class="text-white mb-4">Support</h4>
-                        <a href="{{ route('contact.index') }}">Make Contact</a>
-                        <a href="tel:+919961667111">Call for appointment</a>
-                        <a href="mailto:eyenixeyecareopticals@gmail.com">Email Support</a>
-                        <a href="{{ route('contact.index') }}#faq">FAQs</a>
+                    <!-- SUPPORT -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="{{ route('contact.index') }}">Make Contact</a>
+                            <a href="tel:+919961667111">Call for appointment</a>
+                            <a href="mailto:eyenixeyecareopticals@gmail.com">Email Support</a>
+                            <a href="{{ route('contact.index') }}#faq">FAQs</a>
+                        </div>
                     </div>
-                </div>
 
-                <!-- ADDRESS ONLY -->
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item">
-                        <h4 class="text-white mb-4">Contact Info</h4>
-                        <p>
-                            <strong>Eyenix Eye Care</strong><br>
-                            San, Jos River View Complex,<br>
-                            Near Bank of Baroda, Tanthode,<br>
-                            Iritty, Kerala - 670703
-                        </p>
+                    <!-- ADDRESS ONLY -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <p>
+                                <strong>Eyenix Eye Care</strong><br>
+                                San, Jos River View Complex,<br>
+                                Near Bank of Baroda, Tanthode,<br>
+                                Iritty, Kerala - 670703
+                            </p>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
 
-        <!-- STRAIGHT LINE CONTACT BAR -->
-        <div class="container footer-contact-bar">
-            <div class="row align-items-center text-center text-md-start">
+            <!-- STRAIGHT LINE CONTACT BAR -->
+            <div class="container footer-contact-bar">
+                <div class="row align-items-center text-center text-md-start">
 
-                <div class="col-md-3 contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>eyenixeyecareopticals@gmail.com</span>
-                </div>
-
-                <div class="col-md-3 contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+91 996 166 7111</span>
-                </div>
-
-                <div class="col-md-3 contact-item">
-                    <i class="fas fa-clock"></i>
-                    <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
-                </div>
-
-                <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
-                    <div class="social-icons">
-                        <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
-                            <i class="fab fa-instagram text-white"></i>
-                        </a>
-                        <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
-                            <i class="fab fa-whatsapp text-white"></i>
-                        </a>
-                        <a class="btn btn-primary btn-sm-square rounded-circle"
-                        href="mailto:eyenixeyecareopticals@gmail.com">
-                            <i class="fas fa-envelope text-white"></i>
-                        </a>
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>eyenixeyecareopticals@gmail.com</span>
                     </div>
+
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 996 166 7111</span>
+                    </div>
+
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Sun: 9:00 AM - 7:00 PM</span>
+                    </div>
+
+                    <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
+                        <div class="social-icons">
+                            <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle"
+                                href="mailto:eyenixeyecareopticals@gmail.com">
+                                <i class="fas fa-envelope text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
 
-    </div>
-    <!-- Footer End -->
+        </div>
+        <!-- Footer End -->
 
     </div>
     <!-- Footer End -->

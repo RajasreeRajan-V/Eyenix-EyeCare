@@ -37,7 +37,8 @@ Route::get('/lens-solutions', [CustomerController::class, 'contactlensSolutions'
     ->name('lens.solutions');
 
 
-
+Route::post('/contact-submit', [ContactUsController::class, 'submit'])
+    ->name('contact.submit');
 
 
 

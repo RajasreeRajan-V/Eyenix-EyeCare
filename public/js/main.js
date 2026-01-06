@@ -340,20 +340,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
+
     const modalElement = document.getElementById('getInTouchModal');
-    const getInTouchModal = new bootstrap.Modal(modalElement);
+    if (!modalElement) return;
 
-    // Open after 5 minutes (300000 ms)
+    // Force modal to reset on every refresh
+    modalElement.classList.remove('show');
+    modalElement.style.display = 'none';
+    modalElement.removeAttribute('aria-modal');
+
+    if (typeof bootstrap === 'undefined') return;
+
+    const modal = new bootstrap.Modal(modalElement, {
+        backdrop: 'static',
+        keyboard: true
+    });
+
+    // ⏱️ Open after 2 seconds on EVERY refresh
     setTimeout(() => {
-        getInTouchModal.show();
-    }, 300000);
+        modal.show();
+    }, 2000);
 
-    // Reopen every 5 minutes
-    setInterval(() => {
-        if (!modalElement.classList.contains('show')) {
-            getInTouchModal.show();
-        }
-    }, 300000);
 });
+
+
+
 })(jQuery);

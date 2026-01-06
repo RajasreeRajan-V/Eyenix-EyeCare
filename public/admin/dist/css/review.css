@@ -1,144 +1,127 @@
-/* SECTION BACKGROUND */
-.testimonial {
-    background: radial-gradient(
-        circle at top,
-        rgba(40, 40, 40, 0.95),
-        rgba(10, 10, 10, 0.98)
-    );
-    padding: 70px 0;
-}
 
-/* TESTIMONIAL CARD */
-.testimonial .testimonial-item {
-    position: relative;
-    padding: 0 25px 25px 25px;
-    border-radius: 16px;
-    width: 100%;
-}
+        /* Navbar Styles */
+        .eyenix-navbar {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
 
-/* GLASSY BLACK CARD BASE */
-.testimonial .testimonial-item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
+        .eyenix-navbar .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff !important;
+        }
 
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+        .eyenix-navbar .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+        }
 
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+        .eyenix-navbar .nav-link:hover,
+        .eyenix-navbar .nav-link.active {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
 
-    box-shadow:
-        0 15px 45px rgba(0, 0, 0, 0.6),
-        inset 0 0 25px rgba(255, 255, 255, 0.05);
+        /* Review Section */
+        .review {
+            background: #000;
+            padding: 80px 0;
+        }
 
-    z-index: -1;
-    transition: 0.4s ease;
-}
+        .text-primary {
+            color: #99c2ff !important;
+        }
 
-/* HOVER GLOW */
-.testimonial .testimonial-item:hover::before {
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.9),
-        inset 0 0 35px rgba(255, 255, 255, 0.08);
-}
+        .text-white {
+            color: #fff !important;
+        }
 
-/* IMAGE */
-.testimonial .testimonial-item .testimonial-img {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
+        .text-light {
+            color: #ddd !important;
+        }
 
-.testimonial .testimonial-item .testimonial-img img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    background: #000;
-}
+        .review-carousel .review-item {
+            background: #111;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin: 10px;
+        }
 
-/* TEXT */
-.testimonial .testimonial-item .testimonial-text {
-    padding: 25px 0;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.85);
-}
+        .review-carousel .review-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(153, 194, 255, 0.25);
+        }
 
-.testimonial .testimonial-item h4,
-.testimonial .testimonial-item p {
-    color: #ffffff !important;
-}
+        /* Image */
+        .review-img {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #99c2ff;
+            background: #333;
+        }
 
-/* HEADER TEXT */
-.testimonial .text-center h1,
-.testimonial .text-center p {
-    color: #ffffff !important;
-}
+        .review-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* QUOTE ICONS */
-.testimonial .testimonial-item .testimonial-quote-left,
-.testimonial .testimonial-item .testimonial-quote-right {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--bs-primary);
-}
+        /* Text */
+        .review-text {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
 
-/* POSITIONING */
-.testimonial .testimonial-item .testimonial-quote-left {
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .review-item h4 {
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: #fff;
+        }
 
-.testimonial .testimonial-item .testimonial-quote-right {
-    position: absolute;
-    bottom: -30px;
-    right: 25px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .review-item small {
+            color: #aaa;
+        }
 
-/* NAV BUTTONS */
-.testimonial .owl-nav .owl-prev,
-.testimonial .owl-nav .owl-next {
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 6px 32px;
-    border-radius: 30px;
-    transition: 0.3s;
-}
+        /* Stars */
+        .stars {
+            color: #ffc107;
+            margin-top: 10px;
+            font-size: 18px;
+        }
 
-.testimonial .owl-nav .owl-prev:hover,
-.testimonial .owl-nav .owl-next:hover {
-    background: var(--bs-primary);
-    color: #fff;
-}
+        /* Owl dots */
+        .review-carousel .owl-dots {
+            margin-top: 30px;
+            text-align: center;
+        }
 
-/* DOTS */
-.testimonial-carousel .owl-dots .owl-dot span {
-    background: rgba(255, 255, 255, 0.3);
-}
+        .review-carousel .owl-dot {
+            display: inline-block;
+            margin: 0 5px;
+        }
 
-.testimonial-carousel .owl-dots .owl-dot.active span {
-    background: var(--bs-primary);
-}
+        .review-carousel .owl-dot span {
+            width: 12px;
+            height: 12px;
+            background: #555;
+            display: block;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
 
-/* CENTER ITEM CONTENT (SAFE FIX) */
-.testimonial-carousel .owl-item {
-    padding: 15px;
-}
+        .review-carousel .owl-dot.active span {
+            background: #99c2ff;
+            width: 30px;
+            border-radius: 20px;
+        }

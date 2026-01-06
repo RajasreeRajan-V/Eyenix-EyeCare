@@ -13,7 +13,8 @@ class ReviewController
      */
     public function index()
     {
-        return view('admin.admin_review');
+        $reviews = Review::all();
+        return view('admin.admin_review', compact ('reviews'));
     }
 
     /**
@@ -29,7 +30,15 @@ class ReviewController
      */
     public function store(StoreReviewRequest $request)
     {
-        //
+        Review::create([
+        'name'   => $request->name,
+        'review' => $request->review,
+        'rating' => $request->rating,
+    ]);
+
+    return redirect()
+        ->back()
+        ->with('success', 'Review submitted successfully');
     }
 
     /**
@@ -51,16 +60,26 @@ class ReviewController
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReviewRequest $request, Review $review)
+   public function update(UpdateReviewRequest $request, Review $review)
     {
-        //
-    }
+        $review->update([
+            'name' => $request->name,
+            'review' => $request->review,
+            'rating' => $request->rating,
+        ]);
 
+        // Redirect back with success message
+        return redirect()->route('admin.review.index')
+            ->with('success', 'Review updated successfully!');
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Review $review)
     {
-        //
+       $review->delete();
+
+    return redirect()->route('admin.review.index')
+        ->with('success', 'Review deleted successfully!');
     }
 }

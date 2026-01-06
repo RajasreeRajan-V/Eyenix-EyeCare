@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\ContactUs;
 use App\Http\Requests\StoreContactUsRequest;
 use App\Http\Requests\UpdateContactUsRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactThankYouMail;
+use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
@@ -63,5 +66,19 @@ class ContactUsController extends Controller
     public function destroy(ContactUs $contactUs)
     {
         //
+    }
+    public function submit(Request $request)
+    {
+        $data = $request->validate([
+            'name'    => 'required|string|max:255',
+            'phone'   => 'required|string|max:15',
+            'email'   => 'required|email',
+            'message' => 'nullable|string',
+        ]);
+
+        // Send thank-you email to user
+        Mail::to($data['email'])->send(new ContactThankYouMail($data));
+
+        return back()->with('success', 'Thank you for contacting us!');
     }
 }

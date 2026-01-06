@@ -45,7 +45,7 @@
     </div>
     <!-- Spinner End -->
 
-        <!-- Floating Icons -->
+    <!-- Floating Icons -->
     <div class="dashboard-floating-icons">
 
         <!-- Chatbot Toggle (Lottie) -->
@@ -86,7 +86,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand d-flex align-items-center gap-2 p-0">
-                 <a href="#" class="navbar-brand fancy-brand d-flex align-items-center gap-3">
+                <a href="#" class="navbar-brand fancy-brand d-flex align-items-center gap-3">
                     <!-- Logo Icon -->
                     <div class="logo-icon">
                         <img src="{{ asset('img/logo1.jpeg') }}" alt="Eyenix Eye Care Logo">
@@ -262,12 +262,10 @@
     </div>
     <!-- About End -->
 
-
-
     <!-- Features Start -->
     <div class="container-fluid feature pb-5">
         <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow " data-wow-delay="0.2s" style="max-width: 800px;">
+            <div class="text-center mx-auto pb-5 wow" data-wow-delay="0.2s" style="max-width: 800px;">
                 <br>
                 <h4 class="text-abcd section-title-small">Our Services</h4>
                 <h1 class="display-5 mb-4 section-title-main">See the Difference: Comprehensive Services for Your Best
@@ -279,58 +277,44 @@
                 </p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="feature-item p-4">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-chart-line fa-4x text-primary"></i>
+                @php
+                    $icons = [
+                        'fas fa-eye',
+                        'fas fa-glasses',
+                        'fas fa-eye-dropper',
+                        'fas fa-clinic-medical',
+                    ];
+                @endphp
+
+                @foreach($services as $service)
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="{{ 0.2 + ($loop->index * 0.2) }}s">
+                        <div class="feature-item p-4">
+
+                            <!-- ICON (Repeats Automatically) -->
+                            <div class="feature-icon p-4 mb-4">
+                                <i class="{{ $icons[$loop->index % count($icons)] }} fa-4x text-primary"></i>
+                            </div>
+
+                            <!-- TITLE -->
+                            <h4>{{ $service->title }}</h4>
+
+                            <!-- DESCRIPTION -->
+                            <p class="mb-4">{{ $service->description }}</p>
+
+                            <!-- BUTTON -->
+                            @if($service->link)
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="{{ $service->link }}">Learn More</a>
+                            @endif
+
                         </div>
-                        <h4>Global Management</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="feature-item p-4">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-university fa-4x text-primary"></i>
-                        </div>
-                        <h4>Corporate Banking</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="feature-item p-4">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-file-alt fa-4x text-primary"></i>
-                        </div>
-                        <h4>Asset Management</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="feature-item p-4">
-                        <div class="feature-icon p-4 mb-4">
-                            <i class="fas fa-hand-holding-usd fa-4x text-primary"></i>
-                        </div>
-                        <h4>Investment Bank</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit
-                            pariatur...
-                        </p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
     <!-- Features End -->
+
 
     <!-- Location Start -->
     <div class="container-fluid location py-5">
@@ -356,7 +340,10 @@
                                     <div class="ms-4">
                                         <h4 class="text-white">Easy Access</h4>
                                         <p class="text-light">
-                                            Centrally located with hassle-free parking and accessibility.
+                                            <strong>Eyenix Eye Care</strong><br>
+                                            San, Jos River View Complex,<br>
+                                            Near Bank of Baroda, Tanthode,<br>
+                                            Iritty, Kerala - 670703
                                         </p>
                                     </div>
                                 </div>
@@ -380,7 +367,7 @@
                                     <div>
                                         <h4 class="text-white">Call Us</h4>
                                         <p class="mb-0 fs-5 text-light" style="letter-spacing: 1px;">
-                                            +91 98765 43210
+                                            +91 99616 67111
                                         </p>
                                     </div>
                                 </div>
@@ -429,109 +416,112 @@
             </div>
         </div>
     </div>
-<!-- Footer Start -->
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-<!-- Footer Start -->
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
 
-    <!-- MAIN FOOTER CONTENT -->
-    <div class="container py-5 border-start-0 border-end-0"
-        style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+            <!-- MAIN FOOTER CONTENT -->
+            <div class="container py-5 border-start-0 border-end-0"
+                style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
 
-        <div class="row g-5">
+                <div class="row g-5">
 
-            <!-- BRAND -->
-            <div class="col-md-6 col-lg-6 col-xl-4">
-                <div class="footer-item">
-                    <h4 class="text-white">Eyenix Eye Care</h4>
-                    <p>
-                        Providing advanced eye testing, premium eyewear, and trusted vision
-                        solutions with a patient-first approach.
-                    </p>
+                    <!-- BRAND -->
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <h4 class="text-white">Eyenix Eye Care</h4>
+                            <p>
+                                Providing advanced eye testing, premium eyewear, and trusted vision
+                                solutions with a patient-first approach.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- QUICK LINKS -->
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="{{ route('about') }}">About Us</a>
+                            <a href="{{ route('service') }}">Services</a>
+                            <a href="{{ route('eyecamp') }}">Eye Camps</a>
+                            <a href="{{ route('eyeglass') }}">Eye Glasses</a>
+                            <a href="{{ route('contact.index') }}">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- SUPPORT -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="{{ route('contact.index') }}">Make Contact</a>
+                            <a href="tel:+919961667111">Call for appointment</a>
+                            <a href="mailto:eyenixeyecareopticals@gmail.com">Email Support</a>
+                            <a href="{{ route('contact.index') }}#faq">FAQs</a>
+                        </div>
+                    </div>
+
+                    <!-- ADDRESS ONLY -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <p>
+                                <strong>Eyenix Eye Care</strong><br>
+                                San, Jos River View Complex,<br>
+                                Near Bank of Baroda, Tanthode,<br>
+                                Iritty, Kerala - 670703
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- QUICK LINKS -->
-            <div class="col-md-6 col-lg-6 col-xl-2">
-                <div class="footer-item">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="{{ route('about') }}">About Us</a>
-                    <a href="{{ route('service') }}">Services</a>
-                    <a href="{{ route('eyecamp') }}">Eye Camps</a>
-                    <a href="{{ route('eyeglass') }}">Eye Glasses</a>
-                    <a href="{{ route('contact.index') }}">Contact</a>
-                </div>
-            </div>
+            <!-- STRAIGHT LINE CONTACT BAR -->
+            <div class="container footer-contact-bar">
+                <div class="row align-items-center text-center text-md-start">
 
-            <!-- SUPPORT -->
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item">
-                    <h4 class="text-white mb-4">Support</h4>
-                    <a href="{{ route('contact.index') }}">Make Contact</a>
-                    <a href="tel:+919961667111">Call for appointment</a>
-                    <a href="mailto:eyenixeyecareopticals@gmail.com">Email Support</a>
-                    <a href="{{ route('contact.index') }}#faq">FAQs</a>
-                </div>
-            </div>
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>eyenixeyecareopticals@gmail.com</span>
+                    </div>
 
-            <!-- ADDRESS ONLY -->
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item">
-                    <h4 class="text-white mb-4">Contact Info</h4>
-                    <p>
-                        <strong>Eyenix Eye Care</strong><br>
-                        San, Jos River View Complex,<br>
-                        Near Bank of Baroda, Tanthode,<br>
-                        Iritty, Kerala - 670703
-                    </p>
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 996 166 7111</span>
+                    </div>
+
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Sun: 9:00 AM - 7:00 PM</span>
+                    </div>
+
+                    <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
+                        <div class="social-icons">
+                            <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle"
+                                href="mailto:eyenixeyecareopticals@gmail.com">
+                                <i class="fas fa-envelope text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
+        <!-- Footer End -->
+
     </div>
+    <!-- Footer End -->
 
-    <!-- STRAIGHT LINE CONTACT BAR -->
-    <div class="container footer-contact-bar">
-        <div class="row align-items-center text-center text-md-start">
-
-            <div class="col-md-3 contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>eyenixeyecareopticals@gmail.com</span>
-            </div>
-
-            <div class="col-md-3 contact-item">
-                <i class="fas fa-phone-alt"></i>
-                <span>+91 996 166 7111</span>
-            </div>
-
-            <div class="col-md-3 contact-item">
-                <i class="fas fa-clock"></i>
-                <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
-                <div class="social-icons">
-                    <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
-                        <i class="fab fa-instagram text-white"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
-                        <i class="fab fa-whatsapp text-white"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm-square rounded-circle"
-                       href="mailto:eyenixeyecareopticals@gmail.com">
-                        <i class="fas fa-envelope text-white"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
     </div>
-
-</div>
-<!-- Footer End -->
-
-</div>
-<!-- Footer End -->
+    <!-- Footer End -->
 
 
     <!-- Back to Top -->

@@ -249,109 +249,109 @@
 
 
 
- <!-- Footer Start -->
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-<!-- Footer Start -->
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
 
-    <!-- MAIN FOOTER CONTENT -->
-    <div class="container py-5 border-start-0 border-end-0"
-        style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
+            <!-- MAIN FOOTER CONTENT -->
+            <div class="container py-5 border-start-0 border-end-0"
+                style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
 
-        <div class="row g-5">
+                <div class="row g-5">
 
-            <!-- BRAND -->
-            <div class="col-md-6 col-lg-6 col-xl-4">
-                <div class="footer-item">
-                    <h4 class="text-white">Eyenix Eye Care</h4>
-                    <p>
-                        Providing advanced eye testing, premium eyewear, and trusted vision
-                        solutions with a patient-first approach.
-                    </p>
+                    <!-- BRAND -->
+                    <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="footer-item">
+                            <h4 class="text-white">Eyenix Eye Care</h4>
+                            <p>
+                                Providing advanced eye testing, premium eyewear, and trusted vision
+                                solutions with a patient-first approach.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- QUICK LINKS -->
+                    <div class="col-md-6 col-lg-6 col-xl-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="{{ route('about') }}">About Us</a>
+                            <a href="{{ route('service') }}">Services</a>
+                            <a href="{{ route('eyecamp') }}">Eye Camps</a>
+                            <a href="{{ route('eyeglass') }}">Eye Glasses</a>
+                            <a href="{{ route('contact.index') }}">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- SUPPORT -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Support</h4>
+                            <a href="{{ route('contact.index') }}">Make Contact</a>
+                            <a href="tel:+919961667111">Call for appointment</a>
+                            <a href="mailto:eyenixeyecareopticals@gmail.com">Email Support</a>
+                            <a href="{{ route('contact.index') }}#faq">FAQs</a>
+                        </div>
+                    </div>
+
+                    <!-- ADDRESS ONLY -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <p>
+                                <strong>Eyenix Eye Care</strong><br>
+                                San, Jos River View Complex,<br>
+                                Near Bank of Baroda, Tanthode,<br>
+                                Iritty, Kerala - 670703
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- QUICK LINKS -->
-            <div class="col-md-6 col-lg-6 col-xl-2">
-                <div class="footer-item">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="{{ route('about') }}">About Us</a>
-                    <a href="{{ route('service') }}">Services</a>
-                    <a href="{{ route('eyecamp') }}">Eye Camps</a>
-                    <a href="{{ route('eyeglass') }}">Eye Glasses</a>
-                    <a href="{{ route('contact.index') }}">Contact</a>
-                </div>
-            </div>
+            <!-- STRAIGHT LINE CONTACT BAR -->
+            <div class="container footer-contact-bar">
+                <div class="row align-items-center text-center text-md-start">
 
-            <!-- SUPPORT -->
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item">
-                    <h4 class="text-white mb-4">Support</h4>
-                    <a href="{{ route('contact.index') }}">Make Contact</a>
-                    <a href="tel:+919961667111">Call for appointment</a>
-                    <a href="mailto:eyenixeyecareopticals@gmail.com">Email Support</a>
-                    <a href="{{ route('contact.index') }}#faq">FAQs</a>
-                </div>
-            </div>
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>eyenixeyecareopticals@gmail.com</span>
+                    </div>
 
-            <!-- ADDRESS ONLY -->
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item">
-                    <h4 class="text-white mb-4">Contact Info</h4>
-                    <p>
-                        <strong>Eyenix Eye Care</strong><br>
-                        San, Jos River View Complex,<br>
-                        Near Bank of Baroda, Tanthode,<br>
-                        Iritty, Kerala - 670703
-                    </p>
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 996 166 7111</span>
+                    </div>
+
+                    <div class="col-md-3 contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Sun: 9:00 AM - 7:00 PM</span>
+                    </div>
+
+                    <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
+                        <div class="social-icons">
+                            <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
+                                <i class="fab fa-whatsapp text-white"></i>
+                            </a>
+                            <a class="btn btn-primary btn-sm-square rounded-circle"
+                                href="mailto:eyenixeyecareopticals@gmail.com">
+                                <i class="fas fa-envelope text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
+        <!-- Footer End -->
+
     </div>
-
-    <!-- STRAIGHT LINE CONTACT BAR -->
-    <div class="container footer-contact-bar">
-        <div class="row align-items-center text-center text-md-start">
-
-            <div class="col-md-3 contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>eyenixeyecareopticals@gmail.com</span>
-            </div>
-
-            <div class="col-md-3 contact-item">
-                <i class="fas fa-phone-alt"></i>
-                <span>+91 996 166 7111</span>
-            </div>
-
-            <div class="col-md-3 contact-item">
-                <i class="fas fa-clock"></i>
-                <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-center justify-content-md-end">
-                <div class="social-icons">
-                    <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
-                        <i class="fab fa-instagram text-white"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm-square rounded-circle" href="#">
-                        <i class="fab fa-whatsapp text-white"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm-square rounded-circle"
-                       href="mailto:eyenixeyecareopticals@gmail.com">
-                        <i class="fas fa-envelope text-white"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-<!-- Footer End -->
-
-</div>
-<!-- Footer End -->
+    <!-- Footer End -->
 
 
     <!-- Back to Top -->

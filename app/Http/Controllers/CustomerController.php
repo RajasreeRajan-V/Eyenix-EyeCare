@@ -14,17 +14,21 @@ use App\Models\Shape;
 use App\Models\Frame;
 use App\Models\ProductColor;
 use App\Models\LensSolution;
+use App\Models\Service;
 
 class CustomerController extends Controller
 {
     public function dashboard()
     {
-        return view('customer.dashboard');
+        $about = About::latest()->first();
+        $services = Service::all();
+        return view('customer.dashboard', compact('about','services'));
     }
     public function about()
     {
         $about = About::latest()->first();
-        return view('customer.about',compact('about'));
+        $services = Service::all();
+        return view('customer.about',compact('about','services'));
     }
     public function gallery()
     {
@@ -33,12 +37,14 @@ class CustomerController extends Controller
     }
     public function service()
     {
-        return view('customer.service');
+        $services = Service::all();
+        return view('customer.service', compact('services'));
     } 
     public function eyecamp()
     {
         $eyeCamps = EyeCamp::all();
-        return view('customer.eyecamp',compact('eyeCamps'));
+        $services = Service::all();
+        return view('customer.eyecamp',compact('eyeCamps','services'));
     }  
     public function AppointmentStore(Request $request)
     {
