@@ -488,283 +488,173 @@
 <!-- Features End -->
 
 
-    <!-- Offer Start -->
-    <div class="container-fluid offer-section pb-0">
-        <div class="offer-top-curve">
-            <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
-                <path d="M0,120 C360,200 1080,40 1440,120 L1440,0 L0,0 Z" fill="var(--back)"></path>
-            </svg>
+<!-- Offer Start -->
+<div class="container-fluid offer-section pb-0">
+
+    <!-- Top Curve -->
+    <div class="offer-top-curve">
+        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+            <path d="M0,120 C360,200 1080,40 1440,120 L1440,0 L0,0 Z" fill="var(--back)"></path>
+        </svg>
+    </div>
+
+    <div class="container pb-5">
+
+        <!-- Section Heading -->
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h1 class="display-5 mb-4"><i>Wear Your Shape</i></h1>
+            <h4 class="text-dcba">
+                Discover frames that perfectly match your face shape, enhancing your natural features.
+            </h4>
         </div>
 
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h1 class="display-5 mb-4"> <i>Wear Your Shape </i></h1>
-                <h4 class="text-dcba">Discover frames that perfectly match your face shape, enhancing your natural
-                    features.</h4>
-                <p class="section-desc"></p>
+        <!-- Shapes Row -->
+        <div class="row g-5 align-items-center">
 
-            </div>
-            <div class="row g-5 align-items-center">
-                <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div class="shape-row">
-
+            <!-- LEFT COLUMN – First 4 Shapes -->
+            <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="shape-row">
+                    @foreach ($shapes->take(4) as $shape)
                         <div class="shape-item">
-                            <img src="{{ asset('img/Shape/Aviator.png') }}" class="img-fluid">
-                            <h5 class="text-dcba">AVIATOR</h5>
+                            <img src="{{ asset('storage/' . $shape->img) }}" class="img-fluid" alt="{{ $shape->name }}">
+                            <h5 class="text-dcba text-uppercase">{{ $shape->name }}</h5>
                         </div>
-
-                        <div class="shape-item">
-                            <img src="{{ asset('img/Shape/Clubmaster.png') }}" class="img-fluid">
-                            <h5 class="text-dcba">BROWLINE</h5>
-                        </div>
-
-                        <div class="shape-item">
-                            <img src="{{ asset('img/Shape/oval.png') }}" class="img-fluid">
-                            <h5 class="text-dcba">OVAL</h5>
-                        </div>
-                        <div class="shape-item">
-                            <img src="{{ asset('img/Shape/rectangle.png') }}" class="img-fluid">
-                            <h5 class="text-dcba">RECTANGLE</h5>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.4s">
-                    <div class="shape-row">
-                        {{-- <div id="collapseOne" class="tab-pane fade show p-0 active"> --}}
-                            {{-- <div class="shape-row"> --}}
-                                <div class="shape-item">
-
-                                </div>
-
-                                <div class="shape-item">
-                                    <img src="{{ asset('img/Shape/Cat-Eye.png') }}" class="img-fluid">
-                                    <h5 class="text-dcba">CATEYE</h5>
-                                </div>
-                                <div class="shape-item">
-                                    <img src="{{ asset('img/Shape/Wayfarer.png') }}" class="img-fluid">
-                                    <h5 class="text-dcba">WAYFARER</h5>
-                                </div>
-
-
-
-                                <div class="shape-item">
-                                    <img src="{{ asset('img/Shape/round.png') }}" class="img-fluid">
-                                    <h5 class="text-dcba">ROUND</h5>
-                                </div>
-                                <div class="shape-item">
-                                    <img src="{{ asset('img/Shape/Geometric.png') }}" class="img-fluid">
-                                    <h5 class="text-dcba">GEOMETRIC</h5>
-                                </div>
-
-                                {{--
-                            </div> --}}
-                            {{-- </div> --}}
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-        <div class="offer-curve">
-            <svg viewBox="0 0 1440 240" preserveAspectRatio="none" class="offer-bottom-svg">
-                <path d="M0,140 C360,40 1080,240 1440,120 L1440,240 L0,240 Z" fill="var(--back)"></path>
-            </svg>
+
+            <!-- RIGHT COLUMN – Next 4 Shapes -->
+            <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.4s">
+                <div class="shape-row">
+                     <div class="shape-item">
+
+                    </div>
+                    @foreach ($shapes->skip(4)->take(4) as $shape)
+                    
+                        <div class="shape-item">
+                            <img src="{{ asset('storage/' . $shape->img) }}" class="img-fluid" alt="{{ $shape->name }}">
+                            <h5 class="text-dcba text-uppercase">{{ $shape->name }}</h5>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- Offer End -->
+    <!-- Bottom Curve -->
+    <div class="offer-curve">
+        <svg viewBox="0 0 1440 240" preserveAspectRatio="none" class="offer-bottom-svg">
+            <path d="M0,140 C360,40 1080,240 1440,120 L1440,240 L0,240 Z" fill="var(--back)"></path>
+        </svg>
+    </div>
 
-    <!-- Brands Start -->
-    <div class="container-fluid service pb-5">
-        <div class="container pb-5">
+</div>
+<!-- Offer End -->
+
+
+<!-- Brands Start -->
+<div class="container-fluid service pb-5">
+    <div class="container pb-5">
+
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="section-label">Our Brands</h4>
+            <h1 class="section-title">Premium Eyewear Brands We Offer</h1>
+            <p class="section-desc">
+                Eyenix Eye Care brings you a curated selection of top-quality eyewear brands.
+                From stylish frames to advanced lenses, we ensure comfort, durability, and unmatched style.
+            </p>
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="brand-nav">
+            <button class="brand-prev"><i class="fa fa-chevron-left"></i></button>
+            <button class="brand-next"><i class="fa fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Brand Slider -->
+        <div class="brand-slider owl-carousel mt-4">
+
+            @foreach($brands as $brand)
+                <div class="item">
+                    <div class="service-item">
+                        <div class="brand-img-box">
+                            <img 
+                                src="{{ asset('storage/'.$brand->img) }}" 
+                                alt="{{ $brand->name }}"
+                                class="brand-img"
+                            >
+                        </div>
+
+                        <div class="brand-hover-name">
+                            {{ $brand->name }}
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+    </div>
+</div>
+<!-- Brands End -->
+
+
+<!-- Collection Start -->
+<div class="container-fluid blog pt-6 pb-5">
+    <div class="container pb-5">
+        <div class="blog-glass-wrapper">
+
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="section-label">Our Brands</h4>
-                <h1 class="section-title">Premium Eyewear Brands We Offer</h1>
-                <p class="section-desc">
-                    Eyenix Eye Care brings you a curated selection of top-quality eyewear brands.
-                    From stylish frames to advanced lenses, we ensure comfort, durability, and unmatched style.
+                <h4 class="text-dcba">Our Collection</h4>
+                <h1 class="display-5 mb-4">Explore Our Products</h1>
+                <p class="mb-0 text-dcba">
+                    Discover the latest products from our collection.
                 </p>
             </div>
 
-            <!-- ==== SLIDER FOR ITEMS 4–6 ==== -->
-            <div class="brand-nav">
-                <button class="brand-prev"><i class="fa fa-chevron-left"></i></button>
-                <button class="brand-next"><i class="fa fa-chevron-right"></i></button>
+            <!-- Filters -->
+            <div class="collection-filters text-center mb-4">
+                <button class="btn active" data-filter="all">All</button>
+                <button class="btn" data-filter="EyeGlass">EyeGlasses</button>
+                <button class="btn" data-filter="SunGlass">SunGlasses</button>
             </div>
-            <div class="brand-slider owl-carousel mt-4">
 
-                <div class="item">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/brand-2.png') }}" class="img-fluid rounded-top w-100" alt="">
+            <!-- Carousel -->
+            <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
+
+                @foreach($collections as $item)
+                    <div class="blog-item p-4 collection-item"
+                         data-type="{{ $item->type }}">
+
+                        <div class="blog-img mb-4">
+                            <img src="{{ asset('storage/'.$item->front_image) }}"
+                                 class="img-fluid w-100 rounded"
+                                 alt="{{ $item->name }}">
+
+                            <div class="blog-title">
+                                <span class="btn">{{ $item->type }}</span>
+                            </div>
                         </div>
-                        <div class="brand-hover-name">Vogue Eyewear</div>
+
+                        <a href="#" class="h4 d-inline-block mb-3">
+                            {{ $item->name }}
+                        </a>
+
+                        <p class="mb-4">
+                            {{ Str::limit($item->description, 100) }}
+                        </p>
 
                     </div>
-                </div>
-
-                <div class="item">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/brand-1.png') }}" class="img-fluid rounded-top w-100" alt="">
-                        </div>
-                        <div class="brand-hover-name">Ray-Ban
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/brand-3.png') }}" class="img-fluid rounded-top w-100" alt="">
-                        </div>
-                        <div class="brand-hover-name">Titan Eye+
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="item">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/brand-4.png') }}" class="img-fluid rounded-top w-100" alt="">
-                        </div>
-                        <div class="brand-hover-name">Fastrack
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/brand-5.png') }}" class="img-fluid rounded-top w-100" alt="">
-                        </div>
-                        <div class="brand-hover-name">Oakley
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('img/brand-6.png') }}" class="img-fluid rounded-top w-100" alt="">
-                        </div>
-                        <div class="brand-hover-name">Carrera
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
 
         </div>
-
     </div>
-    <!-- Brands End -->
+</div>
+<!-- Collection End -->
 
-    <!-- Blog Start -->
-    <div class="container-fluid blog pt-6 pb-5">
-        <div class="container pb-5">
-            <div class="blog-glass-wrapper">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-dcba">Our Collection</h4>
-                    <h1 class="display-5 mb-4">Explore Our Products</h1>
-                    <p class="mb-0 text-dcba">Discover the latest products from our collection. Each item is carefully
-                        curated to meet
-                        your style and quality needs.</p>
-                </div>
-                <!-- Collection Filters -->
-                <div class="collection-filters text-center mb-4">
-                    <button class="btn active" data-filter="*">All</button>
-                    <button class="btn" data-filter="dividend">EyeGlasses</button>
-                    <button class="btn" data-filter="non-dividend">SunGlasses</button>
-                </div>
-
-                <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="blog-item p-4">
-                        <div class="blog-img mb-4">
-                            <img src="{{ asset('img/service-1.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                            <div class="blog-title">
-                                <a href="#" class="btn">Dividend Stocks</a>
-                            </div>
-                        </div>
-                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                            suscipit error corporis accusamus labore....
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle"
-                                style="width: 60px; height: 60px;" alt="">
-                            <div class="ms-3">
-                                <h5>Admin</h5>
-                                <p class="mb-0">October 9, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-item p-4">
-                        <div class="blog-img mb-4">
-                            <img src="{{ asset('img/service-2.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                            <div class="blog-title">
-                                <a href="#" class="btn">Non-Dividend Stocks</a>
-                            </div>
-                        </div>
-                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                            suscipit error corporis accusamus labore....
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid rounded-circle"
-                                style="width: 60px; height: 60px;" alt="">
-                            <div class="ms-3">
-                                <h5>Admin</h5>
-                                <p class="mb-0">October 9, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-item p-4">
-                        <div class="blog-img mb-4">
-                            <img src="{{ asset('img/service-3.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                            <div class="blog-title">
-                                <a href="#" class="btn">Dividend Stocks</a>
-                            </div>
-                        </div>
-                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                            suscipit error corporis accusamus labore....
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('img/testimonial-3.jpg')}}" class="img-fluid rounded-circle"
-                                style="width: 60px; height: 60px;" alt="">
-                            <div class="ms-3">
-                                <h5>Admin</h5>
-                                <p class="mb-0">October 9, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-item p-4">
-                        <div class="blog-img mb-4">
-                            <img src="{{ asset('img/service-4.jpg')}}" class="img-fluid w-100 rounded" alt="">
-                            <div class="blog-title">
-                                <a href="#" class="btn">Non-Dividend Stocks</a>
-                            </div>
-                        </div>
-                        <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam
-                            suscipit error corporis accusamus labore....
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid rounded-circle"
-                                style="width: 60px; height: 60px;" alt="">
-                            <div class="ms-3">
-                                <h5>Admin</h5>
-                                <p class="mb-0">October 9, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
 
     <!-- Our Story-->
     <div class="our-story-section">
@@ -965,142 +855,69 @@
     </div>
     <!-- FAQs End -->
 
-    <!-- Testimonial Start -->
-    <div class="container-fluid testimonial pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                <h4 class="text-abcd">Reviews</h4>
-                <h1 class="display-5 mb-4">What Our Customers Say</h1>
-                <p class="mb-0">
-                    Real experiences from our valued customers. Discover how our quality eyewear,
-                    contact lenses, and expert care have made a difference in their vision and comfort.
-                </p>
-            </div>
+<!-- Testimonial Start -->
+<div class="container-fluid testimonial pb-5">
+    <div class="container pb-5">
 
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-1.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-3.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-quote-left">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <div class="testimonial-img">
-                        <img src="{{ asset('img/testimonial-2.jpg')}}" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="testimonial-text">
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis
-                            excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum
-                            accusamus.
-                        </p>
-                    </div>
-                    <div class="testimonial-title">
-                        <div>
-                            <h4 class="mb-0">Person Name</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="d-flex text-primary">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-quote-right">
-                        <i class="fas fa-quote-right fa-2x"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-abcd">Reviews</h4>
+            <h1 class="display-5 mb-4">What Our Customers Say</h1>
+            <p class="mb-0">
+                Real experiences from our valued customers.
+            </p>
         </div>
+
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
+
+            @foreach($reviews as $review)
+                <div class="testimonial-item">
+
+                    <div class="testimonial-quote-left">
+                        <i class="fas fa-quote-left fa-2x"></i>
+                    </div>
+
+                    <!-- Static avatar (since no image column) -->
+                    <div class="testimonial-img">
+                        <img 
+                            src="{{ asset('img/default-user.png') }}" 
+                            class="img-fluid" 
+                            alt="{{ $review->name }}"
+                        >
+                    </div>
+
+                    <div class="testimonial-text">
+                        <p class="mb-0">
+                            {{ $review->review }}
+                        </p>
+                    </div>
+
+                    <div class="testimonial-title">
+                        <div>
+                            <h4 class="mb-0">{{ $review->name }}</h4>
+                            <p class="mb-0">Customer</p>
+                        </div>
+
+                        <!-- Rating -->
+                        <div class="d-flex text-primary">
+                            @for($i = 1; $i <= 5; $i++)
+                                <i class="fas fa-star {{ $i <= $review->rating ? '' : 'text-muted' }}"></i>
+                            @endfor
+                        </div>
+                    </div>
+
+                    <div class="testimonial-quote-right">
+                        <i class="fas fa-quote-right fa-2x"></i>
+                    </div>
+
+                </div>
+            @endforeach
+
+        </div>
+
     </div>
-    <!-- Testimonial End -->
+</div>
+<!-- Testimonial End -->
+
 
 
     <!-- Location Start -->
@@ -1181,6 +998,7 @@
             </div>
         </div>
     </div>
+
     <!-- Location End -->
     <div class="modal fade" id="mapModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -1364,6 +1182,31 @@
             }, 2000);
         });
     </script>
+<script>
+    document.querySelectorAll('.collection-filters .btn').forEach(button => {
+        button.addEventListener('click', function () {
+
+            // Active button
+            document.querySelectorAll('.collection-filters .btn')
+                .forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            let filter = this.getAttribute('data-filter');
+            let items = document.querySelectorAll('.collection-item');
+
+            items.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-type') === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Refresh Owl after filtering
+            $('.blog-carousel').trigger('refresh.owl.carousel');
+        });
+    });
+</script>
 
 </body>
 

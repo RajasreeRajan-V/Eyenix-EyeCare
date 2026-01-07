@@ -336,6 +336,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Subject</th>
                                         <th>Message</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -349,6 +350,10 @@
                                             <td>{{ $contact->name }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td>{{ $contact->phone }}</td>
+                                            <td style="{{ $contact->subject === 'Get In Touch' ? 'color: red; font-weight: 600;' : '' }}">
+                                                {{ $contact->subject }}
+                                            </td>
+
                                             <td>{{$contact->message }}</td>
                                             <td>{{ $contact->created_at->format('d M Y') }}</td>
 

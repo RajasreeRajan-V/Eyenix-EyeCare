@@ -75,6 +75,13 @@ class ContactUsController extends Controller
             'email'   => 'required|email',
             'message' => 'nullable|string',
         ]);
+        ContactUs::create([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'subject' => 'Get In Touch',
+            'message' => $data['message'],
+        ]);
 
         // Send thank-you email to user
         Mail::to($data['email'])->send(new ContactThankYouMail($data));

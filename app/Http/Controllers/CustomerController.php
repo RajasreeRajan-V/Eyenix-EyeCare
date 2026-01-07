@@ -15,6 +15,7 @@ use App\Models\Frame;
 use App\Models\ProductColor;
 use App\Models\LensSolution;
 use App\Models\Service;
+use App\Models\Review;
 
 class CustomerController extends Controller
 {
@@ -22,7 +23,12 @@ class CustomerController extends Controller
     {
         $about = About::latest()->first();
         $services = Service::all();
-        return view('customer.dashboard', compact('about','services'));
+        $shapes = Shape::all();
+        $brands = Brand::all();
+        $eyeglasses = Collection::all();
+        $collections = Collection::orderBy('created_at', 'desc')->get();
+        $reviews = Review::all();
+        return view('customer.dashboard', compact('about','services', 'shapes', 'brands', 'eyeglasses', 'collections', 'reviews'));
     }
     public function about()
     {

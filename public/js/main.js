@@ -341,15 +341,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const modalElement = document.getElementById('getInTouchModal');
     if (!modalElement) return;
 
-    // Force modal to reset on every refresh
+    // Reset modal state on every refresh
     modalElement.classList.remove('show');
     modalElement.style.display = 'none';
     modalElement.removeAttribute('aria-modal');
+    modalElement.setAttribute('aria-hidden', 'true');
 
     if (typeof bootstrap === 'undefined') return;
 
@@ -358,12 +360,14 @@ document.addEventListener("DOMContentLoaded", function () {
         keyboard: true
     });
 
-    // ⏱️ Open after 2 seconds on EVERY refresh
+    // Open after 4 minutes (240000 ms) on EVERY refresh
     setTimeout(() => {
         modal.show();
-    }, 2000);
+    }, 240000); // 4 minutes
 
 });
+
+
 
 
 
